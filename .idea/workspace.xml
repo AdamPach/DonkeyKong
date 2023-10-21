@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Improve structure for the DonkeyKongApplication.java class">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/donkeykong/DrawingThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/donkeykong/GameController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/donkeykong/GameView.fxml" afterDir="false" />
+    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Add GameController and FXML file for basic drawing">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/Drawable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/donkeykong/DonkeyKongApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/donkeykong/DonkeyKongApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/donkeykong/DonkeyKongApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/DonkeyKongApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/donkeykong/DrawingThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/DrawingThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/donkeykong/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/donkeykong/GameView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/adampach/donkeykong/GameView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Interface" />
+        <option value="package-info" />
         <option value="Class" />
       </list>
     </option>
@@ -65,8 +72,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DonkeyKongApplication" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.adampach.donkeykong.DonkeyKongApplication" />
+      <module name="DonkeyKong" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.adampach.donkeykong.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DonkeyKongApplication" />
         <item itemvalue="Application.DonkeyKongApplication" />
       </list>
     </recent_temporary>
@@ -80,7 +101,7 @@
       <option name="presentableId" value="Default" />
       <updated>1697877608250</updated>
       <workItem from="1697877609288" duration="106000" />
-      <workItem from="1697877730170" duration="4539000" />
+      <workItem from="1697877730170" duration="7792000" />
     </task>
     <task id="LOCAL-00001" summary="Init the project">
       <option name="closed" value="true" />
@@ -106,7 +127,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697880199623</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add GameController and FXML file for basic drawing">
+      <option name="closed" value="true" />
+      <created>1697882361234</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1697882361234</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,6 +144,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init the project" />
     <MESSAGE value="Improve structure for the DonkeyKongApplication.java class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improve structure for the DonkeyKongApplication.java class" />
+    <MESSAGE value="Add GameController and FXML file for basic drawing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add GameController and FXML file for basic drawing" />
   </component>
 </project>

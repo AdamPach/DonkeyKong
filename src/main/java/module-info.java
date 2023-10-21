@@ -3,6 +3,6 @@ module com.example.donkeykong {
     requires javafx.fxml;
 
 
-    opens com.example.donkeykong to javafx.fxml;
-    exports com.example.donkeykong;
+    opens com.adampach.donkeykong to javafx.fxml;
+    exports com.adampach.donkeykong;
 }

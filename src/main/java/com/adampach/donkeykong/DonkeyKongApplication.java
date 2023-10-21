@@ -1,4 +1,4 @@
-package com.example.donkeykong;
+package com.adampach.donkeykong;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +24,7 @@ public class DonkeyKongApplication extends Application {
             stage.show();
             stage.setOnCloseRequest(this::OnCloseRequest);
 
-            //Starting a game with controller
+            //Setting up the controller
             controller = loader.getController();
             controller.startGame();
         }

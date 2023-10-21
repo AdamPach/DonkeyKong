@@ -1,11 +1,14 @@
-package com.example.donkeykong;
+package com.adampach.donkeykong;
 
+import com.adampach.donkeykong.world.Level;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 
 public class GameController
 {
+    private Level level;
+
     @FXML
     private Canvas canvas;
 
@@ -15,7 +18,8 @@ public class GameController
 
     public void startGame()
     {
-        animationTimer = new DrawingThread(canvas);
+        level = new Level();
+        animationTimer = new DrawingThread(canvas, level);
         animationTimer.start();
     }
 }
