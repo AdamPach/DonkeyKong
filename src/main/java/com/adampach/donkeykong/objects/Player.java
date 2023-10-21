@@ -1,21 +1,26 @@
 package com.adampach.donkeykong.objects;
 
+import com.adampach.donkeykong.abstraction.Collisionable;
 import com.adampach.donkeykong.abstraction.GameObject;
 import com.adampach.donkeykong.abstraction.KeyboardObserver;
-import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
-public class Player extends GameObject implements KeyboardObserver  {
+public class Player extends GameObject implements KeyboardObserver {
     private Direction direction;
+    private int gravityIndex;
 
-    public Player(Point2D position, int width, int height)
-    {
-        super((int)position.getX(), (int)position.getY(), width, height);
+    private final int maxGravityIndex;
+
+    public Player(int positionX, int positionY, int width, int height) {
+        super(positionX, positionY, width, height);
         direction = Direction.None;
+        gravityIndex = 0;
+        maxGravityIndex = 5;
     }
+
     @Override
     public void draw(GraphicsContext gc)
     {
@@ -28,7 +33,8 @@ public class Player extends GameObject implements KeyboardObserver  {
     @Override
     public void simulate()
     {
-        HandleMovement();
+        handleMovement();
+        simulateGravity();
     }
 
     @Override
@@ -56,10 +62,23 @@ public class Player extends GameObject implements KeyboardObserver  {
                 this.direction = Direction.Down;
                 break;
             }
+            case SPACE ->
+            {
+                this.gravityIndex = -10;
+            }
         }
     }
 
-    private void HandleMovement()
+    @Override
+    public void handleCollision(Collisionable collisionable)
+    {
+        if(!this.intersect(collisionable.getRectangle()))
+            return;
+        if(collisionable instanceof Construction)
+            handleConstructionCollision((Construction) collisionable);
+    }
+
+    private void handleMovement()
     {
         if(direction != Direction.None)
         {
@@ -73,6 +92,19 @@ public class Player extends GameObject implements KeyboardObserver  {
                 this.setPositionY( this.getPositionY() + 5 );
             direction = Direction.None;
         }
+    }
+
+    private void simulateGravity()
+    {
+        this.setPositionY(this.getPositionY() + gravityIndex);
+        if(gravityIndex < maxGravityIndex)
+            gravityIndex++;
+    }
+
+    private void handleConstructionCollision(Construction construction)
+    {
+        if(construction.getPositionY() >= this.getPositionY() + this.getWidth())
+            gravityIndex = 0;
     }
 
     private enum Direction { Left, Right, Up, Down, None };

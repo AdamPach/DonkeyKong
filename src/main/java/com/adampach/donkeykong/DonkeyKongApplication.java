@@ -1,6 +1,5 @@
 package com.adampach.donkeykong;
 
-import com.adampach.donkeykong.handlers.KeyboardHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

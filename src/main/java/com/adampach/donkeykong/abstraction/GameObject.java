@@ -1,8 +1,8 @@
 package com.adampach.donkeykong.abstraction;
 
-import javafx.scene.canvas.GraphicsContext;
+import javafx.geometry.Rectangle2D;
 
-public abstract class GameObject implements DrawableSimulable {
+public abstract class GameObject implements Collisionable, Drawable, Simulable {
 
     protected int positionX;
     protected int positionY;
@@ -49,8 +49,13 @@ public abstract class GameObject implements DrawableSimulable {
     }
 
     @Override
-    public abstract void draw(GraphicsContext gc);
+    public Rectangle2D getRectangle() {
+        return new Rectangle2D(positionX, positionY, width, height);
+    }
 
     @Override
-    public abstract void simulate();
+    public boolean intersect(Rectangle2D rectangle) {
+        return getRectangle().intersects(rectangle);
+    }
+
 }
