@@ -23,5 +23,6 @@ public class DrawingThread extends AnimationTimer {
         graphicsContext.setFill(Color.BLACK);
         graphicsContext.fillRect(0,0, canvas.getWidth(), canvas.getHeight());
         level.draw(graphicsContext);
+        level.simulate();
     }
 }

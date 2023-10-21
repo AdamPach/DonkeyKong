@@ -1,6 +1,6 @@
 package com.adampach.donkeykong.objects;
 
-import com.adampach.donkeykong.abstraction.DrawableSimulable;
+import com.adampach.donkeykong.abstraction.GameObject;
 import com.adampach.donkeykong.abstraction.KeyboardObserver;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
@@ -8,19 +8,13 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
-public class Player implements DrawableSimulable, KeyboardObserver {
-    //Position
-    private int positionX;
-    private int positionY;
-    private int width;
-    private int height;
+public class Player extends GameObject implements KeyboardObserver  {
+    private Direction direction;
 
     public Player(Point2D position, int width, int height)
     {
-        this.positionX = (int)position.getX();
-        this.positionY = (int)position.getY();
-        this.width = width;
-        this.height = height;
+        super((int)position.getX(), (int)position.getY(), width, height);
+        direction = Direction.None;
     }
     @Override
     public void draw(GraphicsContext gc)
@@ -34,7 +28,7 @@ public class Player implements DrawableSimulable, KeyboardObserver {
     @Override
     public void simulate()
     {
-
+        HandleMovement();
     }
 
     @Override
@@ -42,10 +36,44 @@ public class Player implements DrawableSimulable, KeyboardObserver {
     {
         switch (keyCode)
         {
-            case W -> {
-                positionY--;
+            case A ->
+            {
+                this.direction = Direction.Left;
+                break;
+            }
+            case D ->
+            {
+                this.direction = Direction.Right;
+                break;
+            }
+            case W ->
+            {
+                this.direction = Direction.Up;
+                break;
+            }
+            case S ->
+            {
+                this.direction = Direction.Down;
                 break;
             }
         }
     }
+
+    private void HandleMovement()
+    {
+        if(direction != Direction.None)
+        {
+            if(direction == Direction.Left)
+                this.setPositionX( this.getPositionX() - 5 );
+            else if(direction == Direction.Right)
+                this.setPositionX( this.getPositionX() + 5 );
+            else if(direction == Direction.Up)
+                this.setPositionY( this.getPositionY() - 5 );
+            else if(direction == Direction.Down)
+                this.setPositionY( this.getPositionY() + 5 );
+            direction = Direction.None;
+        }
+    }
+
+    private enum Direction { Left, Right, Up, Down, None };
 }

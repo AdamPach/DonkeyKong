@@ -11,7 +11,7 @@ public class Level implements DrawableSimulable {
 
     public Level()
     {
-        player = new Player(new Point2D(300, 500), 50, 100);
+        player = new Player(new Point2D(300, 550), 25, 50);
     }
 
     public void registerPlayerToHandler(KeyboardHandler keyboardHandler)
@@ -27,6 +27,6 @@ public class Level implements DrawableSimulable {
     @Override
     public void simulate()
     {
-
+        player.simulate();
     }
 }
