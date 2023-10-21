@@ -1,5 +1,6 @@
 package com.adampach.donkeykong;
 
+import com.adampach.donkeykong.handlers.KeyboardHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -24,8 +25,9 @@ public class DonkeyKongApplication extends Application {
             stage.show();
             stage.setOnCloseRequest(this::OnCloseRequest);
 
-            //Setting up the controller
+            //Setting up the controller and start the game
             controller = loader.getController();
+            controller.setScene(scene);
             controller.startGame();
         }
         catch (Exception e)
