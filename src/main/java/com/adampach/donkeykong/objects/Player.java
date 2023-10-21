@@ -10,6 +10,8 @@ import javafx.scene.paint.Paint;
 
 public class Player extends GameObject implements KeyboardObserver {
     private Direction direction;
+    private boolean jumpRequested;
+    private boolean isOnConstruction;
     private int gravityIndex;
 
     private final int maxGravityIndex;
@@ -19,6 +21,8 @@ public class Player extends GameObject implements KeyboardObserver {
         direction = Direction.None;
         gravityIndex = 0;
         maxGravityIndex = 5;
+        jumpRequested = false;
+        isOnConstruction = false;
     }
 
     @Override
@@ -34,7 +38,9 @@ public class Player extends GameObject implements KeyboardObserver {
     public void simulate()
     {
         handleMovement();
+        handleJump();
         simulateGravity();
+        clearSimulation();
     }
 
     @Override
@@ -64,7 +70,8 @@ public class Player extends GameObject implements KeyboardObserver {
             }
             case SPACE ->
             {
-                this.gravityIndex = -10;
+                jumpRequested = true;
+                break;
             }
         }
     }
@@ -94,6 +101,12 @@ public class Player extends GameObject implements KeyboardObserver {
         }
     }
 
+    private void handleJump()
+    {
+        if(jumpRequested && isOnConstruction)
+            gravityIndex = -10;
+    }
+
     private void simulateGravity()
     {
         this.setPositionY(this.getPositionY() + gravityIndex);
@@ -101,10 +114,20 @@ public class Player extends GameObject implements KeyboardObserver {
             gravityIndex++;
     }
 
+    private void clearSimulation()
+    {
+        isOnConstruction = false;
+        jumpRequested = false;
+    }
+
     private void handleConstructionCollision(Construction construction)
     {
-        if(construction.getPositionY() >= this.getPositionY() + this.getWidth())
+        if(construction.getPositionY() <= this.getPositionY() + this.getHeight())
+        {
+            this.setPositionY(construction.getPositionY() - this.getHeight() + 1);
+            isOnConstruction = true;
             gravityIndex = 0;
+        }
     }
 
     private enum Direction { Left, Right, Up, Down, None };
