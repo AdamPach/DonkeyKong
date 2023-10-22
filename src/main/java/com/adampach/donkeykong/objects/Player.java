@@ -1,14 +1,14 @@
 package com.adampach.donkeykong.objects;
 
 import com.adampach.donkeykong.abstraction.Collisionable;
-import com.adampach.donkeykong.abstraction.GameObject;
 import com.adampach.donkeykong.abstraction.KeyboardObserver;
+import com.adampach.donkeykong.abstraction.MovingObject;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
-public class Player extends GameObject implements KeyboardObserver {
+public class Player extends MovingObject implements KeyboardObserver {
     private Direction direction;
     private boolean jumpRequested;
     private boolean isOnConstruction;
@@ -79,7 +79,7 @@ public class Player extends GameObject implements KeyboardObserver {
     @Override
     public void handleCollision(Collisionable collisionable)
     {
-        if(!this.intersect(collisionable.getRectangle()))
+        if(!collisionable.intersect(this.getRectangle()))
             return;
         if(collisionable instanceof Construction)
             handleConstructionCollision((Construction) collisionable);
@@ -124,7 +124,7 @@ public class Player extends GameObject implements KeyboardObserver {
     {
         if(construction.getPositionY() <= this.getPositionY() + this.getHeight())
         {
-            this.setPositionY(construction.getPositionY() - this.getHeight() + 1);
+            this.setPositionY(construction.getPositionY() - this.getHeight());
             isOnConstruction = true;
             gravityIndex = 0;
         }

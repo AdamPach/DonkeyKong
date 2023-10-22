@@ -1,12 +1,12 @@
 package com.adampach.donkeykong.objects;
 
-import com.adampach.donkeykong.abstraction.Collisionable;
-import com.adampach.donkeykong.abstraction.GameObject;
+import com.adampach.donkeykong.abstraction.TextureObject;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
-public class Construction extends GameObject {
+public class Construction extends TextureObject {
     public Construction(int positionX, int positionY, int width, int height) {
         super(positionX, positionY, width, height);
     }
@@ -21,13 +21,12 @@ public class Construction extends GameObject {
     }
 
     @Override
-    public void simulate()
-    {
-
+    public boolean intersect(Rectangle2D rectangle) {
+        Rectangle2D thisRectangle = this.getRectangle();
+        return rectangle.getMaxX() > thisRectangle.getMinX()
+                && rectangle.getMinX() < thisRectangle.getMaxX()
+                && rectangle.getMaxY() >= thisRectangle.getMinY()
+                && rectangle.getMinY() < thisRectangle.getMaxY();
     }
 
-    @Override
-    public void handleCollision(Collisionable collisionable) {
-
-    }
 }

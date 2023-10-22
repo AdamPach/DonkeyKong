@@ -1,9 +1,6 @@
 package com.adampach.donkeykong.world;
 
-import com.adampach.donkeykong.abstraction.Collisionable;
-import com.adampach.donkeykong.abstraction.Drawable;
-import com.adampach.donkeykong.abstraction.GameObject;
-import com.adampach.donkeykong.abstraction.Simulable;
+import com.adampach.donkeykong.abstraction.*;
 import com.adampach.donkeykong.handlers.KeyboardHandler;
 import com.adampach.donkeykong.objects.Construction;
 import com.adampach.donkeykong.objects.Player;
@@ -14,7 +11,7 @@ import java.util.ArrayList;
 
 public class Level implements Drawable, Simulable {
     private final Player player;
-    private final ArrayList<GameObject> constructions;
+    private final ArrayList<TextureObject> constructions;
 
     public Level()
     {

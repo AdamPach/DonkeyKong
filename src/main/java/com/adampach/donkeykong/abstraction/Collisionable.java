@@ -6,5 +6,4 @@ public interface Collisionable
 {
     Rectangle2D getRectangle();
     boolean intersect(Rectangle2D rectangle);
-    void handleCollision(Collisionable collisionable);
 }

@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Add Construction and collision handling with player">
+    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Add jump handling and improve the simulation flow">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/MovingObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/TextureObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/Collisionable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/Collisionable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/GameObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/Construction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/Construction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" afterDir="false" />
@@ -20,8 +24,8 @@
       <list>
         <option value="FxmlFile" />
         <option value="package-info" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -33,12 +37,12 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "AdamPach"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AdamPach&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -116,6 +120,7 @@
       <updated>1697877608250</updated>
       <workItem from="1697877609288" duration="106000" />
       <workItem from="1697877730170" duration="13120000" />
+      <workItem from="1697958542083" duration="3161000" />
     </task>
     <task id="LOCAL-00001" summary="Init the project">
       <option name="closed" value="true" />
@@ -173,7 +178,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697903890281</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add jump handling and improve the simulation flow">
+      <option name="closed" value="true" />
+      <created>1697910402840</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1697910402840</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,6 +210,7 @@
     <MESSAGE value="Change package naming, add some interfaces and add new classes" />
     <MESSAGE value="Add keyboard handling for moving with player" />
     <MESSAGE value="Add Construction and collision handling with player" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Construction and collision handling with player" />
+    <MESSAGE value="Add jump handling and improve the simulation flow" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add jump handling and improve the simulation flow" />
   </component>
 </project>
