@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Add Ladder class">
+    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Add basic logic for climbing on ladder">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/LevelSettings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/Ladder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/Ladder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/GameObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" afterDir="false" />
     </list>
@@ -119,7 +121,8 @@
       <workItem from="1697958542083" duration="3617000" />
       <workItem from="1697987959846" duration="158000" />
       <workItem from="1698047691548" duration="1175000" />
-      <workItem from="1698050886699" duration="2928000" />
+      <workItem from="1698050886699" duration="5044000" />
+      <workItem from="1698057864302" duration="9217000" />
     </task>
     <task id="LOCAL-00001" summary="Init the project">
       <option name="closed" value="true" />
@@ -201,7 +204,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698051970741</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add basic logic for climbing on ladder">
+      <option name="closed" value="true" />
+      <created>1698054069489</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1698054069489</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,6 +239,7 @@
     <MESSAGE value="Add jump handling and improve the simulation flow" />
     <MESSAGE value="Improve abstraction and remove useless overrides. Add improved intersect to Construction" />
     <MESSAGE value="Add Ladder class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Ladder class" />
+    <MESSAGE value="Add basic logic for climbing on ladder" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add basic logic for climbing on ladder" />
   </component>
 </project>

@@ -47,4 +47,8 @@ public abstract class GameObject {
         this.height = height;
     }
 
+    public int getMaxPositionY() { return getPositionY() + getHeight();}
+
+    public int getMaxPositionX() { return getPositionX() + getWidth();}
+
 }

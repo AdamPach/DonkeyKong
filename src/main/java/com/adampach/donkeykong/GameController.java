@@ -2,6 +2,7 @@ package com.adampach.donkeykong;
 
 import com.adampach.donkeykong.handlers.KeyboardHandler;
 import com.adampach.donkeykong.world.Level;
+import com.adampach.donkeykong.world.LevelSettings;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -25,7 +26,7 @@ public class GameController
     public void startGame()
     {
         scene.setOnKeyPressed(keyboardHandler);
-        level = new Level();
+        level = new Level(new LevelSettings(5, 5));
         level.registerPlayerToHandler(keyboardHandler);
         animationTimer = new DrawingThread(canvas, level);
         animationTimer.start();
