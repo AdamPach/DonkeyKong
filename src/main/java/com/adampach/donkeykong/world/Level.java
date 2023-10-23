@@ -24,9 +24,10 @@ public class Level implements Drawable, Simulable {
         textures.add(new Construction(300, 545, 100, 25));
         textures.add(new Construction(400, 535, 100, 25));
         textures.add(new Construction(500, 525, 100, 25));
+        textures.add(new Ladder(750, 405, 25, 100));
         textures.add(new Construction(600, 515, 100, 25));
         textures.add(new Construction(700, 505, 100, 25));
-        textures.add(new Ladder(750, 405, 25, 100));
+        textures.add(new Construction(700, 405, 100, 25));
     }
 
     public void registerPlayerToHandler(KeyboardHandler keyboardHandler)

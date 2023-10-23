@@ -12,17 +12,16 @@ public class Player extends MovingObject implements KeyboardObserver {
     private Direction direction;
     private boolean jumpRequested;
     private boolean isOnConstruction;
+    private boolean isOnLadder;
     private int gravityIndex;
 
-    private final int maxGravityIndex;
+    private int maxGravityIndex;
 
     public Player(int positionX, int positionY, int width, int height) {
         super(positionX, positionY, width, height);
         direction = Direction.None;
         gravityIndex = 0;
-        maxGravityIndex = 5;
-        jumpRequested = false;
-        isOnConstruction = false;
+        setDefaultSimulationValues();
     }
 
     @Override
@@ -40,7 +39,7 @@ public class Player extends MovingObject implements KeyboardObserver {
         handleMovement();
         handleJump();
         simulateGravity();
-        clearSimulation();
+        setDefaultSimulationValues();
     }
 
     @Override
@@ -83,6 +82,8 @@ public class Player extends MovingObject implements KeyboardObserver {
             return;
         if(collisionable instanceof Construction)
             handleConstructionCollision((Construction) collisionable);
+        else if(collisionable instanceof Ladder)
+            handleLadderCollision((Ladder) collisionable);
     }
 
     private void handleMovement()
@@ -114,20 +115,29 @@ public class Player extends MovingObject implements KeyboardObserver {
             gravityIndex++;
     }
 
-    private void clearSimulation()
+    private void setDefaultSimulationValues()
     {
         isOnConstruction = false;
+        isOnLadder = false;
         jumpRequested = false;
+        maxGravityIndex = 5;
     }
 
     private void handleConstructionCollision(Construction construction)
     {
-        if(construction.getPositionY() <= this.getPositionY() + this.getHeight())
+        if(construction.getPositionY() <= this.getPositionY() + this.getHeight() && !isOnLadder)
         {
             this.setPositionY(construction.getPositionY() - this.getHeight());
             isOnConstruction = true;
             gravityIndex = 0;
         }
+    }
+
+    private void handleLadderCollision(Ladder ladder)
+    {
+        isOnLadder = true;
+        maxGravityIndex = 0;
+        gravityIndex = 0;
     }
 
     private enum Direction { Left, Right, Up, Down, None };

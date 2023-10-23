@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Improve abstraction and remove useless overrides. Add improved intersect to Construction">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/Ladder.java" afterDir="false" />
+    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Add Ladder class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/Ladder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/Ladder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +119,7 @@
       <workItem from="1697958542083" duration="3617000" />
       <workItem from="1697987959846" duration="158000" />
       <workItem from="1698047691548" duration="1175000" />
-      <workItem from="1698050886699" duration="984000" />
+      <workItem from="1698050886699" duration="2928000" />
     </task>
     <task id="LOCAL-00001" summary="Init the project">
       <option name="closed" value="true" />
@@ -192,7 +193,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697961867244</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Add Ladder class">
+      <option name="closed" value="true" />
+      <created>1698051970741</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1698051970741</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,6 +227,7 @@
     <MESSAGE value="Add Construction and collision handling with player" />
     <MESSAGE value="Add jump handling and improve the simulation flow" />
     <MESSAGE value="Improve abstraction and remove useless overrides. Add improved intersect to Construction" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improve abstraction and remove useless overrides. Add improved intersect to Construction" />
+    <MESSAGE value="Add Ladder class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Ladder class" />
   </component>
 </project>
