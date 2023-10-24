@@ -32,10 +32,6 @@ public class Level implements Drawable, Simulable {
         textures.add(new Construction(700, 405, 100, 25));
     }
 
-    public void registerPlayerToHandler(KeyboardHandler keyboardHandler)
-    {
-        keyboardHandler.registerObserver(player);
-    }
 
     @Override
     public void draw(GraphicsContext gc) {

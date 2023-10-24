@@ -4,5 +4,4 @@ public interface KeyBoardSubject
 {
     void registerObserver(KeyboardObserver o);
     void unregisterObserver(KeyboardObserver o);
-    void notifyObservers();
 }

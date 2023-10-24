@@ -11,7 +11,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import java.util.ArrayList;
 
-public class Player extends MovingObject implements KeyboardObserver {
+public class Player extends MovingObject {
     private final LevelSettings levelSettings;
     private Direction direction;
     private boolean jumpRequested;
@@ -24,7 +24,6 @@ public class Player extends MovingObject implements KeyboardObserver {
     public Player(int positionX, int positionY, int width, int height, LevelSettings levelSettings) {
         super(positionX, positionY, width, height);
         this.levelSettings = levelSettings;
-        direction = Direction.None;
         gravityIndex = 0;
         CollidedObjects = new ArrayList<>();
         resetSimulationCycle();
@@ -46,39 +45,6 @@ public class Player extends MovingObject implements KeyboardObserver {
         handleJump();
         simulateGravity();
         resetSimulationCycle();
-    }
-
-    @Override
-    public void notified(KeyCode keyCode)
-    {
-        switch (keyCode)
-        {
-            case A ->
-            {
-                this.direction = Direction.Left;
-                break;
-            }
-            case D ->
-            {
-                this.direction = Direction.Right;
-                break;
-            }
-            case W ->
-            {
-                this.direction = Direction.Up;
-                break;
-            }
-            case S ->
-            {
-                this.direction = Direction.Down;
-                break;
-            }
-            case SPACE ->
-            {
-                jumpRequested = true;
-                break;
-            }
-        }
     }
 
     @Override
