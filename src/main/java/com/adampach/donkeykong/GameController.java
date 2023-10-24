@@ -1,7 +1,7 @@
 package com.adampach.donkeykong;
 
+import com.adampach.donkeykong.abstraction.KeyboardObserver;
 import com.adampach.donkeykong.handlers.KeyboardHandler;
-import com.adampach.donkeykong.providers.KeyboardDirectionProvider;
 import com.adampach.donkeykong.world.Level;
 import com.adampach.donkeykong.world.LevelSettings;
 import javafx.animation.AnimationTimer;
@@ -17,21 +17,18 @@ public class GameController
     private Canvas canvas;
     private Scene scene;
     private final KeyboardHandler keyboardHandler;
-    private final KeyboardDirectionProvider keyboardDirectionProvider;
     private AnimationTimer animationTimer;
 
     public GameController()
     {
         keyboardHandler = new KeyboardHandler();
-        keyboardDirectionProvider = new KeyboardDirectionProvider();
-        keyboardHandler.registerObserver(keyboardDirectionProvider);
     }
 
     public void startGame()
     {
         scene.setOnKeyPressed(keyboardHandler);
         scene.setOnKeyReleased(keyboardHandler);
-        level = new Level(new LevelSettings(5, 3), keyboardDirectionProvider);
+        level = new Level(new LevelSettings(5, 3), this::registerObserver);
         animationTimer = new DrawingThread(canvas, level);
         animationTimer.start();
     }
@@ -39,5 +36,10 @@ public class GameController
     public void setScene(Scene scene)
     {
         this.scene = scene;
+    }
+
+    private void registerObserver(KeyboardObserver observer)
+    {
+        keyboardHandler.registerObserver(observer);
     }
 }

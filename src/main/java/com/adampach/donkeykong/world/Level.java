@@ -1,6 +1,7 @@
 package com.adampach.donkeykong.world;
 
 import com.adampach.donkeykong.abstraction.*;
+import com.adampach.donkeykong.enums.DirectionEnums;
 import com.adampach.donkeykong.objects.Construction;
 import com.adampach.donkeykong.objects.Ladder;
 import com.adampach.donkeykong.objects.Player;
@@ -8,16 +9,17 @@ import com.adampach.donkeykong.objects.Player;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public class Level implements Drawable, Simulable {
     private final Player player;
     private final ArrayList<TextureObject> textures;
     private final LevelSettings levelSettings;
 
-    public Level(LevelSettings levelSettings,DirectionProvider provider)
+    public Level(LevelSettings levelSettings, Consumer<KeyboardObserver> registerObserver)
     {
         this.levelSettings = levelSettings;
-        player = new Player(25, 400, 25, 50, levelSettings, provider);
+        player = new Player(25, 400, 25, 50, levelSettings, registerObserver);
         textures = new ArrayList<>();
         textures.add(new Ladder(750, 405, 25, 100));
         textures.add(new Construction(0, 575, 100, 25));

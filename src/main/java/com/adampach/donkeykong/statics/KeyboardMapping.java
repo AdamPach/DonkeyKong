@@ -7,23 +7,23 @@ import java.util.HashMap;
 
 public class KeyboardMapping
 {
-    public static final HashMap<String, DirectionEnums.Direction> directionMapping = new HashMap<>();
-    public static final HashMap<String, DirectionEnums.HorizontalDirection> horizontalMapping = new HashMap<>();
-    public static final HashMap<String, DirectionEnums.VerticalPosition> verticalMapping = new HashMap<>();
+    public static final HashMap<String, DirectionEnums.KeyEventType> movementTypeMapping = new HashMap<>();
+    public static final HashMap<KeyCode, DirectionEnums.HorizontalDirection> horizontalMapping = new HashMap<>();
+    public static final HashMap<KeyCode, DirectionEnums.VerticalPosition> verticalMapping = new HashMap<>();
 
     static
     {
-        directionMapping.put(KeyCode.A.getChar(), DirectionEnums.Direction.Horizontal);
-        directionMapping.put(KeyCode.D.getChar(), DirectionEnums.Direction.Horizontal);
-        directionMapping.put(KeyCode.S.getChar(), DirectionEnums.Direction.Vertical);
-        directionMapping.put(KeyCode.W.getChar(), DirectionEnums.Direction.Vertical);
-        directionMapping.put(KeyCode.SPACE.getChar(), DirectionEnums.Direction.Vertical);
+        movementTypeMapping.put(KeyCode.A.getChar(), DirectionEnums.KeyEventType.HorizontalMovement);
+        movementTypeMapping.put(KeyCode.D.getChar(), DirectionEnums.KeyEventType.HorizontalMovement);
+        movementTypeMapping.put(KeyCode.S.getChar(), DirectionEnums.KeyEventType.VerticalMovement);
+        movementTypeMapping.put(KeyCode.W.getChar(), DirectionEnums.KeyEventType.VerticalMovement);
+        movementTypeMapping.put(KeyCode.SPACE.getChar(), DirectionEnums.KeyEventType.Jump);
 
-        horizontalMapping.put(KeyCode.A.getChar(), DirectionEnums.HorizontalDirection.Left);
-        horizontalMapping.put(KeyCode.D.getChar(), DirectionEnums.HorizontalDirection.Right);
+        horizontalMapping.put(KeyCode.A, DirectionEnums.HorizontalDirection.Left);
+        horizontalMapping.put(KeyCode.D, DirectionEnums.HorizontalDirection.Right);
 
-        verticalMapping.put(KeyCode.S.getChar(), DirectionEnums.VerticalPosition.Down);
-        verticalMapping.put(KeyCode.W.getChar(), DirectionEnums.VerticalPosition.Up);
-        verticalMapping.put(KeyCode.SPACE.getChar(), DirectionEnums.VerticalPosition.Jump);
+        verticalMapping.put(KeyCode.S, DirectionEnums.VerticalPosition.Down);
+        verticalMapping.put(KeyCode.W, DirectionEnums.VerticalPosition.Up);
+
     }
 }

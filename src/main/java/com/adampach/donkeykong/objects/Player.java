@@ -1,32 +1,44 @@
 package com.adampach.donkeykong.objects;
 
-import com.adampach.donkeykong.abstraction.Collisionable;
-import com.adampach.donkeykong.abstraction.DirectionProvider;
-import com.adampach.donkeykong.abstraction.GameObject;
-import com.adampach.donkeykong.abstraction.MovingObject;
+import com.adampach.donkeykong.abstraction.*;
+import com.adampach.donkeykong.enums.DirectionEnums;
+import com.adampach.donkeykong.providers.HorizontalDirectionProvider;
+import com.adampach.donkeykong.providers.JumpProvider;
+import com.adampach.donkeykong.providers.VerticalDirectionProvider;
 import com.adampach.donkeykong.world.LevelSettings;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public class Player extends MovingObject {
     private final LevelSettings levelSettings;
-    private final DirectionProvider directionProvider;
-    private boolean jumpRequested;
+    private final Provider<DirectionEnums.HorizontalDirection> horizontalProvider;
+    private final Provider<DirectionEnums.VerticalPosition> verticalPositionProvider;
+    private final Provider<Boolean> jumpProvider;
     private ConstructionStatus constructionStatus;
     private LadderStatus ladderStatus;
     private int gravityIndex;
     private int maxGravityIndex;
     private ArrayList<GameObject> CollidedObjects;
 
-    public Player(int positionX, int positionY, int width, int height, LevelSettings levelSettings, DirectionProvider directionProvider) {
+    public Player(int positionX, int positionY, int width, int height, LevelSettings levelSettings,
+                  Consumer<KeyboardObserver> registerObserver) {
         super(positionX, positionY, width, height);
         this.levelSettings = levelSettings;
-        this.directionProvider = directionProvider;
         gravityIndex = 0;
         CollidedObjects = new ArrayList<>();
         resetSimulationCycle();
+
+        this.horizontalProvider = new HorizontalDirectionProvider();
+        registerObserver.accept((KeyboardObserver) horizontalProvider);
+
+        this.verticalPositionProvider = new VerticalDirectionProvider();
+        registerObserver.accept((KeyboardObserver) verticalPositionProvider);
+
+        this.jumpProvider = new JumpProvider();
+        registerObserver.accept((KeyboardObserver) jumpProvider);
     }
 
     @Override
@@ -60,16 +72,29 @@ public class Player extends MovingObject {
 
     private void handleMovement()
     {
-        switch (directionProvider.provideHorizontalPosition())
+
+        switch (horizontalProvider.provide())
         {
             case Left -> this.setPositionX( this.getPositionX() - levelSettings.getDefaultSpeed());
             case Right -> this.setPositionX( this.getPositionX() + levelSettings.getDefaultSpeed());
+        }
+
+        switch (verticalPositionProvider.provide())
+        {
+            case Up -> {
+                if((ladderStatus == LadderStatus.In || ladderStatus == LadderStatus.Bottom))
+                    this.setPositionY( this.getPositionY() - levelSettings.getDefaultSpeed());
+            }
+            case Down -> {
+                if(ladderStatus == LadderStatus.On || ladderStatus == LadderStatus.In)
+                    this.setPositionY( this.getPositionY() + levelSettings.getDefaultSpeed());
+            }
         }
     }
 
     private void handleJump()
     {
-        if(jumpRequested && constructionStatus == ConstructionStatus.On)
+        if(jumpProvider.provide() && constructionStatus == ConstructionStatus.On)
             gravityIndex = -11;
     }
 
@@ -88,7 +113,7 @@ public class Player extends MovingObject {
         }
 
         //When player in on construction and isn't jumping, set turn of gravity for this cycle
-        if(constructionStatus == ConstructionStatus.On && !jumpRequested)
+        if(constructionStatus == ConstructionStatus.On && gravityIndex >= 0)
             gravityIndex = 0;
 
         // When user is using ladder turn of gravity
@@ -108,7 +133,6 @@ public class Player extends MovingObject {
     {
         constructionStatus = ConstructionStatus.None;
         ladderStatus = LadderStatus.None;
-        jumpRequested = false;
         maxGravityIndex = levelSettings.getDefaultMaxGravityIndex();
         CollidedObjects.clear();
     }
