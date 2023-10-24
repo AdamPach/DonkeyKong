@@ -17,19 +17,21 @@ public class GameController
     private Canvas canvas;
     private Scene scene;
     private final KeyboardHandler keyboardHandler;
+    private final KeyboardDirectionProvider keyboardDirectionProvider;
     private AnimationTimer animationTimer;
 
     public GameController()
     {
         keyboardHandler = new KeyboardHandler();
+        keyboardDirectionProvider = new KeyboardDirectionProvider();
+        keyboardHandler.registerObserver(keyboardDirectionProvider);
     }
 
     public void startGame()
     {
         scene.setOnKeyPressed(keyboardHandler);
         scene.setOnKeyReleased(keyboardHandler);
-        keyboardHandler.registerObserver(new KeyboardDirectionProvider());
-        level = new Level(new LevelSettings(5, 5));
+        level = new Level(new LevelSettings(5, 3), keyboardDirectionProvider);
         animationTimer = new DrawingThread(canvas, level);
         animationTimer.start();
     }

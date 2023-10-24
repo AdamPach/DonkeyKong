@@ -8,6 +8,7 @@ import javafx.scene.input.KeyCode;
 import java.util.ArrayList;
 
 import static com.adampach.donkeykong.statics.KeyboardMapping.directionMapping;
+import static com.adampach.donkeykong.statics.KeyboardMapping.horizontalMapping;
 
 
 public class KeyboardDirectionProvider
@@ -31,8 +32,11 @@ public class KeyboardDirectionProvider
     }
 
     @Override
-    public DirectionEnums.HorizontalDirection provideHorizontalPosition() {
-        return DirectionEnums.HorizontalDirection.None;
+    public DirectionEnums.HorizontalDirection provideHorizontalPosition()
+    {
+        if(pressedHorizontalKeys.isEmpty())
+            return DirectionEnums.HorizontalDirection.None;
+        return horizontalMapping.get(pressedHorizontalKeys.get(pressedHorizontalKeys.size() - 1));
     }
 
     @Override
@@ -47,7 +51,6 @@ public class KeyboardDirectionProvider
         {
             if(pressedHorizontalKeys.stream().noneMatch(e -> e.equals(keyCode.getChar())))
             {
-                System.out.println("Key pressed " + keyCode.getChar());
                 pressedHorizontalKeys.add(keyCode.getChar());
             }
         }
@@ -64,7 +67,6 @@ public class KeyboardDirectionProvider
         {
             if(pressedHorizontalKeys.stream().anyMatch(e -> e.equals(keyCode.getChar())))
             {
-                System.out.println("Key released " + keyCode.getChar());
                 pressedHorizontalKeys.remove(keyCode.getChar());
             }
         }

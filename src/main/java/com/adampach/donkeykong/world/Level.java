@@ -14,10 +14,10 @@ public class Level implements Drawable, Simulable {
     private final ArrayList<TextureObject> textures;
     private final LevelSettings levelSettings;
 
-    public Level(LevelSettings levelSettings)
+    public Level(LevelSettings levelSettings,DirectionProvider provider)
     {
         this.levelSettings = levelSettings;
-        player = new Player(25, 400, 25, 50, levelSettings);
+        player = new Player(25, 400, 25, 50, levelSettings, provider);
         textures = new ArrayList<>();
         textures.add(new Ladder(750, 405, 25, 100));
         textures.add(new Construction(0, 575, 100, 25));

@@ -1,6 +1,7 @@
 package com.adampach.donkeykong.objects;
 
 import com.adampach.donkeykong.abstraction.Collisionable;
+import com.adampach.donkeykong.abstraction.DirectionProvider;
 import com.adampach.donkeykong.abstraction.GameObject;
 import com.adampach.donkeykong.abstraction.MovingObject;
 import com.adampach.donkeykong.world.LevelSettings;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 
 public class Player extends MovingObject {
     private final LevelSettings levelSettings;
-    private Direction direction;
+    private final DirectionProvider directionProvider;
     private boolean jumpRequested;
     private ConstructionStatus constructionStatus;
     private LadderStatus ladderStatus;
@@ -19,9 +20,10 @@ public class Player extends MovingObject {
     private int maxGravityIndex;
     private ArrayList<GameObject> CollidedObjects;
 
-    public Player(int positionX, int positionY, int width, int height, LevelSettings levelSettings) {
+    public Player(int positionX, int positionY, int width, int height, LevelSettings levelSettings, DirectionProvider directionProvider) {
         super(positionX, positionY, width, height);
         this.levelSettings = levelSettings;
+        this.directionProvider = directionProvider;
         gravityIndex = 0;
         CollidedObjects = new ArrayList<>();
         resetSimulationCycle();
@@ -58,19 +60,10 @@ public class Player extends MovingObject {
 
     private void handleMovement()
     {
-        if(direction != Direction.None)
+        switch (directionProvider.provideHorizontalPosition())
         {
-            if(direction == Direction.Left)
-                this.setPositionX( this.getPositionX() - levelSettings.getDefaultSpeed());
-            else if(direction == Direction.Right)
-                this.setPositionX( this.getPositionX() + levelSettings.getDefaultSpeed());
-            else if(direction == Direction.Up &&
-                    (ladderStatus == LadderStatus.In || ladderStatus == LadderStatus.Bottom))
-                this.setPositionY( this.getPositionY() - levelSettings.getDefaultSpeed());
-            else if(direction == Direction.Down &&
-                    (constructionStatus != ConstructionStatus.On || ladderStatus == LadderStatus.On))
-                this.setPositionY( this.getPositionY() + levelSettings.getDefaultSpeed());
-            direction = Direction.None;
+            case Left -> this.setPositionX( this.getPositionX() - levelSettings.getDefaultSpeed());
+            case Right -> this.setPositionX( this.getPositionX() + levelSettings.getDefaultSpeed());
         }
     }
 
@@ -156,7 +149,6 @@ public class Player extends MovingObject {
             };
     }
 
-    private enum Direction { Left, Right, Up, Down, None };
     private enum LadderStatus { On, In, Bottom, None };
     private enum ConstructionStatus { On, In, Step, None };
 }
