@@ -113,45 +113,38 @@ public class Player extends MovingObject implements KeyboardObserver {
     private void handleJump()
     {
         if(jumpRequested && constructionStatus == ConstructionStatus.On)
-            gravityIndex = -10;
+            gravityIndex = -11;
     }
 
     private void simulateGravity()
     {
-        if(constructionStatus == ConstructionStatus.Step && ladderStatus != LadderStatus.In)
+        // Increase the gravity index for this cycle
+        if(gravityIndex < maxGravityIndex)
+            gravityIndex++;
+
+        //When player in Step status calculate new position and use it
+        if(constructionStatus == ConstructionStatus.Step
+                && ladderStatus != LadderStatus.In)
         {
-            switch (CollidedObjects.size())
-            {
-                case 1 -> {
-                    this.setPositionY(CollidedObjects.get(0).getPositionY() - getHeight());
-                }
-                case 2 -> {
-                    int difference = Math.min(CollidedObjects.get(0).getPositionY(),
-                            CollidedObjects.get(1).getPositionY());
-                    this.setPositionY(difference - getHeight());
-                    break;
-                }
-            }
+            setPositionY(countStepPosition());
             constructionStatus = ConstructionStatus.On;
         }
-        if(constructionStatus == ConstructionStatus.On && gravityIndex >= 0)
-        {
-            if(CollidedObjects.size() > 1)
-            {
-                int difference = Math.min(CollidedObjects.get(0).getPositionY(),
-                        CollidedObjects.get(1).getPositionY());
-                this.setPositionY(difference - getHeight());
-            }
+
+        //When player in on construction and isn't jumping, set turn of gravity for this cycle
+        if(constructionStatus == ConstructionStatus.On && !jumpRequested)
             gravityIndex = 0;
-        }
-        if(ladderStatus == LadderStatus.In || ladderStatus == LadderStatus.Bottom)
+
+        // When user is using ladder turn of gravity
+        if(ladderStatus == LadderStatus.In
+                || ladderStatus == LadderStatus.Bottom)
         {
             gravityIndex = 0;
             maxGravityIndex = 0;
         }
-        this.setPositionY(this.getPositionY() + gravityIndex);
-        if(gravityIndex < maxGravityIndex)
-            gravityIndex++;
+
+        // Gravity handling
+        if(gravityIndex != 0)
+            this.setPositionY(this.getPositionY() + gravityIndex);
     }
 
     private void resetSimulationCycle()
@@ -165,16 +158,15 @@ public class Player extends MovingObject implements KeyboardObserver {
 
     private void handleConstructionCollision(Construction construction)
     {
-        if(construction.getPositionY() == this.getMaxPositionY())
-            constructionStatus = ConstructionStatus.On;
-        else if (constructionStatus != ConstructionStatus.On)
+        if(construction.getPositionY() < this.getMaxPositionY()
+            && construction.getPositionY() + construction.getHeight() > getMaxPositionY())
+            constructionStatus = ConstructionStatus.Step;
+        else if(constructionStatus != ConstructionStatus.Step)
         {
-            if(construction.getPositionY() < this.getMaxPositionY()
-                    && construction.getPositionY() + construction.getHeight() / 2 > this.getMaxPositionY())
-                    constructionStatus = ConstructionStatus.Step;
-                else if(constructionStatus != ConstructionStatus.Step)
-                    constructionStatus = ConstructionStatus.In;
-
+            if(construction.getPositionY() == this.getMaxPositionY())
+                constructionStatus = ConstructionStatus.On;
+            else if (constructionStatus != ConstructionStatus.On)
+                constructionStatus = ConstructionStatus.In;
         }
         CollidedObjects.add(construction);
     }
@@ -186,6 +178,18 @@ public class Player extends MovingObject implements KeyboardObserver {
                 this.getMaxPositionY() > ladder.getPositionY())
             ladderStatus = LadderStatus.In;
         else ladderStatus = LadderStatus.On;
+    }
+
+    private int countStepPosition()
+    {
+        return switch (CollidedObjects.size())
+            {
+                case 1 ->
+                    CollidedObjects.get(0).getPositionY() - getHeight();
+                case 2 -> Math.min(CollidedObjects.get(0).getPositionY(),
+                        CollidedObjects.get(1).getPositionY()) - getHeight();
+                default -> getPositionY();
+            };
     }
 
     private enum Direction { Left, Right, Up, Down, None };
