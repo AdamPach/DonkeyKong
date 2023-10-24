@@ -2,11 +2,9 @@ package com.adampach.donkeykong.objects;
 
 import com.adampach.donkeykong.abstraction.Collisionable;
 import com.adampach.donkeykong.abstraction.GameObject;
-import com.adampach.donkeykong.abstraction.KeyboardObserver;
 import com.adampach.donkeykong.abstraction.MovingObject;
 import com.adampach.donkeykong.world.LevelSettings;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import java.util.ArrayList;

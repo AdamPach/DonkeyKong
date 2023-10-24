@@ -1,7 +1,6 @@
 package com.adampach.donkeykong.world;
 
 import com.adampach.donkeykong.abstraction.*;
-import com.adampach.donkeykong.handlers.KeyboardHandler;
 import com.adampach.donkeykong.objects.Construction;
 import com.adampach.donkeykong.objects.Ladder;
 import com.adampach.donkeykong.objects.Player;
