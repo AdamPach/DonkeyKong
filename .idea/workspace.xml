@@ -4,20 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Add reworked vertical movement">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/Provider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/providers/HorizontalDirectionProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/providers/JumpProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/providers/VerticalDirectionProvider.java" afterDir="false" />
+    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Make Provider more abstract and split Key handling to more classes">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/enums/PlayerEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/LevelBorders.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/DrawingThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/DrawingThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/DirectionProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/enums/DirectionEnums.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/enums/DirectionEnums.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/providers/KeyboardDirectionProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/statics/KeyboardMapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/statics/KeyboardMapping.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/LevelSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/LevelSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/adampach/donkeykong/GameView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/adampach/donkeykong/GameView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,22 +61,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="DonkeyKongApplication" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.adampach.donkeykong.DonkeyKongApplication" />
@@ -131,7 +127,8 @@
       <workItem from="1698047691548" duration="1175000" />
       <workItem from="1698050886699" duration="5044000" />
       <workItem from="1698057864302" duration="9217000" />
-      <workItem from="1698172967773" duration="5790000" />
+      <workItem from="1698172967773" duration="6078000" />
+      <workItem from="1698211643596" duration="3401000" />
     </task>
     <task id="LOCAL-00001" summary="Init the project">
       <option name="closed" value="true" />
@@ -237,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698170680847</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Make Provider more abstract and split Key handling to more classes">
+      <option name="closed" value="true" />
+      <created>1698179036499</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1698179036499</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,6 +272,7 @@
     <MESSAGE value="Add basic logic for climbing on ladder" />
     <MESSAGE value="Remove some unused imports" />
     <MESSAGE value="Add reworked vertical movement" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add reworked vertical movement" />
+    <MESSAGE value="Make Provider more abstract and split Key handling to more classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Make Provider more abstract and split Key handling to more classes" />
   </component>
 </project>

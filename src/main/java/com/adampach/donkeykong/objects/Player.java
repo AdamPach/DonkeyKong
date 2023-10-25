@@ -2,6 +2,7 @@ package com.adampach.donkeykong.objects;
 
 import com.adampach.donkeykong.abstraction.*;
 import com.adampach.donkeykong.enums.DirectionEnums;
+import com.adampach.donkeykong.enums.PlayerEnum;
 import com.adampach.donkeykong.providers.HorizontalDirectionProvider;
 import com.adampach.donkeykong.providers.JumpProvider;
 import com.adampach.donkeykong.providers.VerticalDirectionProvider;
@@ -17,8 +18,9 @@ public class Player extends MovingObject {
     private final Provider<DirectionEnums.HorizontalDirection> horizontalProvider;
     private final Provider<DirectionEnums.VerticalPosition> verticalPositionProvider;
     private final Provider<Boolean> jumpProvider;
-    private ConstructionStatus constructionStatus;
-    private LadderStatus ladderStatus;
+    private PlayerEnum.ConstructionStatus constructionStatus;
+    private PlayerEnum.LadderStatus ladderStatus;
+    private ArrayList<PlayerEnum.LevelBorderStatus> levelBorderStatus;
     private int gravityIndex;
     private int maxGravityIndex;
     private ArrayList<GameObject> CollidedObjects;
@@ -29,6 +31,7 @@ public class Player extends MovingObject {
         this.levelSettings = levelSettings;
         gravityIndex = 0;
         CollidedObjects = new ArrayList<>();
+        levelBorderStatus = new ArrayList<>();
         resetSimulationCycle();
 
         this.horizontalProvider = new HorizontalDirectionProvider();
@@ -68,6 +71,8 @@ public class Player extends MovingObject {
             handleConstructionCollision((Construction) collisionable);
         else if(collisionable instanceof Ladder)
             handleLadderCollision((Ladder) collisionable);
+        else if(collisionable instanceof LevelBorders)
+            handleLevelCollision((LevelBorders)collisionable);
     }
 
     private void handleMovement()
@@ -75,18 +80,24 @@ public class Player extends MovingObject {
 
         switch (horizontalProvider.provide())
         {
-            case Left -> this.setPositionX( this.getPositionX() - levelSettings.getDefaultSpeed());
-            case Right -> this.setPositionX( this.getPositionX() + levelSettings.getDefaultSpeed());
+            case Left -> {
+                if(levelBorderStatus.stream().noneMatch( e -> e == PlayerEnum.LevelBorderStatus.Left))
+                    this.setPositionX(this.getPositionX() - levelSettings.getDefaultSpeed());
+            }
+            case Right -> {
+                if(levelBorderStatus.stream().noneMatch( e -> e == PlayerEnum.LevelBorderStatus.Right))
+                    this.setPositionX(this.getPositionX() + levelSettings.getDefaultSpeed());
+            }
         }
 
         switch (verticalPositionProvider.provide())
         {
             case Up -> {
-                if((ladderStatus == LadderStatus.In || ladderStatus == LadderStatus.Bottom))
+                if((ladderStatus == PlayerEnum.LadderStatus.In || ladderStatus == PlayerEnum.LadderStatus.Bottom))
                     this.setPositionY( this.getPositionY() - levelSettings.getDefaultSpeed());
             }
             case Down -> {
-                if(ladderStatus == LadderStatus.On || ladderStatus == LadderStatus.In)
+                if(ladderStatus == PlayerEnum.LadderStatus.On || ladderStatus == PlayerEnum.LadderStatus.In)
                     this.setPositionY( this.getPositionY() + levelSettings.getDefaultSpeed());
             }
         }
@@ -94,7 +105,7 @@ public class Player extends MovingObject {
 
     private void handleJump()
     {
-        if(jumpProvider.provide() && constructionStatus == ConstructionStatus.On)
+        if(jumpProvider.provide() && constructionStatus == PlayerEnum.ConstructionStatus.On)
             gravityIndex = -11;
     }
 
@@ -105,20 +116,20 @@ public class Player extends MovingObject {
             gravityIndex++;
 
         //When player in Step status calculate new position and use it
-        if(constructionStatus == ConstructionStatus.Step
-                && ladderStatus != LadderStatus.In)
+        if(constructionStatus == PlayerEnum.ConstructionStatus.Step
+                && ladderStatus != PlayerEnum.LadderStatus.In)
         {
             setPositionY(countStepPosition());
-            constructionStatus = ConstructionStatus.On;
+            constructionStatus = PlayerEnum.ConstructionStatus.On;
         }
 
         //When player in on construction and isn't jumping, set turn of gravity for this cycle
-        if(constructionStatus == ConstructionStatus.On && gravityIndex >= 0)
+        if(constructionStatus == PlayerEnum.ConstructionStatus.On && gravityIndex >= 0)
             gravityIndex = 0;
 
         // When user is using ladder turn of gravity
-        if(ladderStatus == LadderStatus.In
-                || ladderStatus == LadderStatus.Bottom)
+        if(ladderStatus == PlayerEnum.LadderStatus.In
+                || ladderStatus == PlayerEnum.LadderStatus.Bottom)
         {
             gravityIndex = 0;
             maxGravityIndex = 0;
@@ -131,8 +142,9 @@ public class Player extends MovingObject {
 
     private void resetSimulationCycle()
     {
-        constructionStatus = ConstructionStatus.None;
-        ladderStatus = LadderStatus.None;
+        constructionStatus = PlayerEnum.ConstructionStatus.None;
+        ladderStatus = PlayerEnum.LadderStatus.None;
+        levelBorderStatus.clear();
         maxGravityIndex = levelSettings.getDefaultMaxGravityIndex();
         CollidedObjects.clear();
     }
@@ -141,24 +153,24 @@ public class Player extends MovingObject {
     {
         if(construction.getPositionY() < this.getMaxPositionY()
             && construction.getPositionY() + construction.getHeight() > getMaxPositionY())
-            constructionStatus = ConstructionStatus.Step;
-        else if(constructionStatus != ConstructionStatus.Step)
+            constructionStatus = PlayerEnum.ConstructionStatus.Step;
+        else if(constructionStatus != PlayerEnum.ConstructionStatus.Step)
         {
             if(construction.getPositionY() == this.getMaxPositionY())
-                constructionStatus = ConstructionStatus.On;
-            else if (constructionStatus != ConstructionStatus.On)
-                constructionStatus = ConstructionStatus.In;
+                constructionStatus = PlayerEnum.ConstructionStatus.On;
+            else if (constructionStatus != PlayerEnum.ConstructionStatus.On)
+                constructionStatus = PlayerEnum.ConstructionStatus.In;
         }
         CollidedObjects.add(construction);
     }
     private void handleLadderCollision(Ladder ladder)
     {
         if(ladder.getMaxPositionY() == this.getMaxPositionY())
-            ladderStatus = LadderStatus.Bottom;
+            ladderStatus = PlayerEnum.LadderStatus.Bottom;
         else if(ladder.getMaxPositionY() > this.getMaxPositionY() &&
                 this.getMaxPositionY() > ladder.getPositionY())
-            ladderStatus = LadderStatus.In;
-        else ladderStatus = LadderStatus.On;
+            ladderStatus = PlayerEnum.LadderStatus.In;
+        else ladderStatus = PlayerEnum.LadderStatus.On;
     }
 
     private int countStepPosition()
@@ -173,6 +185,13 @@ public class Player extends MovingObject {
             };
     }
 
-    private enum LadderStatus { On, In, Bottom, None };
-    private enum ConstructionStatus { On, In, Step, None };
+
+    private void handleLevelCollision(LevelBorders levelBorders)
+    {
+        if(getMaxPositionX() >= levelBorders.getWidth())
+            levelBorderStatus.add(PlayerEnum.LevelBorderStatus.Right);
+        else if(getPositionX() <= 0)
+            levelBorderStatus.add(PlayerEnum.LevelBorderStatus.Left);
+    }
+
 }
