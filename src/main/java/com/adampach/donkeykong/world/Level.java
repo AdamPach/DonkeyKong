@@ -11,15 +11,15 @@ import javafx.scene.canvas.GraphicsContext;
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
-public class Level implements Drawable, Simulable {
+public class Level implements Drawable, Simulable{
     private final Player player;
     private final ArrayList<TextureObject> textures;
     private final LevelSettings levelSettings;
 
-    public Level(LevelSettings levelSettings, Consumer<KeyboardObserver> registerObserver)
+    public Level(LevelSettings levelSettings)
     {
         this.levelSettings = levelSettings;
-        player = new Player(25, 400, 25, 50, levelSettings, registerObserver);
+        player = new Player(25, 400, 25, 50, levelSettings);
         textures = new ArrayList<>();
         textures.add(new LevelBorders(levelSettings));
         textures.add(new Ladder(550, 425, 25, 100));
@@ -69,5 +69,14 @@ public class Level implements Drawable, Simulable {
             player.handleCollision(collisionable);
         }
         player.simulate();
+    }
+    public void RegisterPlayer(Consumer<KeyboardObserver> register)
+    {
+        player.Register(register);
+    }
+
+    public void UnregisterPlayer(Consumer<KeyboardObserver> unregister)
+    {
+        player.Unregister(unregister);
     }
 }

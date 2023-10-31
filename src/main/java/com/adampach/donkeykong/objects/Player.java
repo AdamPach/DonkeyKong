@@ -13,7 +13,7 @@ import javafx.scene.paint.Paint;
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
-public class Player extends MovingObject {
+public class Player extends MovingObject implements Registrable<KeyboardObserver> {
     private final LevelSettings levelSettings;
     private final Provider<DirectionEnums.HorizontalDirection> horizontalProvider;
     private final Provider<DirectionEnums.VerticalPosition> verticalPositionProvider;
@@ -25,8 +25,7 @@ public class Player extends MovingObject {
     private int maxGravityIndex;
     private ArrayList<GameObject> CollidedObjects;
 
-    public Player(int positionX, int positionY, int width, int height, LevelSettings levelSettings,
-                  Consumer<KeyboardObserver> registerObserver) {
+    public Player(int positionX, int positionY, int width, int height, LevelSettings levelSettings) {
         super(positionX, positionY, width, height);
         this.levelSettings = levelSettings;
         gravityIndex = 0;
@@ -35,13 +34,8 @@ public class Player extends MovingObject {
         resetSimulationCycle();
 
         this.horizontalProvider = new HorizontalDirectionProvider();
-        registerObserver.accept((KeyboardObserver) horizontalProvider);
-
         this.verticalPositionProvider = new VerticalDirectionProvider();
-        registerObserver.accept((KeyboardObserver) verticalPositionProvider);
-
         this.jumpProvider = new JumpProvider();
-        registerObserver.accept((KeyboardObserver) jumpProvider);
     }
 
     @Override
@@ -74,6 +68,21 @@ public class Player extends MovingObject {
         else if(collisionable instanceof LevelBorders)
             handleLevelCollision((LevelBorders)collisionable);
     }
+    @Override
+    public void Register(Consumer<KeyboardObserver> registerCallback)
+    {
+        registerCallback.accept((KeyboardObserver) horizontalProvider);
+        registerCallback.accept((KeyboardObserver) verticalPositionProvider);
+        registerCallback.accept((KeyboardObserver) jumpProvider);
+    }
+
+    @Override
+    public void Unregister(Consumer<KeyboardObserver> unregisterCallback)
+    {
+        unregisterCallback.accept((KeyboardObserver) horizontalProvider);
+        unregisterCallback.accept((KeyboardObserver) verticalPositionProvider);
+        unregisterCallback.accept((KeyboardObserver) jumpProvider);
+    }
 
     private void handleMovement()
     {
@@ -93,7 +102,7 @@ public class Player extends MovingObject {
         switch (verticalPositionProvider.provide())
         {
             case Up -> {
-                if((ladderStatus == PlayerEnum.LadderStatus.In || ladderStatus == PlayerEnum.LadderStatus.Bottom))
+                if(ladderStatus == PlayerEnum.LadderStatus.In || ladderStatus == PlayerEnum.LadderStatus.Bottom)
                     this.setPositionY( this.getPositionY() - levelSettings.getDefaultSpeed());
             }
             case Down -> {
@@ -193,5 +202,4 @@ public class Player extends MovingObject {
         else if(getPositionX() <= 0)
             levelBorderStatus.add(PlayerEnum.LevelBorderStatus.Left);
     }
-
 }

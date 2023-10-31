@@ -29,7 +29,8 @@ public class GameController
         scene.setOnKeyPressed(keyboardHandler);
         scene.setOnKeyReleased(keyboardHandler);
         LevelSettings settings = new LevelSettings(5, 3, (int)canvas.getWidth(), (int)canvas.getHeight());
-        level = new Level(settings, this::registerObserver);
+        level = new Level(settings);
+        level.RegisterPlayer(this::registerObserver);
         animationTimer = new DrawingThread(canvas, level);
         animationTimer.start();
     }
@@ -43,4 +44,5 @@ public class GameController
     {
         keyboardHandler.registerObserver(observer);
     }
+    private void unregisterObserver(KeyboardObserver observer) { keyboardHandler.unregisterObserver(observer);}
 }
