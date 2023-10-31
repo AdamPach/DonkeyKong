@@ -1,10 +1,7 @@
 package com.adampach.donkeykong.world;
 
 import com.adampach.donkeykong.abstraction.*;
-import com.adampach.donkeykong.objects.Construction;
-import com.adampach.donkeykong.objects.Ladder;
-import com.adampach.donkeykong.objects.LevelBorders;
-import com.adampach.donkeykong.objects.Player;
+import com.adampach.donkeykong.objects.*;
 
 import javafx.scene.canvas.GraphicsContext;
 
@@ -14,6 +11,7 @@ import java.util.function.Consumer;
 public class Level implements Drawable, Simulable{
     private final Player player;
     private final ArrayList<TextureObject> textures;
+    private final ArrayList<MovingObject> enemies;
     private final LevelSettings levelSettings;
 
     public Level(LevelSettings levelSettings)
@@ -21,6 +19,7 @@ public class Level implements Drawable, Simulable{
         this.levelSettings = levelSettings;
         player = new Player(25, 400, 25, 50, levelSettings);
         textures = new ArrayList<>();
+        enemies = new ArrayList<>();
         textures.add(new LevelBorders(levelSettings));
         textures.add(new Ladder(550, 425, 25, 100));
         textures.add(new Ladder(25, 265, 25, 100));
@@ -49,6 +48,8 @@ public class Level implements Drawable, Simulable{
         textures.add(new Construction(200, 115, 100, 25));
         textures.add(new Construction(100, 115, 100, 25));
         textures.add(new Construction(0, 115, 100, 25));
+
+        enemies.add(new Barrel(50, 115 - 25, 25, 25));
     }
 
 
@@ -57,6 +58,10 @@ public class Level implements Drawable, Simulable{
         for(Drawable construction : textures)
         {
             construction.draw(gc);
+        }
+        for(Drawable enemy : enemies)
+        {
+            enemy.draw(gc);
         }
         player.draw(gc);
     }
