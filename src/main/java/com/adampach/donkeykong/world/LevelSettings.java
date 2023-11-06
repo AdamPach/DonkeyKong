@@ -1,17 +1,17 @@
 package com.adampach.donkeykong.world;
 
-import javafx.scene.canvas.Canvas;
-
 public class LevelSettings
 {
     private final int defaultMaxGravityIndex;
-    private final int defaultSpeed;
+    private final int defaultMovementSpeed;
+    private final int defaultClimbingSpeed;
     private final int levelWidth;
     private final int levelHeight;
 
-    public LevelSettings(int defaultMaxGravityIndex, int defaultSpeed, int levelWidth, int levelHeight) {
+    public LevelSettings(int defaultMaxGravityIndex, int defaultMovementSpeed, int defaultClimbingSpeed, int levelWidth, int levelHeight) {
         this.defaultMaxGravityIndex = defaultMaxGravityIndex;
-        this.defaultSpeed = defaultSpeed;
+        this.defaultMovementSpeed = defaultMovementSpeed;
+        this.defaultClimbingSpeed = defaultClimbingSpeed;
 
         this.levelWidth = levelWidth;
         this.levelHeight = levelHeight;
@@ -21,15 +21,19 @@ public class LevelSettings
         return defaultMaxGravityIndex;
     }
 
-    public int getDefaultSpeed() {
-        return defaultSpeed;
-    }
-
     public int getLevelWidth() {
         return levelWidth;
     }
 
     public int getLevelHeight() {
         return levelHeight;
+    }
+
+    public int getDefaultClimbingSpeed() {
+        return defaultClimbingSpeed;
+    }
+
+    public int getDefaultMovementSpeed() {
+        return defaultMovementSpeed;
     }
 }

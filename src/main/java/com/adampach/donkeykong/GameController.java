@@ -52,7 +52,12 @@ public class GameController
     {
         scene.setOnKeyPressed(keyboardHandler);
         scene.setOnKeyReleased(keyboardHandler);
-        LevelSettings settings = new LevelSettings(5, 3, (int)canvas.getWidth(), (int)canvas.getHeight());
+        LevelSettings settings = new LevelSettings(
+                5,
+                3,
+                2,
+                (int)canvas.getWidth(),
+                (int)canvas.getHeight());
         level = new Level(settings, movementProviderWrapper);
         animationTimer = new DrawingThread(canvas, level);
         animationTimer.start();

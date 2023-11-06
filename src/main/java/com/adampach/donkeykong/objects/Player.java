@@ -69,11 +69,11 @@ public class Player extends MovingObject
         {
             case Left -> {
                 if(levelBorderStatus.stream().noneMatch( e -> e == PlayerEnum.LevelBorderStatus.Left))
-                    this.setPositionX(this.getPositionX() - levelSettings.getDefaultSpeed());
+                    this.setPositionX(this.getPositionX() - levelSettings.getDefaultMovementSpeed());
             }
             case Right -> {
                 if(levelBorderStatus.stream().noneMatch( e -> e == PlayerEnum.LevelBorderStatus.Right))
-                    this.setPositionX(this.getPositionX() + levelSettings.getDefaultSpeed());
+                    this.setPositionX(this.getPositionX() + levelSettings.getDefaultMovementSpeed());
             }
         }
 
@@ -81,11 +81,11 @@ public class Player extends MovingObject
         {
             case Up -> {
                 if(ladderStatus == PlayerEnum.LadderStatus.In || ladderStatus == PlayerEnum.LadderStatus.Bottom)
-                    this.setPositionY( this.getPositionY() - levelSettings.getDefaultSpeed());
+                    this.setPositionY( this.getPositionY() - levelSettings.getDefaultClimbingSpeed());
             }
             case Down -> {
                 if(ladderStatus == PlayerEnum.LadderStatus.On || ladderStatus == PlayerEnum.LadderStatus.In)
-                    this.setPositionY( this.getPositionY() + levelSettings.getDefaultSpeed());
+                    this.setPositionY( this.getPositionY() + levelSettings.getDefaultClimbingSpeed());
             }
         }
     }
