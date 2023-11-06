@@ -1,41 +1,34 @@
 package com.adampach.donkeykong.objects;
 
 import com.adampach.donkeykong.abstraction.*;
-import com.adampach.donkeykong.enums.DirectionEnums;
 import com.adampach.donkeykong.enums.PlayerEnum;
-import com.adampach.donkeykong.providers.HorizontalDirectionProvider;
-import com.adampach.donkeykong.providers.JumpProvider;
-import com.adampach.donkeykong.providers.VerticalDirectionProvider;
+import com.adampach.donkeykong.providers.MovementProviderWrapper;
 import com.adampach.donkeykong.world.LevelSettings;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import java.util.ArrayList;
-import java.util.function.Consumer;
 
-public class Player extends MovingObject implements Registrable<KeyboardObserver> {
+
+public class Player extends MovingObject
+{
     private final LevelSettings levelSettings;
-    private final Provider<DirectionEnums.HorizontalDirection> horizontalProvider;
-    private final Provider<DirectionEnums.VerticalPosition> verticalPositionProvider;
-    private final Provider<Boolean> jumpProvider;
     private PlayerEnum.ConstructionStatus constructionStatus;
     private PlayerEnum.LadderStatus ladderStatus;
     private ArrayList<PlayerEnum.LevelBorderStatus> levelBorderStatus;
+    private final MovementProviderWrapper movementProviderWrapper;
     private int gravityIndex;
     private int maxGravityIndex;
     private ArrayList<GameObject> CollidedObjects;
 
-    public Player(int positionX, int positionY, int width, int height, LevelSettings levelSettings) {
+    public Player(int positionX, int positionY, int width, int height, LevelSettings levelSettings, MovementProviderWrapper movementProviderWrapper) {
         super(positionX, positionY, width, height);
         this.levelSettings = levelSettings;
+        this.movementProviderWrapper = movementProviderWrapper;
         gravityIndex = 0;
         CollidedObjects = new ArrayList<>();
         levelBorderStatus = new ArrayList<>();
         resetSimulationCycle();
-
-        this.horizontalProvider = new HorizontalDirectionProvider();
-        this.verticalPositionProvider = new VerticalDirectionProvider();
-        this.jumpProvider = new JumpProvider();
     }
 
     @Override
@@ -68,26 +61,11 @@ public class Player extends MovingObject implements Registrable<KeyboardObserver
         else if(collisionable instanceof LevelBorders)
             handleLevelCollision((LevelBorders)collisionable);
     }
-    @Override
-    public void Register(Consumer<KeyboardObserver> registerCallback)
-    {
-        registerCallback.accept((KeyboardObserver) horizontalProvider);
-        registerCallback.accept((KeyboardObserver) verticalPositionProvider);
-        registerCallback.accept((KeyboardObserver) jumpProvider);
-    }
-
-    @Override
-    public void Unregister(Consumer<KeyboardObserver> unregisterCallback)
-    {
-        unregisterCallback.accept((KeyboardObserver) horizontalProvider);
-        unregisterCallback.accept((KeyboardObserver) verticalPositionProvider);
-        unregisterCallback.accept((KeyboardObserver) jumpProvider);
-    }
 
     private void handleMovement()
     {
 
-        switch (horizontalProvider.provide())
+        switch (movementProviderWrapper.horizontalProvider.provide())
         {
             case Left -> {
                 if(levelBorderStatus.stream().noneMatch( e -> e == PlayerEnum.LevelBorderStatus.Left))
@@ -99,7 +77,7 @@ public class Player extends MovingObject implements Registrable<KeyboardObserver
             }
         }
 
-        switch (verticalPositionProvider.provide())
+        switch (movementProviderWrapper.verticalPositionProvider.provide())
         {
             case Up -> {
                 if(ladderStatus == PlayerEnum.LadderStatus.In || ladderStatus == PlayerEnum.LadderStatus.Bottom)
@@ -114,7 +92,7 @@ public class Player extends MovingObject implements Registrable<KeyboardObserver
 
     private void handleJump()
     {
-        if(jumpProvider.provide() && constructionStatus == PlayerEnum.ConstructionStatus.On)
+        if(movementProviderWrapper.jumpProvider.provide() && constructionStatus == PlayerEnum.ConstructionStatus.On)
             gravityIndex = -11;
     }
 

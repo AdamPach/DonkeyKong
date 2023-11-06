@@ -1,7 +1,10 @@
 package com.adampach.donkeykong;
 
-import com.adampach.donkeykong.abstraction.KeyboardObserver;
 import com.adampach.donkeykong.handlers.KeyboardHandler;
+import com.adampach.donkeykong.providers.HorizontalDirectionProvider;
+import com.adampach.donkeykong.providers.JumpProvider;
+import com.adampach.donkeykong.providers.MovementProviderWrapper;
+import com.adampach.donkeykong.providers.VerticalDirectionProvider;
 import com.adampach.donkeykong.world.Level;
 import com.adampach.donkeykong.world.LevelSettings;
 import javafx.animation.AnimationTimer;
@@ -19,9 +22,30 @@ public class GameController
     private final KeyboardHandler keyboardHandler;
     private AnimationTimer animationTimer;
 
+    //Observers and providers
+    private final HorizontalDirectionProvider horizontalDirectionProvider;
+    private final VerticalDirectionProvider verticalDirectionProvider;
+    private final JumpProvider jumpProvider;
+    private final MovementProviderWrapper movementProviderWrapper;
+
     public GameController()
     {
         keyboardHandler = new KeyboardHandler();
+
+        this.horizontalDirectionProvider = new HorizontalDirectionProvider();
+        keyboardHandler.registerObserver(this.horizontalDirectionProvider);
+
+        this.verticalDirectionProvider = new VerticalDirectionProvider();
+        keyboardHandler.registerObserver(this.verticalDirectionProvider);
+
+        this.jumpProvider = new JumpProvider();
+        keyboardHandler.registerObserver(this.jumpProvider);
+
+        this.movementProviderWrapper = new MovementProviderWrapper(
+                horizontalDirectionProvider,
+                verticalDirectionProvider,
+                jumpProvider
+        );
     }
 
     public void startGame()
@@ -29,8 +53,7 @@ public class GameController
         scene.setOnKeyPressed(keyboardHandler);
         scene.setOnKeyReleased(keyboardHandler);
         LevelSettings settings = new LevelSettings(5, 3, (int)canvas.getWidth(), (int)canvas.getHeight());
-        level = new Level(settings);
-        level.RegisterPlayer(this::registerObserver);
+        level = new Level(settings, movementProviderWrapper);
         animationTimer = new DrawingThread(canvas, level);
         animationTimer.start();
     }
@@ -40,9 +63,5 @@ public class GameController
         this.scene = scene;
     }
 
-    private void registerObserver(KeyboardObserver observer)
-    {
-        keyboardHandler.registerObserver(observer);
-    }
-    private void unregisterObserver(KeyboardObserver observer) { keyboardHandler.unregisterObserver(observer);}
+
 }

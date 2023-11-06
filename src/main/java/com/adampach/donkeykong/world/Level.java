@@ -3,10 +3,10 @@ package com.adampach.donkeykong.world;
 import com.adampach.donkeykong.abstraction.*;
 import com.adampach.donkeykong.objects.*;
 
+import com.adampach.donkeykong.providers.MovementProviderWrapper;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.ArrayList;
-import java.util.function.Consumer;
 
 public class Level implements Drawable, Simulable{
     private final Player player;
@@ -14,10 +14,10 @@ public class Level implements Drawable, Simulable{
     private final ArrayList<MovingObject> enemies;
     private final LevelSettings levelSettings;
 
-    public Level(LevelSettings levelSettings)
+    public Level(LevelSettings levelSettings, MovementProviderWrapper movementProviderWrapper)
     {
         this.levelSettings = levelSettings;
-        player = new Player(25, 400, 25, 50, levelSettings);
+        player = new Player(25, 400, 25, 50, levelSettings, movementProviderWrapper);
         textures = new ArrayList<>();
         enemies = new ArrayList<>();
         textures.add(new LevelBorders(levelSettings));
@@ -74,14 +74,5 @@ public class Level implements Drawable, Simulable{
             player.handleCollision(collisionable);
         }
         player.simulate();
-    }
-    public void RegisterPlayer(Consumer<KeyboardObserver> register)
-    {
-        player.Register(register);
-    }
-
-    public void UnregisterPlayer(Consumer<KeyboardObserver> unregister)
-    {
-        player.Unregister(unregister);
     }
 }
