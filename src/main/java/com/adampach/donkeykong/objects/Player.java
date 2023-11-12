@@ -7,7 +7,6 @@ import com.adampach.donkeykong.world.LevelSettings;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import java.util.ArrayList;
 
 
 public class Player extends MovingObject
@@ -16,14 +15,13 @@ public class Player extends MovingObject
     private final MovementProviderWrapper movementProviderWrapper;
     private int gravityIndex;
     private int maxGravityIndex;
-    private ArrayList<GameObject> CollidedObjects;
+
 
     public Player(int positionX, int positionY, int width, int height, LevelSettings levelSettings, MovementProviderWrapper movementProviderWrapper) {
         super(positionX, positionY, width, height);
         this.levelSettings = levelSettings;
         this.movementProviderWrapper = movementProviderWrapper;
         gravityIndex = 0;
-        CollidedObjects = new ArrayList<>();
         resetSimulationCycle();
     }
 
@@ -37,25 +35,20 @@ public class Player extends MovingObject
     }
 
     @Override
+    public void handleCollision(Collisionable collisionable)
+    {
+        if(!collisionable.intersect(this.getRectangle()))
+            return;
+
+        super.handleCollision(collisionable);
+    }
+
+    @Override
     public void simulate()
     {
         handleMovement();
         handleJump();
         simulateGravity();
-        resetSimulationCycle();
-    }
-
-    @Override
-    public void handleCollision(Collisionable collisionable)
-    {
-        if(!collisionable.intersect(this.getRectangle()))
-            return;
-        if(collisionable instanceof Construction)
-            handleConstructionCollision((Construction) collisionable);
-        else if(collisionable instanceof Ladder)
-            handleLadderCollision((Ladder) collisionable);
-        else if(collisionable instanceof LevelBorders)
-            handleLevelCollision((LevelBorders)collisionable);
     }
 
     private void handleMovement()
@@ -123,57 +116,23 @@ public class Player extends MovingObject
             this.setPositionY(this.getPositionY() + gravityIndex);
     }
 
-    private void resetSimulationCycle()
+    @Override
+    public void resetSimulationCycle()
     {
-        setConstructionStatus(MovingObjectsEnum.ConstructionStatus.None);
-        setLadderStatus(MovingObjectsEnum.LadderStatus.None);
         clearLevelBorderStatus();
         maxGravityIndex = levelSettings.getDefaultMaxGravityIndex();
-        CollidedObjects.clear();
-    }
-
-    private void handleConstructionCollision(Construction construction)
-    {
-        if(construction.getPositionY() < this.getMaxPositionY()
-            && construction.getPositionY() + construction.getHeight() > getMaxPositionY())
-            setConstructionStatus(MovingObjectsEnum.ConstructionStatus.Step);
-        else if(getConstructionStatus() != MovingObjectsEnum.ConstructionStatus.Step)
-        {
-            if(construction.getPositionY() == this.getMaxPositionY())
-                setConstructionStatus(MovingObjectsEnum.ConstructionStatus.On);
-            else if (getConstructionStatus() != MovingObjectsEnum.ConstructionStatus.On)
-                setConstructionStatus(MovingObjectsEnum.ConstructionStatus.In);
-        }
-        CollidedObjects.add(construction);
-    }
-    private void handleLadderCollision(Ladder ladder)
-    {
-        if(ladder.getMaxPositionY() == this.getMaxPositionY())
-            setLadderStatus(MovingObjectsEnum.LadderStatus.Bottom);
-        else if(ladder.getMaxPositionY() > this.getMaxPositionY() &&
-                this.getMaxPositionY() > ladder.getPositionY())
-            setLadderStatus(MovingObjectsEnum.LadderStatus.In);
-        else setLadderStatus(MovingObjectsEnum.LadderStatus.On);
+        super.resetSimulationCycle();
     }
 
     private int countStepPosition()
     {
-        return switch (CollidedObjects.size())
+        return switch (getCollisionObjectsSize())
             {
                 case 1 ->
-                    CollidedObjects.get(0).getPositionY() - getHeight();
-                case 2 -> Math.min(CollidedObjects.get(0).getPositionY(),
-                        CollidedObjects.get(1).getPositionY()) - getHeight();
+                    getCollidedObjectAt(0).getPositionY() - getHeight();
+                case 2 -> Math.min(getCollidedObjectAt(0).getPositionY(),
+                        getCollidedObjectAt(1).getPositionY()) - getHeight();
                 default -> getPositionY();
             };
-    }
-
-
-    private void handleLevelCollision(LevelBorders levelBorders)
-    {
-        if(getMaxPositionX() >= levelBorders.getWidth())
-            addLevelBorderStatus(MovingObjectsEnum.LevelBorderStatus.Right);
-        else if(getPositionX() <= 0)
-            addLevelBorderStatus(MovingObjectsEnum.LevelBorderStatus.Left);
     }
 }

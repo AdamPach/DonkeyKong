@@ -69,10 +69,18 @@ public class Level implements Drawable, Simulable{
     @Override
     public void simulate()
     {
-        for(Collisionable collisionable : textures)
-        {
-            player.handleCollision(collisionable);
-        }
+        textures.forEach(player::handleCollision);
+        enemies.forEach( e -> {
+            e.simulate();
+            player.handleCollision(e);
+        });
         player.simulate();
     }
+
+    @Override
+    public void resetSimulationCycle() {
+        player.resetSimulationCycle();
+        enemies.forEach(MovingObject::resetSimulationCycle);
+    }
+
 }

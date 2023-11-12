@@ -22,10 +22,9 @@ public class DrawingThread extends AnimationTimer {
 
     @Override
     public void handle(long now) {
-//        graphicsContext.setFill(Color.BLACK);
-//        graphicsContext.fillRect(0,0, canvas.getWidth(), canvas.getHeight());
         if (lastTime > 0) {
             level.simulate();
+            level.resetSimulationCycle();
         }
         lastTime = now;
         level.draw(graphicsContext);
