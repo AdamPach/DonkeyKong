@@ -1,5 +1,6 @@
 package com.adampach.donkeykong;
 
+import com.adampach.donkeykong.enums.DirectionEnums;
 import com.adampach.donkeykong.handlers.KeyboardHandler;
 import com.adampach.donkeykong.providers.HorizontalDirectionProvider;
 import com.adampach.donkeykong.providers.JumpProvider;
@@ -57,7 +58,9 @@ public class GameController
                 3,
                 2,
                 (int)canvas.getWidth(),
-                (int)canvas.getHeight());
+                (int)canvas.getHeight(),
+                DirectionEnums.HorizontalDirection.Left);
+
         level = new Level(settings, movementProviderWrapper);
         animationTimer = new DrawingThread(canvas, level);
         animationTimer.start();

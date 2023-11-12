@@ -1,9 +1,9 @@
 package com.adampach.donkeykong.abstraction;
 
 import com.adampach.donkeykong.enums.MovingObjectsEnum;
-import com.adampach.donkeykong.objects.Construction;
-import com.adampach.donkeykong.objects.Ladder;
-import com.adampach.donkeykong.objects.LevelBorders;
+import com.adampach.donkeykong.objects.textures.Construction;
+import com.adampach.donkeykong.objects.textures.Ladder;
+import com.adampach.donkeykong.objects.textures.LevelBorders;
 
 import java.util.ArrayList;
 import java.util.stream.Stream;

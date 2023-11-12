@@ -9,9 +9,9 @@ import java.util.ArrayList;
 
 import static com.adampach.donkeykong.statics.KeyboardMapping.*;
 
-public class VerticalDirectionProvider implements KeyboardObserver, Provider<DirectionEnums.VerticalPosition> {
+public class VerticalDirectionProvider implements KeyboardObserver, Provider<DirectionEnums.VerticalDirection> {
 
-    private ArrayList<DirectionEnums.VerticalPosition> pressedDirections;
+    private ArrayList<DirectionEnums.VerticalDirection> pressedDirections;
 
     public VerticalDirectionProvider()
     {
@@ -25,7 +25,7 @@ public class VerticalDirectionProvider implements KeyboardObserver, Provider<Dir
         if(movementType != DirectionEnums.KeyEventType.VerticalMovement)
             return;
 
-        DirectionEnums.VerticalPosition mappedType = verticalMapping.get(keyCode);
+        DirectionEnums.VerticalDirection mappedType = verticalMapping.get(keyCode);
         if(keyPressed)
         {
             if(pressedDirections.stream().noneMatch( e -> e == mappedType))
@@ -36,9 +36,9 @@ public class VerticalDirectionProvider implements KeyboardObserver, Provider<Dir
     }
 
     @Override
-    public DirectionEnums.VerticalPosition provide() {
+    public DirectionEnums.VerticalDirection provide() {
         if(pressedDirections.isEmpty())
-            return DirectionEnums.VerticalPosition.None;
+            return DirectionEnums.VerticalDirection.None;
         return pressedDirections.get(pressedDirections.size() - 1);
     }
 }

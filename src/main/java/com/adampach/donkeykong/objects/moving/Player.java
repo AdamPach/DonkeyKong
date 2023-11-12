@@ -1,4 +1,4 @@
-package com.adampach.donkeykong.objects;
+package com.adampach.donkeykong.objects.moving;
 
 import com.adampach.donkeykong.abstraction.*;
 import com.adampach.donkeykong.enums.MovingObjectsEnum;
@@ -49,6 +49,14 @@ public class Player extends MovingObject
         handleMovement();
         handleJump();
         simulateGravity();
+    }
+
+    @Override
+    public void resetSimulationCycle()
+    {
+        clearLevelBorderStatus();
+        maxGravityIndex = levelSettings.getDefaultMaxGravityIndex();
+        super.resetSimulationCycle();
     }
 
     private void handleMovement()
@@ -114,14 +122,6 @@ public class Player extends MovingObject
         // Gravity handling
         if(gravityIndex != 0)
             this.setPositionY(this.getPositionY() + gravityIndex);
-    }
-
-    @Override
-    public void resetSimulationCycle()
-    {
-        clearLevelBorderStatus();
-        maxGravityIndex = levelSettings.getDefaultMaxGravityIndex();
-        super.resetSimulationCycle();
     }
 
     private int countStepPosition()

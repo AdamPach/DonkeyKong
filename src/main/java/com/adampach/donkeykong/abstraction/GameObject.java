@@ -1,7 +1,9 @@
 package com.adampach.donkeykong.abstraction;
 
 
-public abstract class GameObject {
+import javafx.geometry.Rectangle2D;
+
+public abstract class GameObject implements Collisionable {
 
     protected int positionX;
     protected int positionY;
@@ -50,5 +52,13 @@ public abstract class GameObject {
     public int getMaxPositionY() { return getPositionY() + getHeight();}
 
     public int getMaxPositionX() { return getPositionX() + getWidth();}
+
+    @Override
+    public Rectangle2D getRectangle() { return new Rectangle2D(positionX, positionY, width, height); }
+
+    @Override
+    public boolean intersect(Rectangle2D rectangle) {
+        return getRectangle().intersects(rectangle);
+    }
 
 }

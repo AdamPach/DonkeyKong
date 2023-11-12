@@ -9,7 +9,7 @@ public class KeyboardMapping
 {
     public static final HashMap<String, DirectionEnums.KeyEventType> movementTypeMapping = new HashMap<>();
     public static final HashMap<KeyCode, DirectionEnums.HorizontalDirection> horizontalMapping = new HashMap<>();
-    public static final HashMap<KeyCode, DirectionEnums.VerticalPosition> verticalMapping = new HashMap<>();
+    public static final HashMap<KeyCode, DirectionEnums.VerticalDirection> verticalMapping = new HashMap<>();
 
     static
     {
@@ -22,8 +22,8 @@ public class KeyboardMapping
         horizontalMapping.put(KeyCode.A, DirectionEnums.HorizontalDirection.Left);
         horizontalMapping.put(KeyCode.D, DirectionEnums.HorizontalDirection.Right);
 
-        verticalMapping.put(KeyCode.S, DirectionEnums.VerticalPosition.Down);
-        verticalMapping.put(KeyCode.W, DirectionEnums.VerticalPosition.Up);
+        verticalMapping.put(KeyCode.S, DirectionEnums.VerticalDirection.Down);
+        verticalMapping.put(KeyCode.W, DirectionEnums.VerticalDirection.Up);
 
     }
 }
