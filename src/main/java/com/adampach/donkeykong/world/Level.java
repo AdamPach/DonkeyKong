@@ -64,14 +64,14 @@ public class Level implements Drawable, Simulable{
         zones.add(new HorizontalMovementZone(0, 365-25, 100, 25, DirectionEnums.HorizontalDirection.Left));
         zones.add(new HorizontalMovementZone(500, 500, 100, 25, DirectionEnums.HorizontalDirection.Right));
 
-        zones.add(new VerticalMovementZone(575, 110, 1,1, DirectionEnums.VerticalDirection.Down));
-        zones.add(new VerticalMovementZone(575, 210, 1,1, DirectionEnums.VerticalDirection.None));
+        zones.add(new VerticalMovementZone(576, 110, 1,1, DirectionEnums.VerticalDirection.Down));
+        zones.add(new VerticalMovementZone(550, 215, 25,1, DirectionEnums.VerticalDirection.None));
 
-        zones.add(new VerticalMovementZone(27, 260, 1,1, DirectionEnums.VerticalDirection.Down));
-        zones.add(new VerticalMovementZone(27, 360, 1,1, DirectionEnums.VerticalDirection.None));
+        zones.add(new VerticalMovementZone(24, 260, 1,1, DirectionEnums.VerticalDirection.Down));
+        zones.add(new VerticalMovementZone(25, 365, 25,1, DirectionEnums.VerticalDirection.None));
 
-        zones.add(new VerticalMovementZone(575, 420, 1,1, DirectionEnums.VerticalDirection.Down));
-        zones.add(new VerticalMovementZone(575, 520, 1,1, DirectionEnums.VerticalDirection.None));
+        zones.add(new VerticalMovementZone(576, 420, 1,1, DirectionEnums.VerticalDirection.Down));
+        zones.add(new VerticalMovementZone(550, 525, 25,1, DirectionEnums.VerticalDirection.None));
     }
 
 

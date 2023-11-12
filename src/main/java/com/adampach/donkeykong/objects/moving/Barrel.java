@@ -107,6 +107,12 @@ public class Barrel extends MovingObject
     private void handleVerticalZone(Zone<DirectionEnums.VerticalDirection> zone)
     {
         verticalMovement = zone.provide();
+        if(verticalMovement == DirectionEnums.VerticalDirection.Down)
+            if(this.getMaxPositionX() - zone.getPositionX() >
+                    zone.getPositionX() - this.getPositionX() )
+                this.setPositionX(zone.getPositionX() + 1);
+            else
+                this.setPositionX(zone.getPositionX() - this.getWidth() - 1);
     }
 
     private void simulateGravity()
