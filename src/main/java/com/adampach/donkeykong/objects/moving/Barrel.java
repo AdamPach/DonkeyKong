@@ -14,7 +14,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
 import java.util.function.Consumer;
-import java.util.function.Function;
 
 public class Barrel extends MovingObject
 {
@@ -135,7 +134,7 @@ public class Barrel extends MovingObject
             gravityIndex++;
 
         if(getConstructionStatus() == MovingObjectsEnum.ConstructionStatus.Step
-                && getLadderStatus() != MovingObjectsEnum.LadderStatus.In)
+                && verticalMovement != DirectionEnums.VerticalDirection.Down)
         {
             setPositionY(countStepPosition());
             setConstructionStatus(MovingObjectsEnum.ConstructionStatus.On);
