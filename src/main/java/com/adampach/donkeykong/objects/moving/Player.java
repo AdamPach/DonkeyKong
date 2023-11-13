@@ -1,18 +1,21 @@
 package com.adampach.donkeykong.objects.moving;
 
 import com.adampach.donkeykong.abstraction.*;
+import com.adampach.donkeykong.enums.DirectionEnums;
 import com.adampach.donkeykong.enums.MovingObjectsEnum;
 import com.adampach.donkeykong.providers.MovementProviderWrapper;
 import com.adampach.donkeykong.world.LevelSettings;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
+
+import static com.adampach.donkeykong.assets.ImageAssets.*;
 
 
 public class Player extends MovingObject
 {
     private final LevelSettings levelSettings;
     private final MovementProviderWrapper movementProviderWrapper;
+    private DirectionEnums.HorizontalDirection lastHorizontalDirection;
+    private boolean isJumping;
     private int gravityIndex;
     private int maxGravityIndex;
 
@@ -22,16 +25,25 @@ public class Player extends MovingObject
         this.levelSettings = levelSettings;
         this.movementProviderWrapper = movementProviderWrapper;
         gravityIndex = 0;
+        lastHorizontalDirection = DirectionEnums.HorizontalDirection.None;
+        isJumping = false;
         resetSimulationCycle();
     }
 
     @Override
     public void draw(GraphicsContext gc)
     {
-        Paint paint = gc.getFill();
-        gc.setFill(Color.WHITE);
-        gc.fillRect(positionX, positionY, width, height);
-        gc.setFill(paint);
+        handleLastDirection();
+        if(isJumping)
+            if(lastHorizontalDirection == DirectionEnums.HorizontalDirection.Left)
+                gc.drawImage(MARIO_JUMP_FLIP, getPositionX(), getPositionY(), getWidth(), getHeight());
+            else
+                gc.drawImage(MARIO_JUMP, getPositionX(), getPositionY(), getWidth(), getHeight());
+        else
+            if(lastHorizontalDirection == DirectionEnums.HorizontalDirection.Left)
+                gc.drawImage(MARIO_WALK_FLIP, getPositionX(), getPositionY(), getWidth(), getHeight());
+            else
+                gc.drawImage(MARIO_WALK, getPositionX(), getPositionY(), getWidth(), getHeight());
     }
 
     @Override
@@ -89,8 +101,13 @@ public class Player extends MovingObject
 
     private void handleJump()
     {
-        if(movementProviderWrapper.jumpProvider.provide() && getConstructionStatus() == MovingObjectsEnum.ConstructionStatus.On)
-            gravityIndex = -11;
+        if(movementProviderWrapper.jumpProvider.provide() && !isJumping) {
+            gravityIndex = -12;
+            isJumping = true;
+        }
+        else if(isJumping && getConstructionStatus() ==
+                MovingObjectsEnum.ConstructionStatus.On)
+            isJumping = false;
     }
 
     private void simulateGravity()
@@ -134,5 +151,13 @@ public class Player extends MovingObject
                         getCollidedObjectAt(1).getPositionY()) - getHeight();
                 default -> getPositionY();
             };
+    }
+
+    private void handleLastDirection()
+    {
+        DirectionEnums.HorizontalDirection tmpDirection =
+                movementProviderWrapper.horizontalProvider.provide();
+        if(tmpDirection != DirectionEnums.HorizontalDirection.None)
+            lastHorizontalDirection = tmpDirection;
     }
 }

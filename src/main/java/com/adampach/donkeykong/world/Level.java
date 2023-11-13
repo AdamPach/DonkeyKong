@@ -28,7 +28,7 @@ public class Level implements Drawable, Simulable{
     {
         this.levelSettings = levelSettings;
         zones = new ArrayList<>();
-        player = new Player(25, 400, 25, 50, levelSettings, movementProviderWrapper);
+        player = new Player(25, 400, 50, 50, levelSettings, movementProviderWrapper);
         textures = new ArrayList<>();
         enemies = new ArrayList<>();
         enemiesToRemove = new ArrayList<>();
