@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Move collision handling from Player to MovingObject. Will be used in barrels.">
+    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Handle not matching coordinates">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/zones/DestroyBarrelZone.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/moving/Barrel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/moving/Barrel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" afterDir="false" />
@@ -123,6 +124,10 @@
       <workItem from="1698057864302" duration="9217000" />
       <workItem from="1698172967773" duration="6078000" />
       <workItem from="1698211643596" duration="4385000" />
+      <workItem from="1699855643096" duration="11000" />
+      <workItem from="1699863806138" duration="95000" />
+      <workItem from="1699865056341" duration="68000" />
+      <workItem from="1699865692290" duration="940000" />
     </task>
     <task id="LOCAL-00001" summary="Init the project">
       <option name="closed" value="true" />

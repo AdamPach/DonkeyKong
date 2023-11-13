@@ -8,6 +8,7 @@ import com.adampach.donkeykong.objects.moving.Player;
 import com.adampach.donkeykong.objects.textures.Construction;
 import com.adampach.donkeykong.objects.textures.Ladder;
 import com.adampach.donkeykong.objects.textures.LevelBorders;
+import com.adampach.donkeykong.objects.zones.DestroyBarrelZone;
 import com.adampach.donkeykong.objects.zones.HorizontalMovementZone;
 import com.adampach.donkeykong.objects.zones.VerticalMovementZone;
 import com.adampach.donkeykong.providers.MovementProviderWrapper;
@@ -20,6 +21,7 @@ public class Level implements Drawable, Simulable{
     private final ArrayList<TextureObject> textures;
     private final ArrayList<MovingObject> enemies;
     private final ArrayList<Zone> zones;
+    private final ArrayList<MovingObject> enemiesToRemove;
     private final LevelSettings levelSettings;
 
     public Level(LevelSettings levelSettings, MovementProviderWrapper movementProviderWrapper)
@@ -29,6 +31,7 @@ public class Level implements Drawable, Simulable{
         player = new Player(25, 400, 25, 50, levelSettings, movementProviderWrapper);
         textures = new ArrayList<>();
         enemies = new ArrayList<>();
+        enemiesToRemove = new ArrayList<>();
         textures.add(new LevelBorders(levelSettings));
         textures.add(new Ladder(550, 425, 25, 100));
         textures.add(new Ladder(25, 265, 25, 100));
@@ -58,7 +61,7 @@ public class Level implements Drawable, Simulable{
         textures.add(new Construction(100, 115, 100, 25));
         textures.add(new Construction(0, 115, 100, 25));
 
-        enemies.add(new Barrel(50, 115 - 25, 25, 25, levelSettings));
+        enemies.add(new Barrel(50, 115 - 25, 25, 25, levelSettings, this::deleteEnemy));
 
         zones.add(new HorizontalMovementZone(500, 190, 100, 25, DirectionEnums.HorizontalDirection.Right));
         zones.add(new HorizontalMovementZone(0, 365-25, 100, 25, DirectionEnums.HorizontalDirection.Left));
@@ -72,6 +75,8 @@ public class Level implements Drawable, Simulable{
 
         zones.add(new VerticalMovementZone(576, 420, 1,1, DirectionEnums.VerticalDirection.Down));
         zones.add(new VerticalMovementZone(550, 525, 25,1, DirectionEnums.VerticalDirection.None));
+
+        zones.add(new DestroyBarrelZone(0, 550, 1, 25));
     }
 
 
@@ -106,6 +111,16 @@ public class Level implements Drawable, Simulable{
     public void resetSimulationCycle() {
         player.resetSimulationCycle();
         enemies.forEach(MovingObject::resetSimulationCycle);
+        if(!enemiesToRemove.isEmpty())
+        {
+            enemiesToRemove.forEach(enemies::remove);
+            enemiesToRemove.clear();
+        }
+    }
+
+    public void deleteEnemy(MovingObject enemy)
+    {
+        enemiesToRemove.add(enemy);
     }
 
 }
