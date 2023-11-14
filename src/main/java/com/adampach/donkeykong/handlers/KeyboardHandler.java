@@ -1,7 +1,7 @@
 package com.adampach.donkeykong.handlers;
 
-import com.adampach.donkeykong.abstraction.KeyBoardSubject;
 import com.adampach.donkeykong.abstraction.Observer;
+import com.adampach.donkeykong.abstraction.Subject;
 import com.adampach.donkeykong.wrappers.KeyboardDataWrapper;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
@@ -9,7 +9,7 @@ import javafx.scene.input.KeyEvent;
 
 import java.util.ArrayList;
 
-public class KeyboardHandler implements EventHandler<KeyEvent>, KeyBoardSubject {
+public class KeyboardHandler implements EventHandler<KeyEvent>, Subject<Observer<KeyboardDataWrapper>> {
     private ArrayList<Observer<KeyboardDataWrapper>> Observers;
     public KeyboardHandler()
     {
