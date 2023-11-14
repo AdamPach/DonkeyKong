@@ -13,25 +13,27 @@ import com.adampach.donkeykong.objects.zones.HorizontalMovementZone;
 import com.adampach.donkeykong.objects.zones.VerticalMovementZone;
 import com.adampach.donkeykong.wrappers.MovementProviderWrapper;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Level implements Drawable, Simulable{
     private final Player player;
-    private final ArrayList<TextureObject> textures;
-    private final ArrayList<MovingObject> enemies;
-    private final ArrayList<Zone> zones;
-    private final ArrayList<MovingObject> enemiesToRemove;
+    private final LinkedList<TextureObject> textures;
+    private final EnemiesContainer<LinkedList<MovingObject>> enemies;
+    private final LinkedList<Zone> zones;
+    private final LinkedList<MovingObject> enemiesToRemove;
     private final LevelSettings levelSettings;
 
     public Level(LevelSettings levelSettings, MovementProviderWrapper movementProviderWrapper)
     {
         this.levelSettings = levelSettings;
-        zones = new ArrayList<>();
         player = new Player(25, 400, 50, 50, levelSettings, movementProviderWrapper);
-        textures = new ArrayList<>();
-        enemies = new ArrayList<>();
-        enemiesToRemove = new ArrayList<>();
+        textures = new LinkedList<>();
+        enemies = new EnemiesContainer<>(new LinkedList<>());
+        zones = new LinkedList<>();
+        enemiesToRemove = new LinkedList<>();
         textures.add(new LevelBorders(levelSettings));
         textures.add(new Ladder(550, 425, 25, 100));
         textures.add(new Ladder(25, 265, 25, 100));
@@ -61,7 +63,7 @@ public class Level implements Drawable, Simulable{
         textures.add(new Construction(100, 115, 100, 25));
         textures.add(new Construction(0, 115, 100, 25));
 
-        enemies.add(new Barrel(50, 115 - 25, 25, 25, levelSettings, this::deleteEnemy));
+        enemies.notifyObserver(new Pair<>(true, new Barrel(50, 115 - 25, 25, 25, levelSettings, this::deleteEnemy)));
 
         zones.add(new HorizontalMovementZone(500, 190, 100, 25, DirectionEnums.HorizontalDirection.Right));
         zones.add(new HorizontalMovementZone(0, 365-25, 100, 25, DirectionEnums.HorizontalDirection.Left));
@@ -113,7 +115,7 @@ public class Level implements Drawable, Simulable{
         enemies.forEach(MovingObject::resetSimulationCycle);
         if(!enemiesToRemove.isEmpty())
         {
-            enemiesToRemove.forEach(enemies::remove);
+            enemiesToRemove.forEach( e -> enemies.notifyObserver(new Pair<>(false, e)));
             enemiesToRemove.clear();
         }
     }

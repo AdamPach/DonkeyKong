@@ -4,20 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Add jump gravity to level settings">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/Observer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/wrappers/KeyboardDataWrapper.java" afterDir="false" />
+    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Make Subject more abstract">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/EnemiesContainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/KeyBoardSubject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/KeyBoardSubject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/KeyboardObserver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/MovingObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/MovingObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/handlers/KeyboardHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/handlers/KeyboardHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/moving/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/moving/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/providers/HorizontalDirectionProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/providers/HorizontalDirectionProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/providers/JumpProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/providers/JumpProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/providers/MovementProviderWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/wrappers/MovementProviderWrapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/providers/VerticalDirectionProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/providers/VerticalDirectionProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +19,8 @@
       <list>
         <option value="FxmlFile" />
         <option value="package-info" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
         <option value="Record" />
       </list>
     </option>
@@ -145,7 +134,7 @@
       <workItem from="1699865056341" duration="68000" />
       <workItem from="1699865692290" duration="5647000" />
       <workItem from="1699984129582" duration="1156000" />
-      <workItem from="1699988569058" duration="2237000" />
+      <workItem from="1699988569058" duration="4019000" />
     </task>
     <task id="LOCAL-00001" summary="Init the project">
       <option name="closed" value="true" />
@@ -347,7 +336,23 @@
       <option name="project" value="LOCAL" />
       <updated>1699985276428</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Make observer more abstract and reusable">
+      <option name="closed" value="true" />
+      <created>1699991848091</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1699991848091</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Make Subject more abstract">
+      <option name="closed" value="true" />
+      <created>1699992207873</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1699992207873</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,7 +370,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Init the project" />
     <MESSAGE value="Improve structure for the DonkeyKongApplication.java class" />
     <MESSAGE value="Add GameController and FXML file for basic drawing" />
     <MESSAGE value="Change package naming, add some interfaces and add new classes" />
@@ -389,6 +393,8 @@
     <MESSAGE value="Set maximum rendering speed" />
     <MESSAGE value="Make all properties of GameObject private" />
     <MESSAGE value="Add jump gravity to level settings" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add jump gravity to level settings" />
+    <MESSAGE value="Make observer more abstract and reusable" />
+    <MESSAGE value="Make Subject more abstract" />
+    <option name="LAST_COMMIT_MESSAGE" value="Make Subject more abstract" />
   </component>
 </project>
