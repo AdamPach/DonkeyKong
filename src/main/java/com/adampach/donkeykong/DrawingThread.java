@@ -4,7 +4,6 @@ import com.adampach.donkeykong.world.Level;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
 
 public class DrawingThread extends AnimationTimer {
     private final Level level;
@@ -22,12 +21,11 @@ public class DrawingThread extends AnimationTimer {
 
     @Override
     public void handle(long now) {
-        if (lastTime > 0) {
+        if (now - lastTime > 15_000_000) {
             level.simulate();
             level.resetSimulationCycle();
+            lastTime = now;
         }
-        lastTime = now;
         level.draw(graphicsContext);
-
     }
 }

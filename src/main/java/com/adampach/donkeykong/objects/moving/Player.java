@@ -105,8 +105,9 @@ public class Player extends MovingObject
             gravityIndex = -12;
             isJumping = true;
         }
-        else if(isJumping && getConstructionStatus() ==
-                MovingObjectsEnum.ConstructionStatus.On)
+        else if(isJumping && (getConstructionStatus() ==
+                MovingObjectsEnum.ConstructionStatus.On
+                || getLadderStatus() != MovingObjectsEnum.LadderStatus.None))
             isJumping = false;
     }
 
