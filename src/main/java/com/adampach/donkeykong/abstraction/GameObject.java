@@ -5,10 +5,10 @@ import javafx.geometry.Rectangle2D;
 
 public abstract class GameObject implements Collisionable {
 
-    protected int positionX;
-    protected int positionY;
-    protected int width;
-    protected int height;
+    private int positionX;
+    private int positionY;
+    private int width;
+    private int height;
 
     public GameObject(int positionX, int positionY, int width, int height) {
         this.positionX = positionX;

@@ -16,7 +16,7 @@ public class Construction extends TextureObject {
     {
         Paint paint = gc.getFill();
         gc.setFill(Color.RED);
-        gc.fillRect(positionX, positionY, width, height);
+        gc.fillRect(getPositionX(), getPositionY(), getWidth(), getHeight());
         gc.setFill(paint);
     }
 

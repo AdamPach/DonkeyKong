@@ -16,7 +16,7 @@ public class Ladder extends TextureObject
     public void draw(GraphicsContext gc) {
         Paint paint = gc.getFill();
         gc.setFill(Color.BLUE);
-        gc.fillRect(positionX, positionY, width, height);
+        gc.fillRect(getPositionX(), getPositionY(), getWidth(), getHeight());
         gc.setFill(paint);
     }
 

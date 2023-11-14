@@ -46,7 +46,7 @@ public class Barrel extends MovingObject
     {
         Paint paint = gc.getFill();
         gc.setFill(Color.LIGHTSKYBLUE);
-        gc.fillRect(positionX, positionY, width, height);
+        gc.fillRect(getPositionX(), getPositionY(), getWidth(), getHeight());
         gc.setFill(paint);
     }
 

@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Add mario assets and display them instead of the rectangle">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/DrawingThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/DrawingThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/moving/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/moving/Player.java" afterDir="false" />
+    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Set maximum rendering speed">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/GameObject.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +130,7 @@
       <workItem from="1699863806138" duration="95000" />
       <workItem from="1699865056341" duration="68000" />
       <workItem from="1699865692290" duration="5647000" />
-      <workItem from="1699984129582" duration="298000" />
+      <workItem from="1699984129582" duration="694000" />
     </task>
     <task id="LOCAL-00001" summary="Init the project">
       <option name="closed" value="true" />
@@ -310,7 +308,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699871343252</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Set maximum rendering speed">
+      <option name="closed" value="true" />
+      <created>1699984700206</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1699984700206</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -349,6 +355,7 @@
     <MESSAGE value="Add DestroyBarrelZone for deleting barrels" />
     <MESSAGE value="Remove ladder dependency from Barrel" />
     <MESSAGE value="Add mario assets and display them instead of the rectangle" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add mario assets and display them instead of the rectangle" />
+    <MESSAGE value="Set maximum rendering speed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Set maximum rendering speed" />
   </component>
 </project>

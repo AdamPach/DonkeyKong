@@ -22,6 +22,6 @@ public class LevelBorders extends TextureObject
     @Override
     public void draw(GraphicsContext gc) {
         gc.setFill(Color.BLACK);
-        gc.fillRect(positionX, positionY, width, height);
+        gc.fillRect(getPositionX(), getPositionY(), getWidth(), getHeight());
     }
 }
