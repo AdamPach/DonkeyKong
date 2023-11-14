@@ -102,7 +102,7 @@ public class Player extends MovingObject
     private void handleJump()
     {
         if(movementProviderWrapper.jumpProvider.provide() && !isJumping) {
-            gravityIndex = -12;
+            gravityIndex = levelSettings.getDefaultJumpGravity();
             isJumping = true;
         }
         else if(isJumping && (getConstructionStatus() ==

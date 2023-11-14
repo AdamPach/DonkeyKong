@@ -54,7 +54,8 @@ public class GameController
         scene.setOnKeyPressed(keyboardHandler);
         scene.setOnKeyReleased(keyboardHandler);
         LevelSettings settings = new LevelSettings(
-                5,
+                -12,
+                4,
                 3,
                 2,
                 (int)canvas.getWidth(),

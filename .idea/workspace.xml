@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Set maximum rendering speed">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/GameObject.java" afterDir="false" />
+    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Make all properties of GameObject private">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/moving/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/moving/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/LevelSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/LevelSettings.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +132,7 @@
       <workItem from="1699863806138" duration="95000" />
       <workItem from="1699865056341" duration="68000" />
       <workItem from="1699865692290" duration="5647000" />
-      <workItem from="1699984129582" duration="694000" />
+      <workItem from="1699984129582" duration="1035000" />
     </task>
     <task id="LOCAL-00001" summary="Init the project">
       <option name="closed" value="true" />
@@ -316,7 +318,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699984700206</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Make all properties of GameObject private">
+      <option name="closed" value="true" />
+      <created>1699984975564</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1699984975564</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -356,6 +366,7 @@
     <MESSAGE value="Remove ladder dependency from Barrel" />
     <MESSAGE value="Add mario assets and display them instead of the rectangle" />
     <MESSAGE value="Set maximum rendering speed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Set maximum rendering speed" />
+    <MESSAGE value="Make all properties of GameObject private" />
+    <option name="LAST_COMMIT_MESSAGE" value="Make all properties of GameObject private" />
   </component>
 </project>
