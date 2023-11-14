@@ -21,9 +21,8 @@ import java.util.LinkedList;
 public class Level implements Drawable, Simulable{
     private final Player player;
     private final LinkedList<TextureObject> textures;
-    private final EnemiesContainer<LinkedList<MovingObject>> enemies;
+    private final EnemiesContainer<LinkedList<Enemy>> enemies;
     private final LinkedList<Zone> zones;
-    private final LinkedList<MovingObject> enemiesToRemove;
     private final LevelSettings levelSettings;
 
     public Level(LevelSettings levelSettings, MovementProviderWrapper movementProviderWrapper)
@@ -33,7 +32,6 @@ public class Level implements Drawable, Simulable{
         textures = new LinkedList<>();
         enemies = new EnemiesContainer<>(new LinkedList<>());
         zones = new LinkedList<>();
-        enemiesToRemove = new LinkedList<>();
         textures.add(new LevelBorders(levelSettings));
         textures.add(new Ladder(550, 425, 25, 100));
         textures.add(new Ladder(25, 265, 25, 100));
@@ -63,7 +61,7 @@ public class Level implements Drawable, Simulable{
         textures.add(new Construction(100, 115, 100, 25));
         textures.add(new Construction(0, 115, 100, 25));
 
-        enemies.notifyObserver(new Pair<>(true, new Barrel(50, 115 - 25, 25, 25, levelSettings, this::deleteEnemy)));
+        enemies.notifyObserver(new Pair<>(true, new Barrel(50, 115 - 25, 25, 25, levelSettings)));
 
         zones.add(new HorizontalMovementZone(500, 190, 100, 25, DirectionEnums.HorizontalDirection.Right));
         zones.add(new HorizontalMovementZone(0, 365-25, 100, 25, DirectionEnums.HorizontalDirection.Left));
@@ -79,6 +77,7 @@ public class Level implements Drawable, Simulable{
         zones.add(new VerticalMovementZone(550, 525, 25,1, DirectionEnums.VerticalDirection.None));
 
         zones.add(new DestroyBarrelZone(0, 550, 1, 25));
+
     }
 
 
@@ -112,17 +111,7 @@ public class Level implements Drawable, Simulable{
     @Override
     public void resetSimulationCycle() {
         player.resetSimulationCycle();
-        enemies.forEach(MovingObject::resetSimulationCycle);
-        if(!enemiesToRemove.isEmpty())
-        {
-            enemiesToRemove.forEach( e -> enemies.notifyObserver(new Pair<>(false, e)));
-            enemiesToRemove.clear();
-        }
+        enemies.forEach(Enemy::resetSimulationCycle);
+        enemies.clean();
     }
-
-    public void deleteEnemy(MovingObject enemy)
-    {
-        enemiesToRemove.add(enemy);
-    }
-
 }

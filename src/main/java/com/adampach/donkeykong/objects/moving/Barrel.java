@@ -1,8 +1,6 @@
 package com.adampach.donkeykong.objects.moving;
 
-import com.adampach.donkeykong.abstraction.Collisionable;
-import com.adampach.donkeykong.abstraction.MovingObject;
-import com.adampach.donkeykong.abstraction.Zone;
+import com.adampach.donkeykong.abstraction.*;
 import com.adampach.donkeykong.enums.DirectionEnums;
 import com.adampach.donkeykong.enums.MovingObjectsEnum;
 import com.adampach.donkeykong.objects.zones.DestroyBarrelZone;
@@ -13,29 +11,25 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
-import java.util.function.Consumer;
 
-public class Barrel extends MovingObject
+public class Barrel extends Enemy
 {
     private final LevelSettings levelSettings;
     private DirectionEnums.HorizontalDirection horizontalMovement;
     private DirectionEnums.VerticalDirection verticalMovement;
     private int gravityIndex;
     private int maxGravityIndex;
-    private Consumer<Barrel> removeBarrel;
 
     public Barrel(
             int positionX,
             int positionY,
             int width,
             int height,
-            LevelSettings levelSettings,
-            Consumer<Barrel> removeBarrel)
+            LevelSettings levelSettings)
     {
         super(positionX, positionY, width, height);
         this.levelSettings = levelSettings;
         horizontalMovement = this.levelSettings.getFirstBarrelDirection();
-        this.removeBarrel = removeBarrel;
         verticalMovement = DirectionEnums.VerticalDirection.None;
         gravityIndex = 0;
         resetSimulationCycle();
@@ -75,7 +69,7 @@ public class Barrel extends MovingObject
         if(collisionable instanceof VerticalMovementZone)
             handleVerticalZone((VerticalMovementZone)collisionable);
         if(collisionable instanceof DestroyBarrelZone)
-            removeBarrel.accept(this);
+            notifyDestroy();
 
         super.handleCollision(collisionable);
     }

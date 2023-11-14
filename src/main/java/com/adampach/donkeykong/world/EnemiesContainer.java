@@ -1,10 +1,11 @@
 package com.adampach.donkeykong.world;
 
-import com.adampach.donkeykong.abstraction.MovingObject;
+import com.adampach.donkeykong.abstraction.Enemy;
 import com.adampach.donkeykong.abstraction.Observer;
 import javafx.util.Pair;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -12,27 +13,49 @@ import java.util.List;
  * Observer receive pair, key determines if the enemy is new and value is object which will be treated
  * @param <TList> Define underlying type of the list
  */
-public class EnemiesContainer <TList extends List<MovingObject>>
-        implements Observer<Pair<Boolean, MovingObject>>, Iterable<MovingObject> {
+public class EnemiesContainer <TList extends List<Enemy>>
+        implements Observer<Pair<Boolean, Enemy>>, Iterable<Enemy> {
 
-    private final TList barrels;
+    private final TList enemies;
+    private final LinkedList<Enemy> toRemove;
 
     public EnemiesContainer(TList list) {
-        this.barrels = list;
+        this.enemies = list;
+        toRemove = new LinkedList<>();
     }
 
     @Override
-    public void notifyObserver(Pair<Boolean, MovingObject> data) {
+    public void notifyObserver(Pair<Boolean, Enemy> data) {
+        Enemy enemy = data.getValue();
         if(data.getKey())
-            barrels.add(data.getValue());
+        {
+            enemy.registerObserver(this);
+            enemies.add(enemy);
+        }
         else
-            barrels.remove(data.getValue());
+        {
+            toRemove.add(enemy);
+        }
     }
 
     @Override
-    public Iterator<MovingObject> iterator()
+    public Iterator<Enemy> iterator()
     {
-        return barrels.iterator();
+        return enemies.iterator();
+    }
+
+    public void clean()
+    {
+        System.out.println(enemies.size());
+        if(!toRemove.isEmpty())
+        {
+            toRemove.forEach( e ->
+            {
+                e.unregisterObserver(this);
+                enemies.remove(e);
+            });
+            toRemove.clear();
+        }
     }
 
 }
