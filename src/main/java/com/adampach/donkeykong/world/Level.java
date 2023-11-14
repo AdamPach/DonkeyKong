@@ -11,7 +11,7 @@ import com.adampach.donkeykong.objects.textures.LevelBorders;
 import com.adampach.donkeykong.objects.zones.DestroyBarrelZone;
 import com.adampach.donkeykong.objects.zones.HorizontalMovementZone;
 import com.adampach.donkeykong.objects.zones.VerticalMovementZone;
-import com.adampach.donkeykong.providers.MovementProviderWrapper;
+import com.adampach.donkeykong.wrappers.MovementProviderWrapper;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.ArrayList;

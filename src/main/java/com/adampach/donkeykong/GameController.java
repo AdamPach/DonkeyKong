@@ -4,7 +4,7 @@ import com.adampach.donkeykong.enums.DirectionEnums;
 import com.adampach.donkeykong.handlers.KeyboardHandler;
 import com.adampach.donkeykong.providers.HorizontalDirectionProvider;
 import com.adampach.donkeykong.providers.JumpProvider;
-import com.adampach.donkeykong.providers.MovementProviderWrapper;
+import com.adampach.donkeykong.wrappers.MovementProviderWrapper;
 import com.adampach.donkeykong.providers.VerticalDirectionProvider;
 import com.adampach.donkeykong.world.Level;
 import com.adampach.donkeykong.world.LevelSettings;

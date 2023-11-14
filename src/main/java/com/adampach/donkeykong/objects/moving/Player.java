@@ -3,7 +3,7 @@ package com.adampach.donkeykong.objects.moving;
 import com.adampach.donkeykong.abstraction.*;
 import com.adampach.donkeykong.enums.DirectionEnums;
 import com.adampach.donkeykong.enums.MovingObjectsEnum;
-import com.adampach.donkeykong.providers.MovementProviderWrapper;
+import com.adampach.donkeykong.wrappers.MovementProviderWrapper;
 import com.adampach.donkeykong.world.LevelSettings;
 import javafx.scene.canvas.GraphicsContext;
 

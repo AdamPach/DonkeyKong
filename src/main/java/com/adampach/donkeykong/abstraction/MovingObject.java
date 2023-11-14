@@ -1,6 +1,7 @@
 package com.adampach.donkeykong.abstraction;
 
 import com.adampach.donkeykong.enums.MovingObjectsEnum;
+import com.adampach.donkeykong.objects.moving.Barrel;
 import com.adampach.donkeykong.objects.textures.Construction;
 import com.adampach.donkeykong.objects.textures.Ladder;
 import com.adampach.donkeykong.objects.textures.LevelBorders;
@@ -56,11 +57,6 @@ public abstract class MovingObject extends TextureObject implements Simulable
         levelBorderStatus.clear();
     }
 
-    public void removeLevelBorderStatus(MovingObjectsEnum.LevelBorderStatus status)
-    {
-        levelBorderStatus.remove(status);
-    }
-
     public Stream<MovingObjectsEnum.LevelBorderStatus> getLevelBorderStatusStream()
     {
         return levelBorderStatus.stream();
@@ -82,7 +78,7 @@ public abstract class MovingObject extends TextureObject implements Simulable
             return;
         if(collisionable instanceof Construction)
             handleConstructionCollision((Construction) collisionable);
-        else if(collisionable instanceof Ladder)
+        else if(collisionable instanceof Ladder && !(this instanceof Barrel))
             handleLadderCollision((Ladder) collisionable);
         else if(collisionable instanceof LevelBorders)
             handleLevelCollision((LevelBorders)collisionable);
