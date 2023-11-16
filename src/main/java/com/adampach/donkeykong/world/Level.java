@@ -3,7 +3,7 @@ package com.adampach.donkeykong.world;
 import com.adampach.donkeykong.abstraction.*;
 
 import com.adampach.donkeykong.enums.DirectionEnums;
-import com.adampach.donkeykong.objects.moving.Barrel;
+import com.adampach.donkeykong.objects.generators.BarrelGenerator;
 import com.adampach.donkeykong.objects.moving.Player;
 import com.adampach.donkeykong.objects.textures.Construction;
 import com.adampach.donkeykong.objects.textures.Ladder;
@@ -13,9 +13,7 @@ import com.adampach.donkeykong.objects.zones.HorizontalMovementZone;
 import com.adampach.donkeykong.objects.zones.VerticalMovementZone;
 import com.adampach.donkeykong.wrappers.MovementProviderWrapper;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.util.Pair;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Level implements Drawable, Simulable{
@@ -23,6 +21,7 @@ public class Level implements Drawable, Simulable{
     private final LinkedList<TextureObject> textures;
     private final EnemiesContainer<LinkedList<Enemy>> enemies;
     private final LinkedList<Zone> zones;
+    private final LinkedList<EnemyGenerator> generators;
     private final LevelSettings levelSettings;
 
     public Level(LevelSettings levelSettings, MovementProviderWrapper movementProviderWrapper)
@@ -32,6 +31,7 @@ public class Level implements Drawable, Simulable{
         textures = new LinkedList<>();
         enemies = new EnemiesContainer<>(new LinkedList<>());
         zones = new LinkedList<>();
+        generators = new LinkedList<>();
         textures.add(new LevelBorders(levelSettings));
         textures.add(new Ladder(550, 425, 25, 100));
         textures.add(new Ladder(25, 265, 25, 100));
@@ -61,8 +61,6 @@ public class Level implements Drawable, Simulable{
         textures.add(new Construction(100, 115, 100, 25));
         textures.add(new Construction(0, 115, 100, 25));
 
-        enemies.notifyObserver(new Pair<>(true, new Barrel(50, 115 - 25, 25, 25, levelSettings)));
-
         zones.add(new HorizontalMovementZone(500, 190, 100, 25, DirectionEnums.HorizontalDirection.Right));
         zones.add(new HorizontalMovementZone(0, 365-25, 100, 25, DirectionEnums.HorizontalDirection.Left));
         zones.add(new HorizontalMovementZone(500, 500, 100, 25, DirectionEnums.HorizontalDirection.Right));
@@ -78,6 +76,9 @@ public class Level implements Drawable, Simulable{
 
         zones.add(new DestroyBarrelZone(0, 550, 1, 25));
 
+        generators.add(new BarrelGenerator(50, 115 - 25, 25, 25, levelSettings));
+
+        generators.forEach( e -> e.registerObserver(enemies));
     }
 
 
@@ -85,6 +86,7 @@ public class Level implements Drawable, Simulable{
     public void draw(GraphicsContext gc) {
         textures.forEach( t -> t.draw(gc));
         enemies.forEach( e -> e.draw(gc));
+        generators.forEach( g -> g.draw(gc));
         player.draw(gc);
     }
 
@@ -105,6 +107,7 @@ public class Level implements Drawable, Simulable{
             player.handleCollision(e);
         });
 
+        generators.forEach(EnemyGenerator::generate);
         player.simulate();
     }
 
