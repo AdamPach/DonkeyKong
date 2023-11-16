@@ -4,6 +4,7 @@ import com.adampach.donkeykong.abstraction.Enemy;
 import com.adampach.donkeykong.abstraction.EnemyGenerator;
 import com.adampach.donkeykong.abstraction.Observer;
 import com.adampach.donkeykong.objects.moving.Barrel;
+import com.adampach.donkeykong.providers.RandomIntervalGeneratorProvider;
 import com.adampach.donkeykong.world.LevelSettings;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -15,6 +16,7 @@ import java.util.LinkedList;
 public class BarrelGenerator extends EnemyGenerator
 {
     private final LinkedList<Observer<Pair<Boolean, Enemy>>> observers;
+    private final RandomIntervalGeneratorProvider generatorProvider;
     private final LevelSettings levelSettings;
 
     public BarrelGenerator(
@@ -27,6 +29,7 @@ public class BarrelGenerator extends EnemyGenerator
         super(positionX, positionY, width, height);
         this.levelSettings = levelSettings;
         this.observers = new LinkedList<>();
+        generatorProvider = new RandomIntervalGeneratorProvider(1, 20000);
     }
 
     @Override
@@ -40,17 +43,18 @@ public class BarrelGenerator extends EnemyGenerator
     @Override
     public void generate()
     {
-        observers.forEach( e ->
-        {
-            e.notifyObserver(new Pair<>(
-                    true,
-                    new Barrel(
-                            getPositionX(),
-                            getPositionY(),
-                            getWidth(),
-                            getHeight(),
-                            levelSettings)));
-        });
+        if(generatorProvider.provide())
+            observers.forEach( e ->
+            {
+                e.notifyObserver(new Pair<>(
+                        true,
+                        new Barrel(
+                                getPositionX(),
+                                getPositionY(),
+                                getWidth(),
+                                getHeight(),
+                                levelSettings)));
+            });
     }
 
     @Override
