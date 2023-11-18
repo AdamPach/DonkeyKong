@@ -60,7 +60,7 @@ public class GameController
                 2,
                 (int)canvas.getWidth(),
                 (int)canvas.getHeight(),
-                DirectionEnums.HorizontalDirection.Left);
+                DirectionEnums.HorizontalDirection.Right);
 
         level = new Level(settings, movementProviderWrapper);
         animationTimer = new DrawingThread(canvas, level);

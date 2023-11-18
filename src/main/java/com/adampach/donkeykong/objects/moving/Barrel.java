@@ -11,7 +11,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
-
 public class Barrel extends Enemy
 {
     private final LevelSettings levelSettings;
@@ -47,6 +46,7 @@ public class Barrel extends Enemy
     @Override
     public void simulate()
     {
+        handleLevelBorders();
         handleMovement();
         simulateGravity();
     }
@@ -74,35 +74,33 @@ public class Barrel extends Enemy
         super.handleCollision(collisionable);
     }
 
+    private void handleLevelBorders()
+    {
+        if(getLevelBorderStatusStream()
+                .anyMatch( e -> e == MovingObjectsEnum.LevelBorderStatus.Right))
+        {
+            horizontalMovement = DirectionEnums.HorizontalDirection.Left;
+        }
+        else if (getLevelBorderStatusStream()
+                .anyMatch( e -> e == MovingObjectsEnum.LevelBorderStatus.Left))
+        {
+            horizontalMovement = DirectionEnums.HorizontalDirection.Right;
+        }
+    }
+
     private void handleMovement()
     {
         if(verticalMovement != DirectionEnums.VerticalDirection.None)
             switch (verticalMovement)
             {
-                case Down ->
-                {
-                    this.setPositionY( this.getPositionY() + levelSettings.getDefaultClimbingSpeed());
-                    break;
-                }
-                case Up ->
-                {
-                    this.setPositionY( this.getPositionY() - levelSettings.getDefaultClimbingSpeed());
-                    break;
-                }
+                case Down -> this.setPositionY( this.getPositionY() + levelSettings.getDefaultClimbingSpeed());
+                case Up -> this.setPositionY( this.getPositionY() - levelSettings.getDefaultClimbingSpeed());
             }
         else
             switch (horizontalMovement)
             {
-                case Left ->
-                {
-                    this.setPositionX(this.getPositionX() + levelSettings.getDefaultMovementSpeed());
-                    break;
-                }
-                case Right ->
-                {
-                    this.setPositionX(this.getPositionX() - levelSettings.getDefaultMovementSpeed());
-                    break;
-                }
+                case Left -> this.setPositionX(this.getPositionX() - levelSettings.getDefaultMovementSpeed());
+                case Right -> this.setPositionX(this.getPositionX() + levelSettings.getDefaultMovementSpeed());
             }
     }
 

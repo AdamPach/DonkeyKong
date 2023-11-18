@@ -1,6 +1,5 @@
 package com.adampach.donkeykong.abstraction;
 
-
 import javafx.geometry.Rectangle2D;
 
 public abstract class GameObject implements Collisionable {
@@ -60,5 +59,4 @@ public abstract class GameObject implements Collisionable {
     public boolean intersect(Rectangle2D rectangle) {
         return getRectangle().intersects(rectangle);
     }
-
 }

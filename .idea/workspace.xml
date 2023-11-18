@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Create a EnemyGenerator abstract class and implementation BarrelGenerator which generates new Barrels. This mechanism generates new barrels and send them to enemy container through observer">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/providers/RandomIntervalGeneratorProvider.java" afterDir="false" />
+    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Add way how to randomly generate barrels">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/generators/BarrelGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/generators/BarrelGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/Collisionable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/Collisionable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/moving/Barrel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/moving/Barrel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +137,10 @@
       <workItem from="1699865692290" duration="5647000" />
       <workItem from="1699984129582" duration="1156000" />
       <workItem from="1699988569058" duration="7705000" />
-      <workItem from="1700121581254" duration="4994000" />
+      <workItem from="1700121581254" duration="5554000" />
+      <workItem from="1700127936490" duration="93000" />
+      <workItem from="1700133230032" duration="361000" />
+      <workItem from="1700304125155" duration="1289000" />
     </task>
     <task id="LOCAL-00001" summary="Init the project">
       <option name="closed" value="true" />
@@ -377,7 +382,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700125056801</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Add way how to randomly generate barrels">
+      <option name="closed" value="true" />
+      <created>1700126857970</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1700126857970</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -395,7 +408,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add keyboard handling for moving with player" />
     <MESSAGE value="Add Construction and collision handling with player" />
     <MESSAGE value="Add jump handling and improve the simulation flow" />
     <MESSAGE value="Improve abstraction and remove useless overrides. Add improved intersect to Construction" />
@@ -420,6 +432,7 @@
     <MESSAGE value="Add EnemiesContainer which holds all enemies and handle their creation and deletion" />
     <MESSAGE value="Prepare infrastructure for Barrel generator and more sources of destroy" />
     <MESSAGE value="Create a EnemyGenerator abstract class and implementation BarrelGenerator which generates new Barrels. This mechanism generates new barrels and send them to enemy container through observer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create a EnemyGenerator abstract class and implementation BarrelGenerator which generates new Barrels. This mechanism generates new barrels and send them to enemy container through observer" />
+    <MESSAGE value="Add way how to randomly generate barrels" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add way how to randomly generate barrels" />
   </component>
 </project>

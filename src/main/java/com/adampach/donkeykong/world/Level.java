@@ -61,9 +61,9 @@ public class Level implements Drawable, Simulable{
         textures.add(new Construction(100, 115, 100, 25));
         textures.add(new Construction(0, 115, 100, 25));
 
-        zones.add(new HorizontalMovementZone(500, 190, 100, 25, DirectionEnums.HorizontalDirection.Right));
-        zones.add(new HorizontalMovementZone(0, 365-25, 100, 25, DirectionEnums.HorizontalDirection.Left));
-        zones.add(new HorizontalMovementZone(500, 500, 100, 25, DirectionEnums.HorizontalDirection.Right));
+        zones.add(new HorizontalMovementZone(500, 190, 100, 25, DirectionEnums.HorizontalDirection.Left));
+        zones.add(new HorizontalMovementZone(0, 365-25, 100, 25, DirectionEnums.HorizontalDirection.Right));
+        zones.add(new HorizontalMovementZone(500, 500, 100, 25, DirectionEnums.HorizontalDirection.Left));
 
         zones.add(new VerticalMovementZone(576, 110, 1,1, DirectionEnums.VerticalDirection.Down));
         zones.add(new VerticalMovementZone(550, 215, 25,1, DirectionEnums.VerticalDirection.None));
