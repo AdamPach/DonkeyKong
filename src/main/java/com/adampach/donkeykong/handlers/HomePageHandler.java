@@ -8,7 +8,7 @@ import javafx.event.EventHandler;
 
 import java.util.LinkedList;
 
-public class PlayGameHandler implements EventHandler<ActionEvent>, Subject<Observer<GameEventEnums.GameEvents>> {
+public class HomePageHandler implements EventHandler<ActionEvent>, Subject<Observer<GameEventEnums.GameEvents>> {
     private final LinkedList<Observer<GameEventEnums.GameEvents>> observers = new LinkedList<>();
 
     @Override
@@ -26,6 +26,6 @@ public class PlayGameHandler implements EventHandler<ActionEvent>, Subject<Obser
     @Override
     public void handle(ActionEvent actionEvent)
     {
-        observers.forEach( o -> o.notifyObserver(GameEventEnums.GameEvents.PlayGame));
+        observers.forEach( o -> o.notifyObserver(GameEventEnums.GameEvents.HomePage));
     }
 }

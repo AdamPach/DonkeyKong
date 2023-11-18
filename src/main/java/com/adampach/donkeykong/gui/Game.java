@@ -3,9 +3,10 @@ package com.adampach.donkeykong.gui;
 import com.adampach.donkeykong.abstraction.gui.GuiComponent;
 import com.adampach.donkeykong.abstraction.gui.InteractableGuiComponent;
 import com.adampach.donkeykong.enums.DirectionEnums;
+import com.adampach.donkeykong.enums.GameEventEnums;
+import com.adampach.donkeykong.providers.GameEventProvider;
 import com.adampach.donkeykong.world.Level;
 import com.adampach.donkeykong.world.LevelSettings;
-import com.adampach.donkeykong.wrappers.ButtonEventsProviderWrapper;
 import com.adampach.donkeykong.wrappers.ButtonEventsSubjectsWrapper;
 import com.adampach.donkeykong.wrappers.MovementProviderWrapper;
 import javafx.scene.canvas.Canvas;
@@ -54,6 +55,7 @@ public class Game
                 DirectionEnums.HorizontalDirection.Right);
 
         guiComponent.put(MainMenu.class.getName(), new MainMenu(buttonEventsSubjectsWrapper));
+        guiComponent.put(EnterName.class.getName(), new EnterName(buttonEventsSubjectsWrapper));
 
         levels.add(new Level(settings, movementProviderWrapper));
 
@@ -66,7 +68,7 @@ public class Game
 
     public void drawGame(long timeNow)
     {
-        checkProviders(buttonEventsSubjectsWrapper.getEventsProviders());
+        checkProvider(buttonEventsSubjectsWrapper.getGameEventProvider());
 
         if (timeNow - lastTime > 15_000_000) {
             currentComponent.simulate();
@@ -75,13 +77,26 @@ public class Game
         currentComponent.display(canvas);
     }
 
-    private void checkProviders(ButtonEventsProviderWrapper buttonEventsProviderWrapper)
+    private void checkProvider(GameEventProvider gameEventProvider)
     {
+        GameEventEnums.GameEvents currentEvent = gameEventProvider.provide();
+
+        if(currentEvent == GameEventEnums.GameEvents.None)
+            return;
+
         if(currentComponent instanceof InteractableGuiComponent)
         {
-            if(buttonEventsProviderWrapper.playGameProvider().provide())
+            if(currentEvent == GameEventEnums.GameEvents.PlayGame)
             {
                 setNewCurrentComponent(levels.get(0));
+            }
+            else if (currentEvent == GameEventEnums.GameEvents.SetName)
+            {
+                setNewCurrentComponent(guiComponent.get(EnterName.class.getName()));
+            }
+            else if( currentEvent == GameEventEnums.GameEvents.HomePage)
+            {
+                setNewCurrentComponent(guiComponent.get(MainMenu.class.getName()));
             }
         }
     }
