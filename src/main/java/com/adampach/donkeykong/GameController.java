@@ -10,11 +10,15 @@ import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.layout.AnchorPane;
 
 public class GameController
 {
     @FXML
     private Canvas canvas;
+
+    @FXML
+    private AnchorPane anchorPane;
 
     private Scene scene;
 
@@ -56,7 +60,7 @@ public class GameController
         scene.setOnKeyPressed(keyboardHandler);
         scene.setOnKeyReleased(keyboardHandler);
 
-        game = new Game(canvas, this.movementProviderWrapper);
+        game = new Game(canvas, this.movementProviderWrapper, anchorPane);
 
         animationTimer = new DrawingThread(game);
         animationTimer.start();

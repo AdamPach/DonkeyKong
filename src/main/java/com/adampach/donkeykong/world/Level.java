@@ -1,7 +1,7 @@
 package com.adampach.donkeykong.world;
 
 import com.adampach.donkeykong.abstraction.game.*;
-import com.adampach.donkeykong.abstraction.gui.ILevel;
+import com.adampach.donkeykong.abstraction.gui.GuiComponent;
 import com.adampach.donkeykong.enums.DirectionEnums;
 import com.adampach.donkeykong.objects.generators.BarrelGenerator;
 import com.adampach.donkeykong.objects.moving.Player;
@@ -17,7 +17,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 import java.util.LinkedList;
 
-public class Level extends ILevel {
+public class Level implements GuiComponent {
     private final Player player;
     private final LinkedList<TextureObject> textures;
     private final EnemiesContainer<LinkedList<Enemy>> enemies;
@@ -111,9 +111,11 @@ public class Level extends ILevel {
 
         generators.forEach(EnemyGenerator::generate);
         player.simulate();
+
+        resetSimulationCycle();
     }
 
-    @Override
+
     public void resetSimulationCycle()
     {
         player.resetSimulationCycle();
