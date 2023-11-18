@@ -2,7 +2,9 @@ package com.adampach.donkeykong.world;
 
 import com.adampach.donkeykong.abstraction.game.*;
 import com.adampach.donkeykong.abstraction.gui.GuiComponent;
+import com.adampach.donkeykong.data.LevelSettings;
 import com.adampach.donkeykong.enums.DirectionEnums;
+import com.adampach.donkeykong.handlers.LevelEventsHandler;
 import com.adampach.donkeykong.objects.generators.BarrelGenerator;
 import com.adampach.donkeykong.objects.moving.Player;
 import com.adampach.donkeykong.objects.textures.Construction;
@@ -25,10 +27,10 @@ public class Level implements GuiComponent {
     private final LinkedList<EnemyGenerator> generators;
     private final LevelSettings levelSettings;
 
-    public Level(LevelSettings levelSettings, MovementProviderWrapper movementProviderWrapper)
+    public Level(LevelSettings levelSettings, MovementProviderWrapper movementProviderWrapper, LevelEventsHandler levelEventsHandler)
     {
         this.levelSettings = levelSettings;
-        player = new Player(25, 400, 50, 50, levelSettings, movementProviderWrapper);
+        player = new Player(25, 400, 50, 50, levelSettings, movementProviderWrapper, levelEventsHandler);
         textures = new LinkedList<>();
         enemies = new EnemiesContainer<>(new LinkedList<>());
         zones = new LinkedList<>();

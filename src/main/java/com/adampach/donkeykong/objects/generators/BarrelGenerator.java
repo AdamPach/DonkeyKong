@@ -5,7 +5,7 @@ import com.adampach.donkeykong.abstraction.game.EnemyGenerator;
 import com.adampach.donkeykong.abstraction.Observer;
 import com.adampach.donkeykong.objects.moving.Barrel;
 import com.adampach.donkeykong.providers.RandomIntervalGeneratorProvider;
-import com.adampach.donkeykong.world.LevelSettings;
+import com.adampach.donkeykong.data.LevelSettings;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;

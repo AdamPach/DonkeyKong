@@ -2,11 +2,14 @@ package com.adampach.donkeykong.gui;
 
 import com.adampach.donkeykong.abstraction.gui.GuiComponent;
 import com.adampach.donkeykong.abstraction.gui.InteractableGuiComponent;
+import com.adampach.donkeykong.data.GameInfo;
 import com.adampach.donkeykong.enums.DirectionEnums;
 import com.adampach.donkeykong.enums.GameEventEnums;
+import com.adampach.donkeykong.handlers.LevelEventsHandler;
 import com.adampach.donkeykong.providers.GameEventProvider;
+import com.adampach.donkeykong.providers.LevelEventsObserverProvider;
 import com.adampach.donkeykong.world.Level;
-import com.adampach.donkeykong.world.LevelSettings;
+import com.adampach.donkeykong.data.LevelSettings;
 import com.adampach.donkeykong.wrappers.ButtonEventsSubjectsWrapper;
 import com.adampach.donkeykong.wrappers.MovementProviderWrapper;
 import javafx.scene.canvas.Canvas;
@@ -32,6 +35,12 @@ public class Game
 
     private final ButtonEventsSubjectsWrapper buttonEventsSubjectsWrapper;
 
+    private final GameInfo gameInfo;
+
+    private final LevelEventsHandler levelEventsHandler;
+
+    private final LevelEventsObserverProvider levelEventsObserverProvider;
+
 
     public Game(
             Canvas canvas,
@@ -44,6 +53,12 @@ public class Game
         this.lastTime = -1;
         this.guiComponent = new Hashtable<>();
         buttonEventsSubjectsWrapper = new ButtonEventsSubjectsWrapper();
+        gameInfo = new GameInfo(1);
+
+        levelEventsHandler = new LevelEventsHandler();
+        levelEventsObserverProvider = new LevelEventsObserverProvider();
+
+        levelEventsHandler.registerObserver(levelEventsObserverProvider);
 
         LevelSettings settings = new LevelSettings(
                 -12,
@@ -54,10 +69,10 @@ public class Game
                 (int)canvas.getHeight(),
                 DirectionEnums.HorizontalDirection.Right);
 
-        guiComponent.put(MainMenu.class.getName(), new MainMenu(buttonEventsSubjectsWrapper));
-        guiComponent.put(EnterName.class.getName(), new EnterName(buttonEventsSubjectsWrapper));
+        guiComponent.put(MainMenu.class.getName(), new MainMenu(buttonEventsSubjectsWrapper, gameInfo));
+        guiComponent.put(EnterName.class.getName(), new EnterName(buttonEventsSubjectsWrapper, gameInfo));
 
-        levels.add(new Level(settings, movementProviderWrapper));
+        levels.add(new Level(settings, movementProviderWrapper, levelEventsHandler));
 
         InteractableGuiComponent component = guiComponent.get(MainMenu.class.getName());
 
@@ -80,8 +95,10 @@ public class Game
     private void checkProvider(GameEventProvider gameEventProvider)
     {
         GameEventEnums.GameEvents currentEvent = gameEventProvider.provide();
+        GameEventEnums.LevelEvents currentLevelEvent = levelEventsObserverProvider.provide();
 
-        if(currentEvent == GameEventEnums.GameEvents.None)
+        if(currentEvent == GameEventEnums.GameEvents.None
+                && currentLevelEvent == GameEventEnums.LevelEvents.None)
             return;
 
         if(currentComponent instanceof InteractableGuiComponent)
@@ -95,6 +112,14 @@ public class Game
                 setNewCurrentComponent(guiComponent.get(EnterName.class.getName()));
             }
             else if( currentEvent == GameEventEnums.GameEvents.HomePage)
+            {
+                setNewCurrentComponent(guiComponent.get(MainMenu.class.getName()));
+            }
+        }
+
+        if(currentComponent instanceof Level)
+        {
+            if(currentLevelEvent == GameEventEnums.LevelEvents.GameOver)
             {
                 setNewCurrentComponent(guiComponent.get(MainMenu.class.getName()));
             }

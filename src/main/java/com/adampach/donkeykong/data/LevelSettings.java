@@ -1,4 +1,4 @@
-package com.adampach.donkeykong.world;
+package com.adampach.donkeykong.data;
 
 import com.adampach.donkeykong.enums.DirectionEnums;
 

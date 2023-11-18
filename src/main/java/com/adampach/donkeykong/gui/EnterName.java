@@ -1,24 +1,30 @@
 package com.adampach.donkeykong.gui;
 
 import com.adampach.donkeykong.abstraction.gui.InteractableGuiComponent;
+import com.adampach.donkeykong.data.GameInfo;
 import com.adampach.donkeykong.wrappers.ButtonEventsSubjectsWrapper;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
 import static com.adampach.donkeykong.assets.FontAssets.Arcade24;
+import static com.adampach.donkeykong.assets.FontAssets.Arcade72;
 
 public class EnterName implements InteractableGuiComponent
 {
     private final TextField nameFiled;
     private final Button homeButton;
+    private final Label setNameText;
+    private final GameInfo gameInfo;
 
-    public EnterName(ButtonEventsSubjectsWrapper subjectsWrapper)
+    public EnterName(ButtonEventsSubjectsWrapper subjectsWrapper, GameInfo gameInfo)
     {
+        this.gameInfo = gameInfo;
         this.nameFiled = new TextField();
 
         this.nameFiled.setFont(Arcade24);
@@ -31,6 +37,11 @@ public class EnterName implements InteractableGuiComponent
         this.homeButton.setLayoutY(250);
         this.homeButton.setFont(Arcade24);
         this.homeButton.setOnAction(subjectsWrapper.getHomePageHandler());
+
+        setNameText = new Label("Set your name");
+        setNameText.setLayoutX(150);
+        setNameText.setLayoutY(100);
+        setNameText.setFont(Arcade72);
     }
 
     @Override
@@ -49,18 +60,18 @@ public class EnterName implements InteractableGuiComponent
     @Override
     public void simulate()
     {
-
+        gameInfo.setUserName(nameFiled.getText());
     }
 
     @Override
     public void showComponents(AnchorPane anchorPane)
     {
-        anchorPane.getChildren().addAll(nameFiled, homeButton);
+        anchorPane.getChildren().addAll(nameFiled, homeButton, setNameText);
     }
 
     @Override
     public void clearComponents(AnchorPane anchorPane)
     {
-        anchorPane.getChildren().removeAll(nameFiled, homeButton);
+        anchorPane.getChildren().removeAll(nameFiled, homeButton, setNameText);
     }
 }

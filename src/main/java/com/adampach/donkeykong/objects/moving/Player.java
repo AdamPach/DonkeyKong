@@ -3,9 +3,11 @@ package com.adampach.donkeykong.objects.moving;
 import com.adampach.donkeykong.abstraction.game.Collisionable;
 import com.adampach.donkeykong.abstraction.game.MovingObject;
 import com.adampach.donkeykong.enums.DirectionEnums;
+import com.adampach.donkeykong.enums.GameEventEnums;
 import com.adampach.donkeykong.enums.MovingObjectsEnum;
+import com.adampach.donkeykong.handlers.LevelEventsHandler;
 import com.adampach.donkeykong.wrappers.MovementProviderWrapper;
-import com.adampach.donkeykong.world.LevelSettings;
+import com.adampach.donkeykong.data.LevelSettings;
 import javafx.scene.canvas.GraphicsContext;
 
 import static com.adampach.donkeykong.assets.ImageAssets.*;
@@ -15,16 +17,18 @@ public class Player extends MovingObject
 {
     private final LevelSettings levelSettings;
     private final MovementProviderWrapper movementProviderWrapper;
+    private final LevelEventsHandler levelEventsHandler;
     private DirectionEnums.HorizontalDirection lastHorizontalDirection;
     private boolean isJumping;
     private int gravityIndex;
     private int maxGravityIndex;
 
 
-    public Player(int positionX, int positionY, int width, int height, LevelSettings levelSettings, MovementProviderWrapper movementProviderWrapper) {
+    public Player(int positionX, int positionY, int width, int height, LevelSettings levelSettings, MovementProviderWrapper movementProviderWrapper, LevelEventsHandler levelEventsHandler) {
         super(positionX, positionY, width, height);
         this.levelSettings = levelSettings;
         this.movementProviderWrapper = movementProviderWrapper;
+        this.levelEventsHandler = levelEventsHandler;
         gravityIndex = 0;
         lastHorizontalDirection = DirectionEnums.HorizontalDirection.None;
         isJumping = false;
@@ -52,6 +56,9 @@ public class Player extends MovingObject
     {
         if(!collisionable.intersect(this.getRectangle()))
             return;
+
+        if(collisionable instanceof Barrel)
+            levelEventsHandler.notifyWithLevelEvent(GameEventEnums.LevelEvents.GameOver);
 
         super.handleCollision(collisionable);
     }

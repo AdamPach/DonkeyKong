@@ -8,7 +8,7 @@ import com.adampach.donkeykong.enums.MovingObjectsEnum;
 import com.adampach.donkeykong.objects.zones.DestroyBarrelZone;
 import com.adampach.donkeykong.objects.zones.HorizontalMovementZone;
 import com.adampach.donkeykong.objects.zones.VerticalMovementZone;
-import com.adampach.donkeykong.world.LevelSettings;
+import com.adampach.donkeykong.data.LevelSettings;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
