@@ -1,6 +1,6 @@
 package com.adampach.donkeykong.objects.textures;
 
-import com.adampach.donkeykong.abstraction.TextureObject;
+import com.adampach.donkeykong.abstraction.game.TextureObject;
 import com.adampach.donkeykong.world.LevelSettings;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;

@@ -4,11 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Add way how to randomly generate barrels">
+    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Handle barrel collisions with level borders">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/gui/Displayable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/gui/ILevel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/gui/Playable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/Collisionable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/Collisionable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/DrawingThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/DrawingThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/Collisionable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/game/Collisionable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/Drawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/game/Drawable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/game/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/EnemyGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/game/EnemyGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/game/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/MovingObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/game/MovingObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/Simulable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/game/Simulable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/TextureObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/game/TextureObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/Zone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/game/Zone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/generators/BarrelGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/generators/BarrelGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/moving/Barrel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/moving/Barrel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/moving/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/moving/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/textures/Construction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/textures/Construction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/textures/Ladder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/textures/Ladder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/textures/LevelBorders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/textures/LevelBorders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/zones/DestroyBarrelZone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/zones/DestroyBarrelZone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/zones/HorizontalMovementZone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/zones/HorizontalMovementZone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/zones/VerticalMovementZone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/zones/VerticalMovementZone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/EnemiesContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/EnemiesContainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -140,7 +162,7 @@
       <workItem from="1700121581254" duration="5554000" />
       <workItem from="1700127936490" duration="93000" />
       <workItem from="1700133230032" duration="361000" />
-      <workItem from="1700304125155" duration="1289000" />
+      <workItem from="1700304125155" duration="3930000" />
     </task>
     <task id="LOCAL-00001" summary="Init the project">
       <option name="closed" value="true" />
@@ -390,7 +412,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700126857970</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Handle barrel collisions with level borders">
+      <option name="closed" value="true" />
+      <created>1700305816985</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1700305816985</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -408,7 +438,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add Construction and collision handling with player" />
     <MESSAGE value="Add jump handling and improve the simulation flow" />
     <MESSAGE value="Improve abstraction and remove useless overrides. Add improved intersect to Construction" />
     <MESSAGE value="Add Ladder class" />
@@ -433,6 +462,7 @@
     <MESSAGE value="Prepare infrastructure for Barrel generator and more sources of destroy" />
     <MESSAGE value="Create a EnemyGenerator abstract class and implementation BarrelGenerator which generates new Barrels. This mechanism generates new barrels and send them to enemy container through observer" />
     <MESSAGE value="Add way how to randomly generate barrels" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add way how to randomly generate barrels" />
+    <MESSAGE value="Handle barrel collisions with level borders" />
+    <option name="LAST_COMMIT_MESSAGE" value="Handle barrel collisions with level borders" />
   </component>
 </project>

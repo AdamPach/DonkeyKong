@@ -1,4 +1,4 @@
-package com.adampach.donkeykong.abstraction;
+package com.adampach.donkeykong.abstraction.game;
 
 public interface Simulable {
     void simulate();

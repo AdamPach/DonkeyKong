@@ -1,4 +1,4 @@
-package com.adampach.donkeykong.abstraction;
+package com.adampach.donkeykong.abstraction.game;
 
 import com.adampach.donkeykong.enums.MovingObjectsEnum;
 import com.adampach.donkeykong.objects.moving.Barrel;

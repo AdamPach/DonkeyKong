@@ -1,4 +1,4 @@
-package com.adampach.donkeykong.abstraction;
+package com.adampach.donkeykong.abstraction.game;
 
 import javafx.geometry.Rectangle2D;
 
@@ -9,7 +9,8 @@ public abstract class GameObject implements Collisionable {
     private int width;
     private int height;
 
-    public GameObject(int positionX, int positionY, int width, int height) {
+    public GameObject(int positionX, int positionY, int width, int height)
+    {
         this.positionX = positionX;
         this.positionY = positionY;
         this.width = width;

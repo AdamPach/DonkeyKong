@@ -1,31 +1,20 @@
 package com.adampach.donkeykong;
 
+import com.adampach.donkeykong.gui.Game;
 import com.adampach.donkeykong.world.Level;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
 public class DrawingThread extends AnimationTimer {
-    private final Level level;
-    private final Canvas canvas;
-    private final GraphicsContext graphicsContext;
-    private long lastTime;
+    private final Game game;
 
-    public DrawingThread(Canvas canvas, Level level) {
-        this.canvas = canvas;
-        this.graphicsContext = canvas.getGraphicsContext2D();
-        this.level = level;
-        lastTime = -1;
+    public DrawingThread(Game game) {
+        this.game = game;
     }
-
 
     @Override
     public void handle(long now) {
-        if (now - lastTime > 15_000_000) {
-            level.simulate();
-            level.resetSimulationCycle();
-            lastTime = now;
-        }
-        level.draw(graphicsContext);
+        game.drawGame(now);
     }
 }

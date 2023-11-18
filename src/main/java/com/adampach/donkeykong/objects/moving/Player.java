@@ -1,6 +1,7 @@
 package com.adampach.donkeykong.objects.moving;
 
-import com.adampach.donkeykong.abstraction.*;
+import com.adampach.donkeykong.abstraction.game.Collisionable;
+import com.adampach.donkeykong.abstraction.game.MovingObject;
 import com.adampach.donkeykong.enums.DirectionEnums;
 import com.adampach.donkeykong.enums.MovingObjectsEnum;
 import com.adampach.donkeykong.wrappers.MovementProviderWrapper;

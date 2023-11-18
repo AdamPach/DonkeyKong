@@ -1,6 +1,6 @@
 package com.adampach.donkeykong.world;
 
-import com.adampach.donkeykong.abstraction.Enemy;
+import com.adampach.donkeykong.abstraction.game.Enemy;
 import com.adampach.donkeykong.abstraction.Observer;
 import javafx.util.Pair;
 

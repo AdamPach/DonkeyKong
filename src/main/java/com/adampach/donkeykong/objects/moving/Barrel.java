@@ -1,6 +1,8 @@
 package com.adampach.donkeykong.objects.moving;
 
-import com.adampach.donkeykong.abstraction.*;
+import com.adampach.donkeykong.abstraction.game.Collisionable;
+import com.adampach.donkeykong.abstraction.game.Enemy;
+import com.adampach.donkeykong.abstraction.game.Zone;
 import com.adampach.donkeykong.enums.DirectionEnums;
 import com.adampach.donkeykong.enums.MovingObjectsEnum;
 import com.adampach.donkeykong.objects.zones.DestroyBarrelZone;

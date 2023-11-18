@@ -1,7 +1,7 @@
 package com.adampach.donkeykong.world;
 
-import com.adampach.donkeykong.abstraction.*;
-
+import com.adampach.donkeykong.abstraction.game.*;
+import com.adampach.donkeykong.abstraction.gui.ILevel;
 import com.adampach.donkeykong.enums.DirectionEnums;
 import com.adampach.donkeykong.objects.generators.BarrelGenerator;
 import com.adampach.donkeykong.objects.moving.Player;
@@ -12,11 +12,12 @@ import com.adampach.donkeykong.objects.zones.DestroyBarrelZone;
 import com.adampach.donkeykong.objects.zones.HorizontalMovementZone;
 import com.adampach.donkeykong.objects.zones.VerticalMovementZone;
 import com.adampach.donkeykong.wrappers.MovementProviderWrapper;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
 import java.util.LinkedList;
 
-public class Level implements Drawable, Simulable{
+public class Level extends ILevel {
     private final Player player;
     private final LinkedList<TextureObject> textures;
     private final EnemiesContainer<LinkedList<Enemy>> enemies;
@@ -81,9 +82,10 @@ public class Level implements Drawable, Simulable{
         generators.forEach( e -> e.registerObserver(enemies));
     }
 
-
     @Override
-    public void draw(GraphicsContext gc) {
+    public void display(Canvas canvas)
+    {
+        GraphicsContext gc = canvas.getGraphicsContext2D();
         textures.forEach( t -> t.draw(gc));
         enemies.forEach( e -> e.draw(gc));
         generators.forEach( g -> g.draw(gc));
@@ -112,7 +114,8 @@ public class Level implements Drawable, Simulable{
     }
 
     @Override
-    public void resetSimulationCycle() {
+    public void resetSimulationCycle()
+    {
         player.resetSimulationCycle();
         enemies.forEach(Enemy::resetSimulationCycle);
         enemies.clean();

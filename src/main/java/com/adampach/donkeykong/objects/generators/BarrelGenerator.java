@@ -1,7 +1,7 @@
 package com.adampach.donkeykong.objects.generators;
 
-import com.adampach.donkeykong.abstraction.Enemy;
-import com.adampach.donkeykong.abstraction.EnemyGenerator;
+import com.adampach.donkeykong.abstraction.game.Enemy;
+import com.adampach.donkeykong.abstraction.game.EnemyGenerator;
 import com.adampach.donkeykong.abstraction.Observer;
 import com.adampach.donkeykong.objects.moving.Barrel;
 import com.adampach.donkeykong.providers.RandomIntervalGeneratorProvider;

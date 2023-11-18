@@ -1,6 +1,6 @@
 package com.adampach.donkeykong.objects.zones;
 
-import com.adampach.donkeykong.abstraction.Zone;
+import com.adampach.donkeykong.abstraction.game.Zone;
 
 public class DestroyBarrelZone extends Zone<Boolean> {
     public DestroyBarrelZone(int positionX, int positionY, int width, int height) {

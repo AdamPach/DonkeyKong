@@ -1,10 +1,12 @@
-package com.adampach.donkeykong.abstraction;
+package com.adampach.donkeykong.abstraction.game;
 
+import com.adampach.donkeykong.abstraction.Observer;
+import com.adampach.donkeykong.abstraction.Subject;
 import javafx.util.Pair;
 
 import java.util.LinkedList;
 
-public abstract class Enemy extends MovingObject implements Subject<Observer<Pair<Boolean, Enemy>>>{
+public abstract class Enemy extends MovingObject implements Subject<Observer<Pair<Boolean, Enemy>>> {
 
     private LinkedList<Observer<Pair<Boolean, Enemy>>> observers;
 

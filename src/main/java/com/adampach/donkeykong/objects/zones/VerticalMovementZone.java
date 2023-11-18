@@ -1,6 +1,6 @@
 package com.adampach.donkeykong.objects.zones;
 
-import com.adampach.donkeykong.abstraction.Zone;
+import com.adampach.donkeykong.abstraction.game.Zone;
 import com.adampach.donkeykong.enums.DirectionEnums;
 
 public class VerticalMovementZone extends Zone<DirectionEnums.VerticalDirection>
