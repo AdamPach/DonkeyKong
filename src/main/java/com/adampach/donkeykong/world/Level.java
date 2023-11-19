@@ -106,7 +106,6 @@ public class Level implements GuiComponent {
         resetSimulationCycle();
     }
 
-
     public void resetSimulationCycle()
     {
         player.resetSimulationCycle();
@@ -117,5 +116,9 @@ public class Level implements GuiComponent {
     public void clearEnemies()
     {
         enemies.clear();
+    }
+
+    public int getCurrentScore() {
+        return currentScore;
     }
 }

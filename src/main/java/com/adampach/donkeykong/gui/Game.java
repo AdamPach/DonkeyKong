@@ -56,7 +56,6 @@ public class Game
         this.lastTime = -1;
         this.guiComponent = new Hashtable<>();
         buttonEventsSubjectsWrapper = new ButtonEventsSubjectsWrapper();
-        gameInfo = new GameInfo(1);
 
         levelEventsHandler = new LevelEventsHandler();
         levelEventsObserverProvider = new LevelEventsObserverProvider();
@@ -77,14 +76,24 @@ public class Game
                 .addCyclesToDecrease(100)
                 .addDecreaseAtOnce(200);
 
-        guiComponent.put(MainMenu.class.getName(), new MainMenu(buttonEventsSubjectsWrapper, gameInfo));
-        guiComponent.put(EnterName.class.getName(), new EnterName(buttonEventsSubjectsWrapper, gameInfo));
-
         levels.add(
                     LevelDefinitions.getLevelOneBuilder(settingsBuilder.build())
                         .addMovementProviders(movementProviderWrapper)
                         .addLevelEventHandler(levelEventsHandler)
         );
+
+        levels.add(
+                LevelDefinitions.getLevelOneBuilder(settingsBuilder.build())
+                        .addMovementProviders(movementProviderWrapper)
+                        .addLevelEventHandler(levelEventsHandler)
+        );
+
+        gameInfo = new GameInfo(levels.size());
+
+        guiComponent.put(MainMenu.class.getName(), new MainMenu(buttonEventsSubjectsWrapper, gameInfo));
+        guiComponent.put(EnterName.class.getName(), new EnterName(buttonEventsSubjectsWrapper, gameInfo));
+        guiComponent.put(PickLevel.class.getName(), new PickLevel(buttonEventsSubjectsWrapper, gameInfo));
+
 
         InteractableGuiComponent component = guiComponent.get(MainMenu.class.getName());
 
@@ -117,7 +126,7 @@ public class Game
         {
             if(currentEvent == GameEventEnums.GameEvents.PlayGame)
             {
-                setNewCurrentComponent(levels.get(0).build());
+                setNewCurrentComponent(guiComponent.get(PickLevel.class.getName()));
             }
             else if (currentEvent == GameEventEnums.GameEvents.SetName)
             {
@@ -126,6 +135,10 @@ public class Game
             else if( currentEvent == GameEventEnums.GameEvents.HomePage)
             {
                 setNewCurrentComponent(guiComponent.get(MainMenu.class.getName()));
+            }
+            else if( currentEvent == GameEventEnums.GameEvents.StartLevel)
+            {
+                setNewCurrentComponent(levels.get(gameInfo.getCurrentLevel() - 1).build());
             }
         }
 
@@ -141,6 +154,7 @@ public class Game
             }
             else if (currentLevelEvent == GameEventEnums.LevelEvents.Peach)
             {
+                gameInfo.setScoreForCurrentLevel(((Level)currentComponent).getCurrentScore());
                 setNewCurrentComponent(guiComponent.get(MainMenu.class.getName()));
             }
         }

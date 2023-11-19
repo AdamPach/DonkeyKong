@@ -3,6 +3,7 @@ package com.adampach.donkeykong.wrappers;
 import com.adampach.donkeykong.handlers.HomePageHandler;
 import com.adampach.donkeykong.handlers.PlayGameHandler;
 import com.adampach.donkeykong.handlers.SetNameHandler;
+import com.adampach.donkeykong.handlers.StartLevelHandler;
 import com.adampach.donkeykong.providers.GameEventProvider;
 
 public class ButtonEventsSubjectsWrapper
@@ -14,6 +15,8 @@ public class ButtonEventsSubjectsWrapper
     private final SetNameHandler setNameHandler;
 
     private final GameEventProvider gameEventProvider;
+
+    private final StartLevelHandler startLevelHandler;
 
     public ButtonEventsSubjectsWrapper()
     {
@@ -27,6 +30,9 @@ public class ButtonEventsSubjectsWrapper
 
         setNameHandler = new SetNameHandler();
         setNameHandler.registerObserver(gameEventProvider);
+
+        startLevelHandler = new StartLevelHandler();
+        startLevelHandler.registerObserver(gameEventProvider);
     }
 
     public PlayGameHandler getPlayGameHandler() {
@@ -43,5 +49,9 @@ public class ButtonEventsSubjectsWrapper
 
     public GameEventProvider getGameEventProvider() {
         return gameEventProvider;
+    }
+
+    public StartLevelHandler getStartLevelHandler() {
+        return startLevelHandler;
     }
 }
