@@ -10,6 +10,7 @@ import com.adampach.donkeykong.geometry.Rectangle;
 import com.adampach.donkeykong.handlers.LevelEventsHandler;
 import com.adampach.donkeykong.providers.GameEventProvider;
 import com.adampach.donkeykong.providers.LevelEventsObserverProvider;
+import com.adampach.donkeykong.statics.LevelDefinitions;
 import com.adampach.donkeykong.world.Level;
 import com.adampach.donkeykong.data.LevelSettings;
 import com.adampach.donkeykong.wrappers.ButtonEventsSubjectsWrapper;
@@ -78,24 +79,7 @@ public class Game
         guiComponent.put(EnterName.class.getName(), new EnterName(buttonEventsSubjectsWrapper, gameInfo));
 
         levels.add(
-                LevelBuilder.CreateBuilder(settings)
-                        .addConstruction(new Rectangle2D(0, 580, 80, 20))
-                        .addConstruction(new Rectangle2D(80, 575, 80, 20))
-                        .addConstruction(new Rectangle2D(160, 570, 80, 20))
-                        .addConstruction(new Rectangle2D(240, 565, 80, 20))
-                        .addConstruction(new Rectangle2D(320, 560, 80, 20))
-                        .addConstruction(new Rectangle2D(400, 555, 80, 20))
-                        .addConstruction(new Rectangle2D(480, 550, 120, 20))
-                        .addConstruction(new Rectangle2D(480, 460, 80, 20))
-                        .addConstruction(new Rectangle2D(400, 455, 80, 20))
-                        .addConstruction(new Rectangle2D(320, 450, 80, 20))
-                        .addConstruction(new Rectangle2D(240, 445, 80, 20))
-                        .addConstruction(new Rectangle2D(160, 440, 80, 20))
-                        .addConstruction(new Rectangle2D(80, 435, 80, 20))
-                        .addConstruction(new Rectangle2D(0, 430, 80, 20))
-                        .addLadder(new Rectangle2D(540, 460, 20, 90))
-                        .addDestroyBarrelZone(new Rectangle2D(0, 579, 1,1))
-                        .addPlayerSpawnPoint(new Point2D(10, 550))
+                    LevelDefinitions.getLevelOneBuilder(settings)
                         .addMovementProviders(movementProviderWrapper)
                         .addLevelEventHandler(levelEventsHandler)
         );
