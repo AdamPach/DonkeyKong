@@ -24,13 +24,12 @@ public class Barrel extends Enemy
     public Barrel(
             int positionX,
             int positionY,
-            int width,
-            int height,
+            DirectionEnums.HorizontalDirection initDirection,
             LevelSettings levelSettings)
     {
-        super(positionX, positionY, width, height);
+        super(positionX, positionY, (int)levelSettings.getDefaultBarrelSize().width(),  (int)levelSettings.getDefaultBarrelSize().height());
         this.levelSettings = levelSettings;
-        horizontalMovement = this.levelSettings.getFirstBarrelDirection();
+        horizontalMovement = initDirection;
         verticalMovement = DirectionEnums.VerticalDirection.None;
         gravityIndex = 0;
         resetSimulationCycle();

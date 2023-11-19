@@ -12,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import javafx.scene.text.TextAlignment;
 
 import static com.adampach.donkeykong.assets.FontAssets.Arcade24;
 import static com.adampach.donkeykong.assets.FontAssets.Arcade72;

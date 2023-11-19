@@ -1,6 +1,7 @@
 package com.adampach.donkeykong.data;
 
 import com.adampach.donkeykong.enums.DirectionEnums;
+import com.adampach.donkeykong.geometry.Rectangle;
 
 public class LevelSettings
 {
@@ -11,7 +12,7 @@ public class LevelSettings
     private final int levelWidth;
     private final int levelHeight;
     private final DirectionEnums.HorizontalDirection firstBarrelDirection;
-
+    private final Rectangle defaultBarrelSize;
     public LevelSettings(
             int defaultJumpGravity,
             int defaultMaxGravityIndex,
@@ -19,7 +20,8 @@ public class LevelSettings
             int defaultClimbingSpeed,
             int levelWidth,
             int levelHeight,
-            DirectionEnums.HorizontalDirection firstBarrelDirection) {
+            DirectionEnums.HorizontalDirection firstBarrelDirection,
+            Rectangle defaultBarrelSize) {
         this.defaultJumpGravity = defaultJumpGravity;
         this.defaultMaxGravityIndex = defaultMaxGravityIndex;
         this.defaultMovementSpeed = defaultMovementSpeed;
@@ -28,6 +30,7 @@ public class LevelSettings
         this.levelWidth = levelWidth;
         this.levelHeight = levelHeight;
         this.firstBarrelDirection = firstBarrelDirection;
+        this.defaultBarrelSize = defaultBarrelSize;
     }
 
     public int getDefaultMaxGravityIndex() {
@@ -50,11 +53,11 @@ public class LevelSettings
         return defaultMovementSpeed;
     }
 
-    public DirectionEnums.HorizontalDirection getFirstBarrelDirection() {
-        return firstBarrelDirection;
-    }
-
     public int getDefaultJumpGravity() {
         return defaultJumpGravity;
+    }
+
+    public Rectangle getDefaultBarrelSize() {
+        return defaultBarrelSize;
     }
 }

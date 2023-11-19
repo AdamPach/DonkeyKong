@@ -2,9 +2,11 @@ package com.adampach.donkeykong.gui;
 
 import com.adampach.donkeykong.abstraction.gui.GuiComponent;
 import com.adampach.donkeykong.abstraction.gui.InteractableGuiComponent;
+import com.adampach.donkeykong.builders.LevelBuilder;
 import com.adampach.donkeykong.data.GameInfo;
 import com.adampach.donkeykong.enums.DirectionEnums;
 import com.adampach.donkeykong.enums.GameEventEnums;
+import com.adampach.donkeykong.geometry.Rectangle;
 import com.adampach.donkeykong.handlers.LevelEventsHandler;
 import com.adampach.donkeykong.providers.GameEventProvider;
 import com.adampach.donkeykong.providers.LevelEventsObserverProvider;
@@ -12,6 +14,8 @@ import com.adampach.donkeykong.world.Level;
 import com.adampach.donkeykong.data.LevelSettings;
 import com.adampach.donkeykong.wrappers.ButtonEventsSubjectsWrapper;
 import com.adampach.donkeykong.wrappers.MovementProviderWrapper;
+import javafx.geometry.Point2D;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.AnchorPane;
 
@@ -25,7 +29,7 @@ public class Game
 
     private final AnchorPane anchorPane;
 
-    private final ArrayList<GuiComponent> levels;
+    private final ArrayList<LevelBuilder> levels;
 
     private final Dictionary<String, InteractableGuiComponent> guiComponent;
 
@@ -67,12 +71,34 @@ public class Game
                 2,
                 (int)canvas.getWidth(),
                 (int)canvas.getHeight(),
-                DirectionEnums.HorizontalDirection.Right);
+                DirectionEnums.HorizontalDirection.Right,
+                new Rectangle(20,20));
 
         guiComponent.put(MainMenu.class.getName(), new MainMenu(buttonEventsSubjectsWrapper, gameInfo));
         guiComponent.put(EnterName.class.getName(), new EnterName(buttonEventsSubjectsWrapper, gameInfo));
 
-        levels.add(new Level(settings, movementProviderWrapper, levelEventsHandler));
+        levels.add(
+                LevelBuilder.CreateBuilder(settings)
+                        .addConstruction(new Rectangle2D(0, 580, 80, 20))
+                        .addConstruction(new Rectangle2D(80, 575, 80, 20))
+                        .addConstruction(new Rectangle2D(160, 570, 80, 20))
+                        .addConstruction(new Rectangle2D(240, 565, 80, 20))
+                        .addConstruction(new Rectangle2D(320, 560, 80, 20))
+                        .addConstruction(new Rectangle2D(400, 555, 80, 20))
+                        .addConstruction(new Rectangle2D(480, 550, 120, 20))
+                        .addConstruction(new Rectangle2D(480, 460, 80, 20))
+                        .addConstruction(new Rectangle2D(400, 455, 80, 20))
+                        .addConstruction(new Rectangle2D(320, 450, 80, 20))
+                        .addConstruction(new Rectangle2D(240, 445, 80, 20))
+                        .addConstruction(new Rectangle2D(160, 440, 80, 20))
+                        .addConstruction(new Rectangle2D(80, 435, 80, 20))
+                        .addConstruction(new Rectangle2D(0, 430, 80, 20))
+                        .addLadder(new Rectangle2D(540, 460, 20, 90))
+                        .addDestroyBarrelZone(new Rectangle2D(0, 579, 1,1))
+                        .addPlayerSpawnPoint(new Point2D(10, 550))
+                        .addMovementProviders(movementProviderWrapper)
+                        .addLevelEventHandler(levelEventsHandler)
+        );
 
         InteractableGuiComponent component = guiComponent.get(MainMenu.class.getName());
 
@@ -105,7 +131,7 @@ public class Game
         {
             if(currentEvent == GameEventEnums.GameEvents.PlayGame)
             {
-                setNewCurrentComponent(levels.get(0));
+                setNewCurrentComponent(levels.get(0).build());
             }
             else if (currentEvent == GameEventEnums.GameEvents.SetName)
             {

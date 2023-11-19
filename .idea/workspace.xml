@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Handle Player collision with Barrel">
+    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Center all javafx elements in gui">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/abstraction/Builder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/builders/LevelBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/geometry/Rectangle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/data/LevelSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/data/LevelSettings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/EnterName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/EnterName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/adampach/donkeykong/GameView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/adampach/donkeykong/GameView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/generators/BarrelGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/generators/BarrelGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/moving/Barrel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/moving/Barrel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +146,7 @@
       <workItem from="1700127936490" duration="93000" />
       <workItem from="1700133230032" duration="361000" />
       <workItem from="1700304125155" duration="19186000" />
-      <workItem from="1700383414646" duration="1407000" />
+      <workItem from="1700383414646" duration="7402000" />
     </task>
     <task id="LOCAL-00001" summary="Init the project">
       <option name="closed" value="true" />
@@ -430,7 +436,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700323864718</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Center all javafx elements in gui">
+      <option name="closed" value="true" />
+      <created>1700385039431</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1700385039431</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -448,7 +462,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Remove some unused imports" />
     <MESSAGE value="Add reworked vertical movement" />
     <MESSAGE value="Make Provider more abstract and split Key handling to more classes" />
     <MESSAGE value="Add border handling" />
@@ -473,6 +486,7 @@
     <MESSAGE value="Start building a start gui for the user" />
     <MESSAGE value="Add set name menu" />
     <MESSAGE value="Handle Player collision with Barrel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Handle Player collision with Barrel" />
+    <MESSAGE value="Center all javafx elements in gui" />
+    <option name="LAST_COMMIT_MESSAGE" value="Center all javafx elements in gui" />
   </component>
 </project>
