@@ -7,6 +7,7 @@ import com.adampach.donkeykong.builders.LevelSettingsBuilder;
 import com.adampach.donkeykong.data.GameInfo;
 import com.adampach.donkeykong.data.LevelSettings;
 import com.adampach.donkeykong.enums.GameEventEnums;
+import com.adampach.donkeykong.files.ScoreFileManipulator;
 import com.adampach.donkeykong.handlers.LevelEventsHandler;
 import com.adampach.donkeykong.providers.GameEventProvider;
 import com.adampach.donkeykong.providers.LevelEventsObserverProvider;
@@ -44,6 +45,8 @@ public class Game
 
     private final LevelEventsObserverProvider levelEventsObserverProvider;
 
+    private final ScoreFileManipulator scoreFileManipulator;
+
 
     public Game(
             Canvas canvas,
@@ -56,6 +59,7 @@ public class Game
         this.lastTime = -1;
         this.guiComponent = new Hashtable<>();
         buttonEventsSubjectsWrapper = new ButtonEventsSubjectsWrapper();
+        scoreFileManipulator = new ScoreFileManipulator("score.csv");
 
         levelEventsHandler = new LevelEventsHandler();
         levelEventsObserverProvider = new LevelEventsObserverProvider();
@@ -69,6 +73,7 @@ public class Game
         tryAddLevel(LevelDefinitions::getLevelOneBuilder, settingsBuilder, movementProviderWrapper);
 
         gameInfo = new GameInfo(levels.size());
+        gameInfo.readDataFromFile(scoreFileManipulator);
 
         guiComponent.put(MainMenu.class.getName(), new MainMenu(buttonEventsSubjectsWrapper, gameInfo));
         guiComponent.put(EnterName.class.getName(), new EnterName(buttonEventsSubjectsWrapper, gameInfo));
@@ -135,6 +140,7 @@ public class Game
             else if (currentLevelEvent == GameEventEnums.LevelEvents.Peach)
             {
                 gameInfo.setScoreForCurrentLevel(((Level)currentComponent).getCurrentScore());
+                gameInfo.writeCurrentData(scoreFileManipulator);
                 setNewCurrentComponent(guiComponent.get(LevelPassed.class.getName()));
             }
         }

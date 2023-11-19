@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Add pick level menu">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/LevelPassed.java" afterDir="false" />
+    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Add level passed menu">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/files/ScoreFileManipulator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/data/GameInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/data/GameInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/statics/LevelDefinitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/statics/LevelDefinitions.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,6 +141,7 @@
       <workItem from="1700133230032" duration="361000" />
       <workItem from="1700304125155" duration="19186000" />
       <workItem from="1700383414646" duration="28525000" />
+      <workItem from="1700415366979" duration="2336000" />
     </task>
     <task id="LOCAL-00001" summary="Init the project">
       <option name="closed" value="true" />
@@ -495,7 +495,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700412922968</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Add level passed menu">
+      <option name="closed" value="true" />
+      <created>1700415407616</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1700415407616</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -513,7 +521,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add DestroyBarrelZone for deleting barrels" />
     <MESSAGE value="Remove ladder dependency from Barrel" />
     <MESSAGE value="Add mario assets and display them instead of the rectangle" />
     <MESSAGE value="Set maximum rendering speed" />
@@ -538,6 +545,7 @@
     <MESSAGE value="Add LevelSettingsBuilder for easier settings creation" />
     <MESSAGE value="Show score and add models for saving game status" />
     <MESSAGE value="Add pick level menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add pick level menu" />
+    <MESSAGE value="Add level passed menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add level passed menu" />
   </component>
 </project>

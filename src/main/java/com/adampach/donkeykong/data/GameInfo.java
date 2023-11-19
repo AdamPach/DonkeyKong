@@ -1,13 +1,16 @@
 package com.adampach.donkeykong.data;
 
-import java.util.Dictionary;
+import com.adampach.donkeykong.files.ScoreFileManipulator;
+
 import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class GameInfo
 {
     private PlayerInfo currentPlayer;
-    private final Dictionary<String, PlayerInfo> players;
+    private final Map<String, PlayerInfo> players;
     private int currentLevel;
     private final int numberOfLevels;
 
@@ -33,7 +36,6 @@ public class GameInfo
             tmp.setUsername(userName);
             players.put(userName, tmp);
         }
-        System.out.println(players.size());
         currentPlayer = tmp;
     }
 
@@ -72,5 +74,19 @@ public class GameInfo
         currentPlayer.getTopLevelScores().forEach(tmp::addAndGet);
 
         return tmp.get();
+    }
+
+    public void writeCurrentData(ScoreFileManipulator scoreFileManipulator)
+    {
+        scoreFileManipulator.writePlayerInfo(players);
+    }
+
+    public void readDataFromFile(ScoreFileManipulator scoreFileManipulator)
+    {
+        List<PlayerInfo> playerInfos = scoreFileManipulator.readPlayerInfo();
+        playerInfos.forEach( e ->
+        {
+            this.players.put(e.getUsername(), e);
+        });
     }
 }
