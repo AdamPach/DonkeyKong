@@ -8,12 +8,11 @@ import com.adampach.donkeykong.objects.moving.Barrel;
 import com.adampach.donkeykong.providers.RandomIntervalGeneratorProvider;
 import com.adampach.donkeykong.data.LevelSettings;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.util.Pair;
 
 import java.util.LinkedList;
 
+import static com.adampach.donkeykong.assets.ImageAssets.DONKEY_KONG;
 public class BarrelGenerator extends EnemyGenerator
 {
     private final LinkedList<Observer<Pair<Boolean, Enemy>>> observers;
@@ -39,10 +38,7 @@ public class BarrelGenerator extends EnemyGenerator
 
     @Override
     public void draw(GraphicsContext gc) {
-        Paint paint = gc.getFill();
-        gc.setFill(Color.BLUEVIOLET);
-        gc.fillRect(getPositionX(), getPositionY(), getWidth(), getHeight());
-        gc.setFill(paint);
+       gc.drawImage(DONKEY_KONG, getPositionX(), getPositionY(), getWidth(), getHeight());
     }
 
     @Override
@@ -50,15 +46,14 @@ public class BarrelGenerator extends EnemyGenerator
     {
         if(generatorProvider.provide())
             observers.forEach( e ->
-            {
                 e.notifyObserver(new Pair<>(
                         true,
                         new Barrel(
-                                getPositionX(),
-                                getPositionY(),
+                                (int)(getMaxPositionX() / 2 - levelSettings.getDefaultBarrelSize().width()),
+                                (int)(getMaxPositionY() - levelSettings.getDefaultBarrelSize().height()),
                                 initBarrelDirection,
-                                levelSettings)));
-            });
+                                levelSettings)))
+            );
     }
 
     @Override
