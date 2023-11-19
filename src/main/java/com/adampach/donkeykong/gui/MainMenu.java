@@ -3,6 +3,7 @@ package com.adampach.donkeykong.gui;
 import com.adampach.donkeykong.abstraction.gui.InteractableGuiComponent;
 import com.adampach.donkeykong.data.GameInfo;
 import com.adampach.donkeykong.wrappers.ButtonEventsSubjectsWrapper;
+import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
@@ -28,6 +29,7 @@ public class MainMenu implements InteractableGuiComponent {
         playGameButton.setLayoutX(250);
         playGameButton.setLayoutY(250);
         playGameButton.setFont(Arcade24);
+        playGameButton.setPrefWidth(200);
 
         playGameButton.setOnAction(subjectsWrapper.getPlayGameHandler());
 
@@ -36,16 +38,21 @@ public class MainMenu implements InteractableGuiComponent {
         setNameButton.setLayoutX(250);
         setNameButton.setLayoutY(300);
         setNameButton.setFont(Arcade24);
+        setNameButton.setPrefWidth(200);
         setNameButton.setOnAction(subjectsWrapper.getSetNameHandler());
 
         gameName = new Label("Donkey Kong");
         gameName.setLayoutX(150);
         gameName.setLayoutY(100);
+        gameName.setPrefWidth(400);
+        gameName.setAlignment(Pos.CENTER);
         gameName.setFont(Arcade72);
 
         playerName = new Label();
         playerName.setLayoutX(100);
-        playerName.setLayoutY(200);
+        playerName.setLayoutY(50);
+        playerName.setPrefWidth(400);
+        playerName.setAlignment(Pos.CENTER);
         playerName.setFont(Arcade24);
     }
 
@@ -78,6 +85,11 @@ public class MainMenu implements InteractableGuiComponent {
     @Override
     public void showComponents(AnchorPane anchorPane)
     {
+        setNameButton.setLayoutX(anchorPane.getWidth() / 2 - setNameButton.getPrefWidth() / 2);
+        playGameButton.setLayoutX(anchorPane.getWidth() / 2 - playGameButton.getPrefWidth() / 2);
+        gameName.setLayoutX(anchorPane.getWidth() / 2 - gameName.getPrefWidth() / 2);
+        playerName.setLayoutX(anchorPane.getWidth() / 2 - playerName.getPrefWidth() / 2);
+
         anchorPane.getChildren().add(playGameButton);
         anchorPane.getChildren().add(setNameButton);
         anchorPane.getChildren().add(gameName);

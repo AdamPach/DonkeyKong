@@ -3,6 +3,7 @@ package com.adampach.donkeykong.gui;
 import com.adampach.donkeykong.abstraction.gui.InteractableGuiComponent;
 import com.adampach.donkeykong.data.GameInfo;
 import com.adampach.donkeykong.wrappers.ButtonEventsSubjectsWrapper;
+import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
@@ -11,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.scene.text.TextAlignment;
 
 import static com.adampach.donkeykong.assets.FontAssets.Arcade24;
 import static com.adampach.donkeykong.assets.FontAssets.Arcade72;
@@ -30,15 +32,19 @@ public class EnterName implements InteractableGuiComponent
         this.nameFiled.setFont(Arcade24);
         this.nameFiled.setLayoutX(250);
         this.nameFiled.setLayoutY(200);
+        this.nameFiled.setPrefWidth(200);
         this.nameFiled.setPrefHeight(30);
 
         this.homeButton = new Button("Back home");
         this.homeButton.setLayoutX(250);
+        this.homeButton.setPrefWidth(200);
         this.homeButton.setLayoutY(250);
         this.homeButton.setFont(Arcade24);
         this.homeButton.setOnAction(subjectsWrapper.getHomePageHandler());
 
         setNameText = new Label("Set your name");
+        setNameText.setPrefWidth(500);
+        setNameText.setAlignment(Pos.CENTER);
         setNameText.setLayoutX(150);
         setNameText.setLayoutY(100);
         setNameText.setFont(Arcade72);
@@ -66,6 +72,10 @@ public class EnterName implements InteractableGuiComponent
     @Override
     public void showComponents(AnchorPane anchorPane)
     {
+        nameFiled.setLayoutX(anchorPane.getWidth() / 2 - nameFiled.getPrefWidth() / 2);
+        homeButton.setLayoutX(anchorPane.getWidth() / 2 - homeButton.getPrefWidth() / 2);
+        setNameText.setLayoutX(anchorPane.getWidth() / 2 - setNameText.getPrefWidth() / 2);
+
         anchorPane.getChildren().addAll(nameFiled, homeButton, setNameText);
     }
 

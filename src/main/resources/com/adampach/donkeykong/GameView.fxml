@@ -3,8 +3,8 @@
 <?import javafx.scene.canvas.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="700" prefWidth="700" style="-fx-background-color: #000000" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.adampach.donkeykong.GameController">
+<AnchorPane fx:id="anchorPane" prefHeight="600" prefWidth="600" style="-fx-background-color: #000000" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.adampach.donkeykong.GameController">
    <children>
-      <Canvas fx:id="canvas" height="600.0" layoutX="50.0" layoutY="50.0" width="600.0" />
+      <Canvas fx:id="canvas" height="600.0" width="600.0" />
    </children>
 </AnchorPane>
