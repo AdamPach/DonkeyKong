@@ -13,7 +13,6 @@ import com.adampach.donkeykong.providers.LevelEventsObserverProvider;
 import com.adampach.donkeykong.providers.RandomIntervalGeneratorProvider;
 import com.adampach.donkeykong.statics.LevelDefinitions;
 import com.adampach.donkeykong.world.Level;
-import com.adampach.donkeykong.data.LevelSettings;
 import com.adampach.donkeykong.wrappers.ButtonEventsSubjectsWrapper;
 import com.adampach.donkeykong.wrappers.MovementProviderWrapper;
 import javafx.scene.canvas.Canvas;
@@ -75,7 +74,7 @@ public class Game
                 .addDefaultBarrelSize(new Rectangle(20, 20))
                 .addPlayerLives(3)
                 .addMaxAvailableScore(5000)
-                .addCyclesToDecrease(200)
+                .addCyclesToDecrease(100)
                 .addDecreaseAtOnce(200);
 
         guiComponent.put(MainMenu.class.getName(), new MainMenu(buttonEventsSubjectsWrapper, gameInfo));
@@ -135,6 +134,10 @@ public class Game
             if(currentLevelEvent == GameEventEnums.LevelEvents.GameOver)
             {
                 setNewCurrentComponent(guiComponent.get(MainMenu.class.getName()));
+            }
+            else if (currentLevelEvent == GameEventEnums.LevelEvents.ClearEnemies)
+            {
+                ((Level)currentComponent).clearEnemies();
             }
             else if (currentLevelEvent == GameEventEnums.LevelEvents.Peach)
             {

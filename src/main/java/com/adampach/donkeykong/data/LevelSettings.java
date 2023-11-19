@@ -16,7 +16,7 @@ public class LevelSettings
     private final int cyclesToDecreaseScore;
     private final int decreaseAtOnce;
     private final int playerAttempts;
-    private Rectangle defaultPlayerSize;
+    private final Rectangle defaultPlayerSize;
     private final Rectangle defaultBarrelSize;
     public LevelSettings(
             int defaultJumpGravity,

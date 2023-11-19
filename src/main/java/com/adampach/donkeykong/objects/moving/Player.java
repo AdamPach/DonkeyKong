@@ -9,6 +9,7 @@ import com.adampach.donkeykong.handlers.LevelEventsHandler;
 import com.adampach.donkeykong.objects.textures.Peach;
 import com.adampach.donkeykong.wrappers.MovementProviderWrapper;
 import com.adampach.donkeykong.data.LevelSettings;
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 
 import static com.adampach.donkeykong.assets.ImageAssets.*;
@@ -23,16 +24,20 @@ public class Player extends MovingObject
     private boolean isJumping;
     private int gravityIndex;
     private int maxGravityIndex;
+    private final Point2D spawnPoint;
+    private int currentLives;
 
 
-    public Player(int positionX, int positionY, int width, int height, LevelSettings levelSettings, MovementProviderWrapper movementProviderWrapper, LevelEventsHandler levelEventsHandler) {
-        super(positionX, positionY, width, height);
+    public Player(Point2D spawnPoint, LevelSettings levelSettings, MovementProviderWrapper movementProviderWrapper, LevelEventsHandler levelEventsHandler) {
+        super((int)spawnPoint.getX(), (int) spawnPoint.getY(), (int) levelSettings.getDefaultPlayerSize().width(), (int) levelSettings.getDefaultPlayerSize().height());
+        this.spawnPoint = spawnPoint;
         this.levelSettings = levelSettings;
         this.movementProviderWrapper = movementProviderWrapper;
         this.levelEventsHandler = levelEventsHandler;
         gravityIndex = 0;
         lastHorizontalDirection = DirectionEnums.HorizontalDirection.None;
         isJumping = false;
+        currentLives = levelSettings.getPlayerAttempts();
         resetSimulationCycle();
     }
 
@@ -59,7 +64,14 @@ public class Player extends MovingObject
             return;
 
         if(collisionable instanceof Barrel)
-            levelEventsHandler.notifyWithLevelEvent(GameEventEnums.LevelEvents.GameOver);
+            if(--currentLives <= 0)
+                levelEventsHandler.notifyWithLevelEvent(GameEventEnums.LevelEvents.GameOver);
+            else
+            {
+                setPositionX((int)spawnPoint.getX());
+                setPositionY((int)spawnPoint.getY());
+                levelEventsHandler.notifyWithLevelEvent(GameEventEnums.LevelEvents.ClearEnemies);
+            }
 
         if(collisionable instanceof Peach)
             levelEventsHandler.notifyWithLevelEvent(GameEventEnums.LevelEvents.Peach);
@@ -172,5 +184,9 @@ public class Player extends MovingObject
                 movementProviderWrapper.horizontalProvider.provide();
         if(tmpDirection != DirectionEnums.HorizontalDirection.None)
             lastHorizontalDirection = tmpDirection;
+    }
+
+    public int getCurrentLives() {
+        return currentLives;
     }
 }

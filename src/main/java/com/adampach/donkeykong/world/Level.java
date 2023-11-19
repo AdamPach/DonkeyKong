@@ -17,8 +17,11 @@ import com.adampach.donkeykong.wrappers.MovementProviderWrapper;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 import java.util.LinkedList;
+
+import static com.adampach.donkeykong.assets.FontAssets.Arcade24;
 
 public class Level implements GuiComponent {
     private final Player player;
@@ -27,6 +30,8 @@ public class Level implements GuiComponent {
     private final LinkedList<Zone> zones;
     private final LinkedList<EnemyGenerator> generators;
     private final LevelSettings levelSettings;
+    private int currentScore;
+    private int currentTick;
 
     public Level(
             LinkedList<TextureObject> textures,
@@ -43,15 +48,15 @@ public class Level implements GuiComponent {
         this.generators = generators;
         this.levelSettings = levelSettings;
         this.player = new Player(
-                (int) spawnPoint.getX(),
-                (int) spawnPoint.getY(),
-                (int)levelSettings.getDefaultPlayerSize().width(),
-                (int)levelSettings.getDefaultPlayerSize().height(),
+                spawnPoint,
                 levelSettings,
                 movementProviderWrapper,
                 levelEventsHandler);
 
         enemies = new EnemiesContainer<>(new LinkedList<>());
+
+        currentScore = levelSettings.getMaxAvailableScore();
+        currentTick = 0;
 
         generators.forEach( e -> e.registerObserver(enemies));
     }
@@ -64,6 +69,11 @@ public class Level implements GuiComponent {
         enemies.forEach( e -> e.draw(gc));
         generators.forEach( g -> g.draw(gc));
         player.draw(gc);
+
+        gc.setFont(Arcade24);
+        gc.setFill(Color.WHITE);
+        gc.fillText("Score " + currentScore, 450, 20);
+        gc.fillText("Lives " + player.getCurrentLives(), 450, 40);
     }
 
     @Override
@@ -86,6 +96,13 @@ public class Level implements GuiComponent {
         generators.forEach(EnemyGenerator::generate);
         player.simulate();
 
+        if(++currentTick >= levelSettings.getCyclesToDecreaseScore() &&
+            currentScore > 0)
+        {
+            currentScore -= levelSettings.getDecreaseAtOnce();
+            currentTick = 0;
+        }
+
         resetSimulationCycle();
     }
 
@@ -95,5 +112,10 @@ public class Level implements GuiComponent {
         player.resetSimulationCycle();
         enemies.forEach(Enemy::resetSimulationCycle);
         enemies.clean();
+    }
+
+    public void clearEnemies()
+    {
+        enemies.clear();
     }
 }

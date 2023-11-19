@@ -20,12 +20,11 @@ public class EnterName implements InteractableGuiComponent
 {
     private final TextField nameFiled;
     private final Button homeButton;
+    private final Button saveNameButton;
     private final Label setNameText;
-    private final GameInfo gameInfo;
 
     public EnterName(ButtonEventsSubjectsWrapper subjectsWrapper, GameInfo gameInfo)
     {
-        this.gameInfo = gameInfo;
         this.nameFiled = new TextField();
 
         this.nameFiled.setFont(Arcade24);
@@ -34,10 +33,17 @@ public class EnterName implements InteractableGuiComponent
         this.nameFiled.setPrefWidth(200);
         this.nameFiled.setPrefHeight(30);
 
+        this.saveNameButton = new Button("Save name");
+        this.saveNameButton.setLayoutX(250);
+        this.saveNameButton.setPrefWidth(200);
+        this.saveNameButton.setLayoutY(250);
+        this.saveNameButton.setFont(Arcade24);
+        this.saveNameButton.setOnAction( e -> gameInfo.setUserName(nameFiled.getText()));
+
         this.homeButton = new Button("Back home");
         this.homeButton.setLayoutX(250);
         this.homeButton.setPrefWidth(200);
-        this.homeButton.setLayoutY(250);
+        this.homeButton.setLayoutY(300);
         this.homeButton.setFont(Arcade24);
         this.homeButton.setOnAction(subjectsWrapper.getHomePageHandler());
 
@@ -65,7 +71,7 @@ public class EnterName implements InteractableGuiComponent
     @Override
     public void simulate()
     {
-        gameInfo.setUserName(nameFiled.getText());
+
     }
 
     @Override
@@ -74,13 +80,14 @@ public class EnterName implements InteractableGuiComponent
         nameFiled.setLayoutX(anchorPane.getWidth() / 2 - nameFiled.getPrefWidth() / 2);
         homeButton.setLayoutX(anchorPane.getWidth() / 2 - homeButton.getPrefWidth() / 2);
         setNameText.setLayoutX(anchorPane.getWidth() / 2 - setNameText.getPrefWidth() / 2);
+        saveNameButton.setLayoutX(anchorPane.getWidth() / 2 - saveNameButton.getPrefWidth() / 2);
 
-        anchorPane.getChildren().addAll(nameFiled, homeButton, setNameText);
+        anchorPane.getChildren().addAll(nameFiled, homeButton, setNameText, saveNameButton);
     }
 
     @Override
     public void clearComponents(AnchorPane anchorPane)
     {
-        anchorPane.getChildren().removeAll(nameFiled, homeButton, setNameText);
+        anchorPane.getChildren().removeAll(nameFiled, homeButton, setNameText, saveNameButton);
     }
 }

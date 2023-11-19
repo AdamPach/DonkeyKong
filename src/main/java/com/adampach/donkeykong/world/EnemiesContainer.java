@@ -56,4 +56,9 @@ public class EnemiesContainer <TList extends List<Enemy>>
             toRemove.clear();
         }
     }
+
+    public void clear()
+    {
+        enemies.clear();
+    }
 }
