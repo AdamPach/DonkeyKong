@@ -3,21 +3,19 @@ package com.adampach.donkeykong.gui;
 import com.adampach.donkeykong.abstraction.gui.GuiComponent;
 import com.adampach.donkeykong.abstraction.gui.InteractableGuiComponent;
 import com.adampach.donkeykong.builders.LevelBuilder;
+import com.adampach.donkeykong.builders.LevelSettingsBuilder;
 import com.adampach.donkeykong.data.GameInfo;
-import com.adampach.donkeykong.enums.DirectionEnums;
 import com.adampach.donkeykong.enums.GameEventEnums;
 import com.adampach.donkeykong.geometry.Rectangle;
 import com.adampach.donkeykong.handlers.LevelEventsHandler;
-import com.adampach.donkeykong.objects.textures.Peach;
 import com.adampach.donkeykong.providers.GameEventProvider;
 import com.adampach.donkeykong.providers.LevelEventsObserverProvider;
+import com.adampach.donkeykong.providers.RandomIntervalGeneratorProvider;
 import com.adampach.donkeykong.statics.LevelDefinitions;
 import com.adampach.donkeykong.world.Level;
 import com.adampach.donkeykong.data.LevelSettings;
 import com.adampach.donkeykong.wrappers.ButtonEventsSubjectsWrapper;
 import com.adampach.donkeykong.wrappers.MovementProviderWrapper;
-import javafx.geometry.Point2D;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.AnchorPane;
 
@@ -66,21 +64,25 @@ public class Game
 
         levelEventsHandler.registerObserver(levelEventsObserverProvider);
 
-        LevelSettings settings = new LevelSettings(
-                -12,
-                4,
-                3,
-                2,
-                (int)canvas.getWidth(),
-                (int)canvas.getHeight(),
-                DirectionEnums.HorizontalDirection.Right,
-                new Rectangle(20,20));
+        LevelSettingsBuilder settingsBuilder = LevelSettingsBuilder
+                .CreateBuilder((int)canvas.getWidth(), (int)canvas.getHeight())
+                .addClimbingSpeed(2)
+                .addJumpGravity(-12)
+                .addMaxGravityIndex(4)
+                .addMovementSpeed(3)
+                .addGenerationProvider(new RandomIntervalGeneratorProvider(1, 15000))
+                .addDefaultPlayerSize(new Rectangle(35,35))
+                .addDefaultBarrelSize(new Rectangle(20, 20))
+                .addPlayerLives(3)
+                .addMaxAvailableScore(5000)
+                .addCyclesToDecrease(200)
+                .addDecreaseAtOnce(200);
 
         guiComponent.put(MainMenu.class.getName(), new MainMenu(buttonEventsSubjectsWrapper, gameInfo));
         guiComponent.put(EnterName.class.getName(), new EnterName(buttonEventsSubjectsWrapper, gameInfo));
 
         levels.add(
-                    LevelDefinitions.getLevelOneBuilder(settings)
+                    LevelDefinitions.getLevelOneBuilder(settingsBuilder.build())
                         .addMovementProviders(movementProviderWrapper)
                         .addLevelEventHandler(levelEventsHandler)
         );

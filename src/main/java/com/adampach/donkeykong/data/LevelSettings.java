@@ -1,6 +1,6 @@
 package com.adampach.donkeykong.data;
 
-import com.adampach.donkeykong.enums.DirectionEnums;
+import com.adampach.donkeykong.abstraction.Provider;
 import com.adampach.donkeykong.geometry.Rectangle;
 
 public class LevelSettings
@@ -11,7 +11,12 @@ public class LevelSettings
     private final int defaultClimbingSpeed;
     private final int levelWidth;
     private final int levelHeight;
-    private final DirectionEnums.HorizontalDirection firstBarrelDirection;
+    private final Provider<Boolean> barrelGenerationProvider;
+    private final int maxAvailableScore;
+    private final int cyclesToDecreaseScore;
+    private final int decreaseAtOnce;
+    private final int playerAttempts;
+    private Rectangle defaultPlayerSize;
     private final Rectangle defaultBarrelSize;
     public LevelSettings(
             int defaultJumpGravity,
@@ -20,8 +25,14 @@ public class LevelSettings
             int defaultClimbingSpeed,
             int levelWidth,
             int levelHeight,
-            DirectionEnums.HorizontalDirection firstBarrelDirection,
-            Rectangle defaultBarrelSize) {
+            Provider<Boolean> barrelGenerationProvider,
+            int maxAvailableScore,
+            int cyclesToDecreaseScore,
+            int decreaseAtOnce,
+            int playerAttempts,
+            Rectangle defaultPlayerSize,
+            Rectangle defaultBarrelSize)
+    {
         this.defaultJumpGravity = defaultJumpGravity;
         this.defaultMaxGravityIndex = defaultMaxGravityIndex;
         this.defaultMovementSpeed = defaultMovementSpeed;
@@ -29,7 +40,12 @@ public class LevelSettings
 
         this.levelWidth = levelWidth;
         this.levelHeight = levelHeight;
-        this.firstBarrelDirection = firstBarrelDirection;
+        this.barrelGenerationProvider = barrelGenerationProvider;
+        this.maxAvailableScore = maxAvailableScore;
+        this.cyclesToDecreaseScore = cyclesToDecreaseScore;
+        this.decreaseAtOnce = decreaseAtOnce;
+        this.playerAttempts = playerAttempts;
+        this.defaultPlayerSize = defaultPlayerSize;
         this.defaultBarrelSize = defaultBarrelSize;
     }
 
@@ -52,12 +68,35 @@ public class LevelSettings
     public int getDefaultMovementSpeed() {
         return defaultMovementSpeed;
     }
-
     public int getDefaultJumpGravity() {
         return defaultJumpGravity;
     }
 
     public Rectangle getDefaultBarrelSize() {
         return defaultBarrelSize;
+    }
+
+    public Provider<Boolean> getBarrelGenerationProvider() {
+        return barrelGenerationProvider;
+    }
+
+    public int getMaxAvailableScore() {
+        return maxAvailableScore;
+    }
+
+    public int getCyclesToDecreaseScore() {
+        return cyclesToDecreaseScore;
+    }
+
+    public int getDecreaseAtOnce() {
+        return decreaseAtOnce;
+    }
+
+    public int getPlayerAttempts() {
+        return playerAttempts;
+    }
+
+    public Rectangle getDefaultPlayerSize() {
+        return defaultPlayerSize;
     }
 }

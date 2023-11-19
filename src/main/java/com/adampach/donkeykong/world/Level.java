@@ -45,8 +45,8 @@ public class Level implements GuiComponent {
         this.player = new Player(
                 (int) spawnPoint.getX(),
                 (int) spawnPoint.getY(),
-                35,
-                35,
+                (int)levelSettings.getDefaultPlayerSize().width(),
+                (int)levelSettings.getDefaultPlayerSize().height(),
                 levelSettings,
                 movementProviderWrapper,
                 levelEventsHandler);

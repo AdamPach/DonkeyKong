@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Add peach to the Level and register event for collision with Player">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/adampach/donkeykong/assets/donkey_kong_1.png" afterDir="false" />
+    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Add donkey kong asset and improve barrel generation process">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/builders/LevelSettingsBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/assets/ImageAssets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/assets/ImageAssets.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/data/LevelSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/data/LevelSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/generators/BarrelGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/generators/BarrelGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +142,7 @@
       <workItem from="1700127936490" duration="93000" />
       <workItem from="1700133230032" duration="361000" />
       <workItem from="1700304125155" duration="19186000" />
-      <workItem from="1700383414646" duration="13879000" />
+      <workItem from="1700383414646" duration="17024000" />
     </task>
     <task id="LOCAL-00001" summary="Init the project">
       <option name="closed" value="true" />
@@ -462,7 +464,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700398948027</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Add donkey kong asset and improve barrel generation process">
+      <option name="closed" value="true" />
+      <created>1700400667016</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1700400667016</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -480,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add abstraction for registering" />
     <MESSAGE value="Redesign registering of the Providers" />
     <MESSAGE value="Move status enums from Player to MovingObject, it will be used in Barrel as well" />
     <MESSAGE value="Move collision handling from Player to MovingObject. Will be used in barrels." />
@@ -505,6 +514,7 @@
     <MESSAGE value="Move level definition from Level constructor to LevelBuilder" />
     <MESSAGE value="Define first level by level builder and add class for definitions" />
     <MESSAGE value="Add peach to the Level and register event for collision with Player" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add peach to the Level and register event for collision with Player" />
+    <MESSAGE value="Add donkey kong asset and improve barrel generation process" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add donkey kong asset and improve barrel generation process" />
   </component>
 </project>
