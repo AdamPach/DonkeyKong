@@ -47,6 +47,7 @@ public class LevelDefinitions
                 .addVerticalMovementZone(new Rectangle2D(540, 310, 1, 1), DirectionEnums.VerticalDirection.None)
                 .addHorizontalMovementZone(new Rectangle2D(540, 310, 1, 1), DirectionEnums.HorizontalDirection.Left)
                 .addDestroyBarrelZone(new Rectangle2D(0, 579, 1,1))
-                .addPlayerSpawnPoint(new Point2D(10, 550));
+                .addPlayerSpawnPoint(new Point2D(10, 550))
+                .addPeach(new Rectangle2D(160, 40, 40, 40), false);
     }
 }

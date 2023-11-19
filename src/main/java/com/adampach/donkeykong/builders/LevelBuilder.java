@@ -11,6 +11,7 @@ import com.adampach.donkeykong.objects.generators.BarrelGenerator;
 import com.adampach.donkeykong.objects.textures.Construction;
 import com.adampach.donkeykong.objects.textures.Ladder;
 import com.adampach.donkeykong.objects.textures.LevelBorders;
+import com.adampach.donkeykong.objects.textures.Peach;
 import com.adampach.donkeykong.objects.zones.DestroyBarrelZone;
 import com.adampach.donkeykong.objects.zones.HorizontalMovementZone;
 import com.adampach.donkeykong.objects.zones.VerticalMovementZone;
@@ -30,6 +31,7 @@ public class LevelBuilder implements Builder<Level> {
     private MovementProviderWrapper movementProviderWrapper;
     private LevelEventsHandler levelEventsHandler;
     private Point2D playerSpawnPoint;
+    private Peach peach;
 
     public static LevelBuilder CreateBuilder(LevelSettings levelSettings)
     {
@@ -96,6 +98,8 @@ public class LevelBuilder implements Builder<Level> {
 
         return this;
     }
+
+
 
     public LevelBuilder addHorizontalMovementZone(Rectangle2D zonePosition, DirectionEnums.HorizontalDirection direction)
     {
@@ -171,6 +175,24 @@ public class LevelBuilder implements Builder<Level> {
         return this;
     }
 
+    public LevelBuilder addPeach(Rectangle2D peachPosition, boolean isPeachDirectionLeft)
+    {
+        textures.forEach( e ->
+        {
+            if( e instanceof Construction && peachPosition.intersects(e.getRectangle()))
+                throw new RuntimeException("Peach is in the texture");
+        });
+
+        peach = new Peach(
+                (int)peachPosition.getMinX(),
+                (int)peachPosition.getMinY(),
+                (int)peachPosition.getWidth(),
+                (int)peachPosition.getHeight(),
+                isPeachDirectionLeft);
+
+        return this;
+    }
+
     private LevelBuilder(LevelSettings levelSettings)
     {
         this.levelSettings = levelSettings;
@@ -180,6 +202,7 @@ public class LevelBuilder implements Builder<Level> {
         movementProviderWrapper = null;
         levelEventsHandler = null;
         playerSpawnPoint = null;
+        peach = null;
         textures.add(new LevelBorders(levelSettings));
     }
 
@@ -194,6 +217,11 @@ public class LevelBuilder implements Builder<Level> {
 
         if(playerSpawnPoint == null)
             throw new RuntimeException("You haven't set player spawn point yet");
+
+        if(peach == null)
+            throw new RuntimeException("Peach is not defined yet");
+
+        textures.add(peach);
 
         return new Level(
                 textures,

@@ -6,6 +6,7 @@ import com.adampach.donkeykong.enums.DirectionEnums;
 import com.adampach.donkeykong.enums.GameEventEnums;
 import com.adampach.donkeykong.enums.MovingObjectsEnum;
 import com.adampach.donkeykong.handlers.LevelEventsHandler;
+import com.adampach.donkeykong.objects.textures.Peach;
 import com.adampach.donkeykong.wrappers.MovementProviderWrapper;
 import com.adampach.donkeykong.data.LevelSettings;
 import javafx.scene.canvas.GraphicsContext;
@@ -59,6 +60,9 @@ public class Player extends MovingObject
 
         if(collisionable instanceof Barrel)
             levelEventsHandler.notifyWithLevelEvent(GameEventEnums.LevelEvents.GameOver);
+
+        if(collisionable instanceof Peach)
+            levelEventsHandler.notifyWithLevelEvent(GameEventEnums.LevelEvents.Peach);
 
         super.handleCollision(collisionable);
     }

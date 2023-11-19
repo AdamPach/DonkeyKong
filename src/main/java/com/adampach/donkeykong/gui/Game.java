@@ -8,6 +8,7 @@ import com.adampach.donkeykong.enums.DirectionEnums;
 import com.adampach.donkeykong.enums.GameEventEnums;
 import com.adampach.donkeykong.geometry.Rectangle;
 import com.adampach.donkeykong.handlers.LevelEventsHandler;
+import com.adampach.donkeykong.objects.textures.Peach;
 import com.adampach.donkeykong.providers.GameEventProvider;
 import com.adampach.donkeykong.providers.LevelEventsObserverProvider;
 import com.adampach.donkeykong.statics.LevelDefinitions;
@@ -130,6 +131,10 @@ public class Game
         if(currentComponent instanceof Level)
         {
             if(currentLevelEvent == GameEventEnums.LevelEvents.GameOver)
+            {
+                setNewCurrentComponent(guiComponent.get(MainMenu.class.getName()));
+            }
+            else if (currentLevelEvent == GameEventEnums.LevelEvents.Peach)
             {
                 setNewCurrentComponent(guiComponent.get(MainMenu.class.getName()));
             }

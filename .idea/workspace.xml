@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Move level definition from Level constructor to LevelBuilder">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/statics/LevelDefinitions.java" afterDir="false" />
+    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Define first level by level builder and add class for definitions">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/textures/Peach.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/adampach/donkeykong/assets/peach-rotated.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/adampach/donkeykong/assets/peach.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/assets/ImageAssets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/assets/ImageAssets.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/builders/LevelBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/builders/LevelBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/statics/LevelDefinitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/statics/LevelDefinitions.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +143,7 @@
       <workItem from="1700127936490" duration="93000" />
       <workItem from="1700133230032" duration="361000" />
       <workItem from="1700304125155" duration="19186000" />
-      <workItem from="1700383414646" duration="9907000" />
+      <workItem from="1700383414646" duration="11865000" />
     </task>
     <task id="LOCAL-00001" summary="Init the project">
       <option name="closed" value="true" />
@@ -445,7 +449,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700390964730</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Define first level by level builder and add class for definitions">
+      <option name="closed" value="true" />
+      <created>1700396859522</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1700396859522</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -463,7 +475,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Make Provider more abstract and split Key handling to more classes" />
     <MESSAGE value="Add border handling" />
     <MESSAGE value="Add abstraction for registering" />
     <MESSAGE value="Redesign registering of the Providers" />
@@ -488,6 +499,7 @@
     <MESSAGE value="Handle Player collision with Barrel" />
     <MESSAGE value="Center all javafx elements in gui" />
     <MESSAGE value="Move level definition from Level constructor to LevelBuilder" />
-    <option name="LAST_COMMIT_MESSAGE" value="Move level definition from Level constructor to LevelBuilder" />
+    <MESSAGE value="Define first level by level builder and add class for definitions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Define first level by level builder and add class for definitions" />
   </component>
 </project>
