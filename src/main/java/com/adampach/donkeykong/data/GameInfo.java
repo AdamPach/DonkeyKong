@@ -71,8 +71,6 @@ public class GameInfo
 
         currentPlayer.getTopLevelScores().forEach(tmp::addAndGet);
 
-        System.out.println(tmp.get());
-
         return tmp.get();
     }
 }

@@ -5,12 +5,11 @@ import com.adampach.donkeykong.abstraction.gui.InteractableGuiComponent;
 import com.adampach.donkeykong.builders.LevelBuilder;
 import com.adampach.donkeykong.builders.LevelSettingsBuilder;
 import com.adampach.donkeykong.data.GameInfo;
+import com.adampach.donkeykong.data.LevelSettings;
 import com.adampach.donkeykong.enums.GameEventEnums;
-import com.adampach.donkeykong.geometry.Rectangle;
 import com.adampach.donkeykong.handlers.LevelEventsHandler;
 import com.adampach.donkeykong.providers.GameEventProvider;
 import com.adampach.donkeykong.providers.LevelEventsObserverProvider;
-import com.adampach.donkeykong.providers.RandomIntervalGeneratorProvider;
 import com.adampach.donkeykong.statics.LevelDefinitions;
 import com.adampach.donkeykong.world.Level;
 import com.adampach.donkeykong.wrappers.ButtonEventsSubjectsWrapper;
@@ -21,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import java.util.function.Function;
 
 public class Game
 {
@@ -62,38 +62,18 @@ public class Game
 
         levelEventsHandler.registerObserver(levelEventsObserverProvider);
 
-        LevelSettingsBuilder settingsBuilder = LevelSettingsBuilder
-                .CreateBuilder((int)canvas.getWidth(), (int)canvas.getHeight())
-                .addClimbingSpeed(2)
-                .addJumpGravity(-12)
-                .addMaxGravityIndex(4)
-                .addMovementSpeed(3)
-                .addGenerationProvider(new RandomIntervalGeneratorProvider(1, 15000))
-                .addDefaultPlayerSize(new Rectangle(35,35))
-                .addDefaultBarrelSize(new Rectangle(20, 20))
-                .addPlayerLives(3)
-                .addMaxAvailableScore(5000)
-                .addCyclesToDecrease(100)
-                .addDecreaseAtOnce(200);
 
-        levels.add(
-                    LevelDefinitions.getLevelOneBuilder(settingsBuilder.build())
-                        .addMovementProviders(movementProviderWrapper)
-                        .addLevelEventHandler(levelEventsHandler)
-        );
+        LevelSettingsBuilder settingsBuilder = LevelDefinitions.getDefaultSetting((int) canvas.getWidth(), (int) canvas.getHeight());
 
-        levels.add(
-                LevelDefinitions.getLevelOneBuilder(settingsBuilder.build())
-                        .addMovementProviders(movementProviderWrapper)
-                        .addLevelEventHandler(levelEventsHandler)
-        );
+        tryAddLevel(LevelDefinitions::getLevelOneBuilder, settingsBuilder, movementProviderWrapper);
+        tryAddLevel(LevelDefinitions::getLevelOneBuilder, settingsBuilder, movementProviderWrapper);
 
         gameInfo = new GameInfo(levels.size());
 
         guiComponent.put(MainMenu.class.getName(), new MainMenu(buttonEventsSubjectsWrapper, gameInfo));
         guiComponent.put(EnterName.class.getName(), new EnterName(buttonEventsSubjectsWrapper, gameInfo));
         guiComponent.put(PickLevel.class.getName(), new PickLevel(buttonEventsSubjectsWrapper, gameInfo));
-
+        guiComponent.put(LevelPassed.class.getName(), new LevelPassed(buttonEventsSubjectsWrapper));
 
         InteractableGuiComponent component = guiComponent.get(MainMenu.class.getName());
 
@@ -155,7 +135,7 @@ public class Game
             else if (currentLevelEvent == GameEventEnums.LevelEvents.Peach)
             {
                 gameInfo.setScoreForCurrentLevel(((Level)currentComponent).getCurrentScore());
-                setNewCurrentComponent(guiComponent.get(MainMenu.class.getName()));
+                setNewCurrentComponent(guiComponent.get(LevelPassed.class.getName()));
             }
         }
     }
@@ -173,5 +153,27 @@ public class Game
         }
 
         currentComponent = newCurrentComponent;
+    }
+
+    private void tryAddLevel(
+            Function<LevelSettings, LevelBuilder> builderSupplier,
+            LevelSettingsBuilder settingsBuilder,
+            MovementProviderWrapper movementProviderWrapper)
+    {
+        LevelBuilder builder;
+        try
+        {
+            builder = builderSupplier
+                    .apply(settingsBuilder.build())
+                    .addMovementProviders(movementProviderWrapper)
+                    .addLevelEventHandler(levelEventsHandler);
+            builder.build();
+        }
+        catch (RuntimeException e)
+        {
+            return;
+        }
+
+        levels.add(builder);
     }
 }

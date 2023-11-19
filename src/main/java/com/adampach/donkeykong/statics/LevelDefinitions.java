@@ -1,8 +1,11 @@
 package com.adampach.donkeykong.statics;
 
 import com.adampach.donkeykong.builders.LevelBuilder;
+import com.adampach.donkeykong.builders.LevelSettingsBuilder;
 import com.adampach.donkeykong.data.LevelSettings;
 import com.adampach.donkeykong.enums.DirectionEnums;
+import com.adampach.donkeykong.geometry.Rectangle;
+import com.adampach.donkeykong.providers.RandomIntervalGeneratorProvider;
 import javafx.geometry.Point2D;
 import javafx.geometry.Rectangle2D;
 
@@ -49,5 +52,22 @@ public class LevelDefinitions
                 .addDestroyBarrelZone(new Rectangle2D(0, 579, 1,1))
                 .addPlayerSpawnPoint(new Point2D(10, 550))
                 .addPeach(new Rectangle2D(160, 40, 40, 40), false);
+    }
+
+    public static LevelSettingsBuilder getDefaultSetting(int playgroundWidth, int playgroundHeight)
+    {
+        return LevelSettingsBuilder
+                .CreateBuilder(playgroundWidth, playgroundHeight)
+                .addClimbingSpeed(2)
+                .addJumpGravity(-12)
+                .addMaxGravityIndex(4)
+                .addMovementSpeed(3)
+                .addGenerationProvider(new RandomIntervalGeneratorProvider(1, 15000))
+                .addDefaultPlayerSize(new Rectangle(35,35))
+                .addDefaultBarrelSize(new Rectangle(20, 20))
+                .addPlayerLives(3)
+                .addMaxAvailableScore(5000)
+                .addCyclesToDecrease(100)
+                .addDecreaseAtOnce(200);
     }
 }
