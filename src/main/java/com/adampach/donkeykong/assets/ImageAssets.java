@@ -19,7 +19,7 @@ public class ImageAssets {
         MARIO_JUMP_FLIP = new Image(ImageAssets.class.getResourceAsStream("mario_jump_flip.png"));
 
         PEACH_RIGHT = new Image(ImageAssets.class.getResourceAsStream("peach.png"));
-        PEACH_LEFT = new Image(ImageAssets.class.getResourceAsStream("peach-rotated.png"));
+        PEACH_LEFT = new Image(ImageAssets.class.getResourceAsStream("peach_rotated.png"));
 
         DONKEY_KONG = new Image(ImageAssets.class.getResourceAsStream("donkey_kong_1.png"));
     }

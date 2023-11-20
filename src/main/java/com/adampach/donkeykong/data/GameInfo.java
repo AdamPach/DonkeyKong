@@ -61,7 +61,7 @@ public class GameInfo
 
     public void setScoreForCurrentLevel(int score)
     {
-        if(currentLevel >= currentPlayer.getTopLevelScores().size())
+        if(currentLevel > currentPlayer.getTopLevelScores().size())
             currentPlayer.getTopLevelScores().add(score);
         else
         {
