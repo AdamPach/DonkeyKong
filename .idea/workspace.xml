@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Create second level">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/adampach/donkeykong/assets/peach_rotated.png" afterDir="false" />
+    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Improve peach picture and fix saving score bug">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/game_gui.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/main_menu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/select_level_menu.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/assets/ImageAssets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/assets/ImageAssets.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/EnemiesContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/EnemiesContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/adampach/donkeykong/assets/peach-rotated.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/adampach/donkeykong/assets/peach.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/adampach/donkeykong/assets/peach.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/score.csv" beforeDir="false" afterPath="$PROJECT_DIR$/score.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +50,9 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -77,6 +80,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\adamp\IdeaProjects\DonkeyKong\resources" />
       <recent name="C:\Users\adamp\IdeaProjects\DonkeyKong\src\main\resources\com\adampach\donkeykong\assets" />
     </key>
   </component>
@@ -146,7 +150,10 @@
       <workItem from="1700415366979" duration="2896000" />
       <workItem from="1700461504894" duration="4902000" />
       <workItem from="1700467473910" duration="5103000" />
-      <workItem from="1700473757760" duration="2177000" />
+      <workItem from="1700473757760" duration="3384000" />
+      <workItem from="1700480742493" duration="50000" />
+      <workItem from="1700480815069" duration="71000" />
+      <workItem from="1700481072058" duration="1884000" />
     </task>
     <task id="LOCAL-00001" summary="Init the project">
       <option name="closed" value="true" />
@@ -532,7 +539,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700474937299</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Improve peach picture and fix saving score bug">
+      <option name="closed" value="true" />
+      <created>1700476239280</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1700476239280</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -550,7 +565,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Make all properties of GameObject private" />
     <MESSAGE value="Add jump gravity to level settings" />
     <MESSAGE value="Make observer more abstract and reusable" />
     <MESSAGE value="Make Subject more abstract" />
@@ -575,6 +589,7 @@
     <MESSAGE value="Save game results and possibility to read it back from the file" />
     <MESSAGE value="Change font size and ensure that unknown player is not saved" />
     <MESSAGE value="Create second level" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create second level" />
+    <MESSAGE value="Improve peach picture and fix saving score bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improve peach picture and fix saving score bug" />
   </component>
 </project>
