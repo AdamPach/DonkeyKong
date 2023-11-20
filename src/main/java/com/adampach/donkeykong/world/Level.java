@@ -3,16 +3,8 @@ package com.adampach.donkeykong.world;
 import com.adampach.donkeykong.abstraction.game.*;
 import com.adampach.donkeykong.abstraction.gui.GuiComponent;
 import com.adampach.donkeykong.data.LevelSettings;
-import com.adampach.donkeykong.enums.DirectionEnums;
 import com.adampach.donkeykong.handlers.LevelEventsHandler;
-import com.adampach.donkeykong.objects.generators.BarrelGenerator;
 import com.adampach.donkeykong.objects.moving.Player;
-import com.adampach.donkeykong.objects.textures.Construction;
-import com.adampach.donkeykong.objects.textures.Ladder;
-import com.adampach.donkeykong.objects.textures.LevelBorders;
-import com.adampach.donkeykong.objects.zones.DestroyBarrelZone;
-import com.adampach.donkeykong.objects.zones.HorizontalMovementZone;
-import com.adampach.donkeykong.objects.zones.VerticalMovementZone;
 import com.adampach.donkeykong.wrappers.MovementProviderWrapper;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
@@ -21,7 +13,7 @@ import javafx.scene.paint.Color;
 
 import java.util.LinkedList;
 
-import static com.adampach.donkeykong.assets.FontAssets.Arcade24;
+import static com.adampach.donkeykong.assets.FontAssets.Arcade26;
 
 public class Level implements GuiComponent {
     private final Player player;
@@ -70,7 +62,7 @@ public class Level implements GuiComponent {
         generators.forEach( g -> g.draw(gc));
         player.draw(gc);
 
-        gc.setFont(Arcade24);
+        gc.setFont(Arcade26);
         gc.setFill(Color.WHITE);
         gc.fillText("Score " + currentScore, 450, 20);
         gc.fillText("Lives " + player.getCurrentLives(), 450, 40);

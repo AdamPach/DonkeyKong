@@ -66,7 +66,6 @@ public class Game
 
         levelEventsHandler.registerObserver(levelEventsObserverProvider);
 
-
         LevelSettingsBuilder settingsBuilder = LevelDefinitions.getDefaultSetting((int) canvas.getWidth(), (int) canvas.getHeight());
 
         tryAddLevel(LevelDefinitions::getLevelOneBuilder, settingsBuilder, movementProviderWrapper);

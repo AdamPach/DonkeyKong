@@ -28,7 +28,7 @@ public class MainMenu implements InteractableGuiComponent {
 
         playGameButton.setLayoutX(250);
         playGameButton.setLayoutY(250);
-        playGameButton.setFont(Arcade24);
+        playGameButton.setFont(Arcade26);
         playGameButton.setPrefWidth(200);
 
         playGameButton.setOnAction(subjectsWrapper.getPlayGameHandler());
@@ -37,7 +37,7 @@ public class MainMenu implements InteractableGuiComponent {
 
         setNameButton.setLayoutX(250);
         setNameButton.setLayoutY(300);
-        setNameButton.setFont(Arcade24);
+        setNameButton.setFont(Arcade26);
         setNameButton.setPrefWidth(200);
         setNameButton.setOnAction(subjectsWrapper.getSetNameHandler());
 
@@ -53,7 +53,7 @@ public class MainMenu implements InteractableGuiComponent {
         playerName.setLayoutY(50);
         playerName.setPrefWidth(400);
         playerName.setAlignment(Pos.CENTER);
-        playerName.setFont(Arcade24);
+        playerName.setFont(Arcade26);
     }
 
     @Override

@@ -39,7 +39,7 @@ public class PickLevel implements InteractableGuiComponent {
 
             newBtn.setLayoutY(200 + 50 * i);
             newBtn.setPrefWidth(200);
-            newBtn.setFont(Arcade24);
+            newBtn.setFont(Arcade26);
             int finalI = i;
             newBtn.setOnAction(e ->
             {
@@ -59,7 +59,7 @@ public class PickLevel implements InteractableGuiComponent {
         backButton = new Button("Menu");
         backButton.setLayoutY(200 + 50 * levelButtons.size());
         backButton.setPrefWidth(200);
-        backButton.setFont(Arcade24);
+        backButton.setFont(Arcade26);
         backButton.setOnAction(subjectsWrapper.getHomePageHandler());
 
         scoreBoard = new Label();

@@ -11,7 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
-import static com.adampach.donkeykong.assets.FontAssets.Arcade24;
+import static com.adampach.donkeykong.assets.FontAssets.Arcade26;
 import static com.adampach.donkeykong.assets.FontAssets.Arcade72;
 
 public class LevelPassed implements InteractableGuiComponent {
@@ -32,7 +32,7 @@ public class LevelPassed implements InteractableGuiComponent {
         menuButton = new Button("Back to the menu");
         menuButton.setLayoutY(200);
         menuButton.setPrefWidth(250);
-        menuButton.setFont(Arcade24);
+        menuButton.setFont(Arcade26);
         menuButton.setOnAction(subjectsWrapper.getHomePageHandler());
     }
 

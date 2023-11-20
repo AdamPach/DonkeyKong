@@ -13,7 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
-import static com.adampach.donkeykong.assets.FontAssets.Arcade24;
+import static com.adampach.donkeykong.assets.FontAssets.Arcade26;
 import static com.adampach.donkeykong.assets.FontAssets.Arcade72;
 
 public class EnterName implements InteractableGuiComponent
@@ -27,7 +27,7 @@ public class EnterName implements InteractableGuiComponent
     {
         this.nameFiled = new TextField();
 
-        this.nameFiled.setFont(Arcade24);
+        this.nameFiled.setFont(Arcade26);
         this.nameFiled.setLayoutX(250);
         this.nameFiled.setLayoutY(200);
         this.nameFiled.setPrefWidth(200);
@@ -37,14 +37,14 @@ public class EnterName implements InteractableGuiComponent
         this.saveNameButton.setLayoutX(250);
         this.saveNameButton.setPrefWidth(200);
         this.saveNameButton.setLayoutY(250);
-        this.saveNameButton.setFont(Arcade24);
+        this.saveNameButton.setFont(Arcade26);
         this.saveNameButton.setOnAction( e -> gameInfo.setUserName(nameFiled.getText()));
 
         this.homeButton = new Button("Back home");
         this.homeButton.setLayoutX(250);
         this.homeButton.setPrefWidth(200);
         this.homeButton.setLayoutY(300);
-        this.homeButton.setFont(Arcade24);
+        this.homeButton.setFont(Arcade26);
         this.homeButton.setOnAction(subjectsWrapper.getHomePageHandler());
 
         setNameText = new Label("Set your name");

@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Add level passed menu">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/files/ScoreFileManipulator.java" afterDir="false" />
+    <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Save game results and possibility to read it back from the file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/score.csv" beforeDir="false" afterPath="$PROJECT_DIR$/score.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/assets/FontAssets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/assets/FontAssets.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/data/GameInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/data/GameInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/EnterName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/EnterName.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/LevelPassed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/LevelPassed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/PickLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/PickLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/world/Level.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +147,8 @@
       <workItem from="1700133230032" duration="361000" />
       <workItem from="1700304125155" duration="19186000" />
       <workItem from="1700383414646" duration="28525000" />
-      <workItem from="1700415366979" duration="2336000" />
+      <workItem from="1700415366979" duration="2896000" />
+      <workItem from="1700461504894" duration="635000" />
     </task>
     <task id="LOCAL-00001" summary="Init the project">
       <option name="closed" value="true" />
@@ -503,7 +510,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700415407616</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Save game results and possibility to read it back from the file">
+      <option name="closed" value="true" />
+      <created>1700418041452</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1700418041452</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -521,7 +536,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Remove ladder dependency from Barrel" />
     <MESSAGE value="Add mario assets and display them instead of the rectangle" />
     <MESSAGE value="Set maximum rendering speed" />
     <MESSAGE value="Make all properties of GameObject private" />
@@ -546,6 +560,7 @@
     <MESSAGE value="Show score and add models for saving game status" />
     <MESSAGE value="Add pick level menu" />
     <MESSAGE value="Add level passed menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add level passed menu" />
+    <MESSAGE value="Save game results and possibility to read it back from the file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Save game results and possibility to read it back from the file" />
   </component>
 </project>
