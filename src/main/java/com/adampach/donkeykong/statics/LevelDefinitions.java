@@ -130,7 +130,8 @@ public class LevelDefinitions
                 .addDestroyBarrelZone(new Rectangle2D(600, 579, 1,1))
 
                 .addPlayerSpawnPoint(new Point2D(280, 550))
-                .addPeach(new Rectangle2D(280, 10, 40, 40), true);
+                .addPeach(new Rectangle2D(280, 10, 40, 40), true)
+                .arrangeLaddersOnTheTopOfList();
     }
 
     public static LevelSettingsBuilder getDefaultSetting(int playgroundWidth, int playgroundHeight)

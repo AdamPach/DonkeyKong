@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a4f7af8-67ac-44e7-af5f-cf281371f0ac" name="Changes" comment="Improve peach picture and fix saving score bug">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/game_gui.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/main_menu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/select_level_menu.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/score.csv" beforeDir="false" afterPath="$PROJECT_DIR$/score.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/builders/LevelBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/builders/LevelBuilder.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -26,7 +26,7 @@ import java.util.LinkedList;
 
 public class LevelBuilder implements Builder<Level> {
     private final LevelSettings levelSettings;
-    private final LinkedList<TextureObject> textures;
+    private LinkedList<TextureObject> textures;
     private final LinkedList<EnemyGenerator> enemyGenerators;
     private final LinkedList<Zone> zones;
     private MovementProviderWrapper movementProviderWrapper;
@@ -194,6 +194,28 @@ public class LevelBuilder implements Builder<Level> {
                 (int)peachPosition.getWidth(),
                 (int)peachPosition.getHeight(),
                 isPeachDirectionLeft);
+
+        return this;
+    }
+
+    public LevelBuilder arrangeLaddersOnTheTopOfList()
+    {
+        LinkedList<TextureObject> arrangedTextures = new LinkedList<>();
+
+        arrangedTextures.add(new LevelBorders(levelSettings));
+
+        arrangedTextures.addAll(textures.
+                stream()
+                .filter( e -> e instanceof Ladder)
+                .toList());
+
+        arrangedTextures.addAll(textures.
+                stream()
+                .filter( e -> !(e instanceof Ladder))
+                .filter( e -> !( e instanceof LevelBorders))
+                .toList());
+
+        textures = arrangedTextures;
 
         return this;
     }
