@@ -1,7 +1,5 @@
 # Donkey Kong
 
----
-
 Game inspired by [Donkey Kong](https://en.wikipedia.org/wiki/Donkey_Kong_(arcade_game)).
 It is not 1 to 1 clone, game is only inspired and some things could be different from the original game.
 Game is written in Java and UI library is JavaFx. The intention for the development was school project to JAVA 1 on [VŠB FEI](https://fei.vsb.cz).
@@ -9,15 +7,11 @@ Even if the school project is submitted, I hope that I will be able to deliver n
 
 ## Known problems
 
----
-
 ### Missing assets
 I haven't found a good resource for game assets. Therefore, some objects are represented only by the rectangle. 
 If you have some tips on resources, or you are able to create the assets you can contact me.
 
 ## GUI
-
----
 
 ### Main menu
 
@@ -35,8 +29,6 @@ At the top you can see sum of your all best scores. You have to pass previous le
 When you want to go back you have to click on **MENU** button.
 
 ## GAME
-
----
 
 ![img.png](resources/game_gui.png)
 
