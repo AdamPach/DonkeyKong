@@ -69,7 +69,7 @@ public class Game
         LevelSettingsBuilder settingsBuilder = LevelDefinitions.getDefaultSetting((int) canvas.getWidth(), (int) canvas.getHeight());
 
         tryAddLevel(LevelDefinitions::getLevelOneBuilder, settingsBuilder, movementProviderWrapper);
-        tryAddLevel(LevelDefinitions::getLevelOneBuilder, settingsBuilder, movementProviderWrapper);
+        tryAddLevel(LevelDefinitions::getLevelTwoBuilder, settingsBuilder, movementProviderWrapper);
 
         gameInfo = new GameInfo(levels.size());
         gameInfo.readDataFromFile(scoreFileManipulator);

@@ -18,6 +18,7 @@ public class GameInfo
     {
         this.numberOfLevels = numberOfLevels;
         currentPlayer = new PlayerInfo();
+        currentPlayer.setUsername("UNKNOWN");
         players = new Hashtable<>();
         currentLevel = 0;
     }
@@ -29,6 +30,13 @@ public class GameInfo
 
     public void setUserName(String userName)
     {
+        if(userName == null || userName.isEmpty())
+        {
+            currentPlayer = new PlayerInfo();
+            currentPlayer.setUsername("UNKNOWN");
+            return;
+        }
+
         PlayerInfo tmp = players.get(userName);
         if(tmp == null)
         {

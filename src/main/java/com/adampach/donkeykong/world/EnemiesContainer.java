@@ -46,6 +46,7 @@ public class EnemiesContainer <TList extends List<Enemy>>
 
     public void clean()
     {
+        System.out.println(enemies.size());
         if(!toRemove.isEmpty())
         {
             toRemove.forEach( e ->

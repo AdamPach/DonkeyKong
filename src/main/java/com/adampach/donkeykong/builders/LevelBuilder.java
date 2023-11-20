@@ -1,6 +1,7 @@
 package com.adampach.donkeykong.builders;
 
 import com.adampach.donkeykong.abstraction.Builder;
+import com.adampach.donkeykong.abstraction.Provider;
 import com.adampach.donkeykong.abstraction.game.EnemyGenerator;
 import com.adampach.donkeykong.abstraction.game.TextureObject;
 import com.adampach.donkeykong.abstraction.game.Zone;
@@ -74,7 +75,10 @@ public class LevelBuilder implements Builder<Level> {
         return this;
     }
 
-    public LevelBuilder addBarrelGenerator(Rectangle2D generatorPosition, DirectionEnums.HorizontalDirection initBarrelDirection)
+    public LevelBuilder addBarrelGenerator(
+            Rectangle2D generatorPosition,
+            DirectionEnums.HorizontalDirection initBarrelDirection,
+            Provider<Boolean> barrelGenerationIntervalProvider)
     {
         textures.forEach( e ->
         {
@@ -94,6 +98,7 @@ public class LevelBuilder implements Builder<Level> {
                 (int)generatorPosition.getWidth(),
                 (int)generatorPosition.getHeight(),
                 initBarrelDirection,
+                barrelGenerationIntervalProvider,
                 levelSettings));
 
         return this;

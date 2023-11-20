@@ -10,7 +10,9 @@ import com.adampach.donkeykong.data.LevelSettings;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.util.Pair;
 
+import java.time.Instant;
 import java.util.LinkedList;
+import java.util.Random;
 
 import static com.adampach.donkeykong.assets.ImageAssets.DONKEY_KONG;
 public class BarrelGenerator extends EnemyGenerator
@@ -20,20 +22,24 @@ public class BarrelGenerator extends EnemyGenerator
     private final DirectionEnums.HorizontalDirection initBarrelDirection;
     private final LevelSettings levelSettings;
 
+    private final Random rnd;
+
     public BarrelGenerator(
             int positionX,
             int positionY,
             int width,
             int height,
             DirectionEnums.HorizontalDirection initBarrelDirection,
+            Provider<Boolean> barrelGenerationIntervalProvider,
             LevelSettings levelSettings
     )
     {
         super(positionX, positionY, width, height);
         this.levelSettings = levelSettings;
         this.observers = new LinkedList<>();
-        generatorProvider = levelSettings.getBarrelGenerationProvider();
+        generatorProvider = barrelGenerationIntervalProvider;
         this.initBarrelDirection = initBarrelDirection;
+        rnd = new Random(Instant.now().toEpochMilli());
     }
 
     @Override
@@ -49,9 +55,13 @@ public class BarrelGenerator extends EnemyGenerator
                 e.notifyObserver(new Pair<>(
                         true,
                         new Barrel(
-                                (int)(getMaxPositionX() / 2 - levelSettings.getDefaultBarrelSize().width()),
+                                (getPositionX() + (getMaxPositionX() - getPositionX()) / 2),
                                 (int)(getMaxPositionY() - levelSettings.getDefaultBarrelSize().height()),
-                                initBarrelDirection,
+                                initBarrelDirection == DirectionEnums.HorizontalDirection.Both ?
+                                    rnd.nextBoolean()
+                                            ? DirectionEnums.HorizontalDirection.Right
+                                            : DirectionEnums.HorizontalDirection.Left
+                                    : initBarrelDirection,
                                 levelSettings)))
             );
     }

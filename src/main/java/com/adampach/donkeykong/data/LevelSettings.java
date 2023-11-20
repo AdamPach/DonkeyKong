@@ -1,6 +1,5 @@
 package com.adampach.donkeykong.data;
 
-import com.adampach.donkeykong.abstraction.Provider;
 import com.adampach.donkeykong.geometry.Rectangle;
 
 public class LevelSettings
@@ -11,7 +10,6 @@ public class LevelSettings
     private final int defaultClimbingSpeed;
     private final int levelWidth;
     private final int levelHeight;
-    private final Provider<Boolean> barrelGenerationProvider;
     private final int maxAvailableScore;
     private final int cyclesToDecreaseScore;
     private final int decreaseAtOnce;
@@ -25,7 +23,6 @@ public class LevelSettings
             int defaultClimbingSpeed,
             int levelWidth,
             int levelHeight,
-            Provider<Boolean> barrelGenerationProvider,
             int maxAvailableScore,
             int cyclesToDecreaseScore,
             int decreaseAtOnce,
@@ -40,7 +37,6 @@ public class LevelSettings
 
         this.levelWidth = levelWidth;
         this.levelHeight = levelHeight;
-        this.barrelGenerationProvider = barrelGenerationProvider;
         this.maxAvailableScore = maxAvailableScore;
         this.cyclesToDecreaseScore = cyclesToDecreaseScore;
         this.decreaseAtOnce = decreaseAtOnce;
@@ -74,10 +70,6 @@ public class LevelSettings
 
     public Rectangle getDefaultBarrelSize() {
         return defaultBarrelSize;
-    }
-
-    public Provider<Boolean> getBarrelGenerationProvider() {
-        return barrelGenerationProvider;
     }
 
     public int getMaxAvailableScore() {

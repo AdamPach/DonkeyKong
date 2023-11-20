@@ -1,14 +1,11 @@
 package com.adampach.donkeykong.builders;
 
 import com.adampach.donkeykong.abstraction.Builder;
-import com.adampach.donkeykong.abstraction.Provider;
 import com.adampach.donkeykong.data.LevelSettings;
 import com.adampach.donkeykong.geometry.Rectangle;
-import com.adampach.donkeykong.providers.RandomIntervalGeneratorProvider;
 
 public class LevelSettingsBuilder implements Builder<LevelSettings>
 {
-    private Provider<Boolean> barrelGenerationProvider;
     private int maxAvailableScore;
     private int cyclesToDecreaseScore;
     private int decreaseAtOnce;
@@ -21,13 +18,6 @@ public class LevelSettingsBuilder implements Builder<LevelSettings>
     private int defaultClimbingSpeed;
     private final int levelWidth;
     private final int levelHeight;
-
-    public LevelSettingsBuilder addGenerationProvider(Provider<Boolean> provider)
-    {
-        barrelGenerationProvider = provider;
-
-        return this;
-    }
 
     public LevelSettingsBuilder addMaxAvailableScore(int score)
     {
@@ -107,7 +97,6 @@ public class LevelSettingsBuilder implements Builder<LevelSettings>
     {
         this.levelWidth = levelWidth;
         this.levelHeight = levelHeight;
-        barrelGenerationProvider = new RandomIntervalGeneratorProvider(1,25);
         maxAvailableScore = 1;
         cyclesToDecreaseScore = 1;
         decreaseAtOnce = 1;
@@ -138,7 +127,6 @@ public class LevelSettingsBuilder implements Builder<LevelSettings>
                 defaultClimbingSpeed,
                 levelWidth,
                 levelHeight,
-                barrelGenerationProvider,
                 maxAvailableScore,
                 cyclesToDecreaseScore,
                 decreaseAtOnce,
