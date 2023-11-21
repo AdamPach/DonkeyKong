@@ -38,7 +38,10 @@ public class EnterName implements InteractableGuiComponent
         this.saveNameButton.setPrefWidth(200);
         this.saveNameButton.setLayoutY(250);
         this.saveNameButton.setFont(Arcade26);
-        this.saveNameButton.setOnAction( e -> gameInfo.setUserName(nameFiled.getText()));
+        this.saveNameButton.setOnAction( e -> {
+            gameInfo.setUserName(nameFiled.getText());
+            subjectsWrapper.getHomePageHandler().handle(e);
+        });
 
         this.homeButton = new Button("Back home");
         this.homeButton.setLayoutX(250);
