@@ -30,7 +30,7 @@ When you want to go back you have to click on **MENU** button.
 
 ## GAME
 
-![img.png](resources/game_gui.png)
+![img.png](resources/game.png)
 
 In the picture above you can se game UI. You can se your current score and lives. 
 You win the level when you meet a princess peach. And game over is when your live is 0.
@@ -43,3 +43,6 @@ The Score is decrementing during the time, so if you want the best score you hav
 2. Add more enemies. In original game you there are more types of enemies and I want to add them.
 3. Add hammer or some kind of weapon. Mario have some kind of weapon in the game to destroying the enemies.
 4. More complex objects. In original game there are more complex objects in the game.
+
+### Updates
+1. Added a platform texture. I know that is not an original texture, but this is not original game :).
