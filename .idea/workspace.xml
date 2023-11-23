@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d976d6c7-ad45-487f-984c-92d5a2627875" name="Changes" comment="Add arrange method for best texture arrangement">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/adampach/donkeykong/assets/platform_texture.png" afterDir="false" />
+    <list default="true" id="d976d6c7-ad45-487f-984c-92d5a2627875" name="Changes" comment="Update README.md">
+      <change afterPath="$PROJECT_DIR$/resources/game.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/assets/ImageAssets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/assets/ImageAssets.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/textures/Construction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/objects/textures/Construction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/statics/LevelDefinitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/statics/LevelDefinitions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/game_gui.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/score.csv" beforeDir="false" afterPath="$PROJECT_DIR$/score.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +22,11 @@
     "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\adamp\IdeaProjects\DonkeyKong\resources" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="DonkeyKongApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.adampach.donkeykong.DonkeyKongApplication" />
@@ -44,10 +48,29 @@
     </recent_temporary>
   </component>
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="Add texture for the Construction">
+      <option name="closed" value="true" />
+      <created>1700721545611</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1700721545611</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Update README.md">
+      <option name="closed" value="true" />
+      <created>1700721783609</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1700721783609</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add arrange method for best texture arrangement" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add arrange method for best texture arrangement" />
+    <MESSAGE value="Add texture for the Construction" />
+    <MESSAGE value="Update README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update README.md" />
   </component>
 </project>
