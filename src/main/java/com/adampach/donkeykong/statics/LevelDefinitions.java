@@ -53,6 +53,7 @@ public class LevelDefinitions
                 .addVerticalMovementZone(new Rectangle2D(540, 310, 1, 1), DirectionEnums.VerticalDirection.None)
                 .addHorizontalMovementZone(new Rectangle2D(540, 310, 1, 1), DirectionEnums.HorizontalDirection.Left)
                 .addPlayerSpawnPoint(new Point2D(10, 550))
+                .addDestroyBarrelZone(new Rectangle2D(0, 581, 1,1))
                 .addPeach(new Rectangle2D(160, 40, 40, 40), false);
     }
 
@@ -128,7 +129,6 @@ public class LevelDefinitions
                 )
                 .addDestroyBarrelZone(new Rectangle2D(0, 579, 1,1))
                 .addDestroyBarrelZone(new Rectangle2D(600, 579, 1,1))
-
                 .addPlayerSpawnPoint(new Point2D(280, 550))
                 .addPeach(new Rectangle2D(280, 10, 40, 40), true)
                 .arrangeLaddersOnTheTopOfList();

@@ -12,6 +12,7 @@ public class ImageAssets {
     public static final Image PEACH_RIGHT;
     public static final Image PEACH_LEFT;
     public static final Image DONKEY_KONG;
+    public static final Image PLATFORM;
     static {
         MARIO_WALK = new Image(ImageAssets.class.getResourceAsStream("mario_walk.png"));
         MARIO_JUMP = new Image(ImageAssets.class.getResourceAsStream("mario_jump.png"));
@@ -22,5 +23,7 @@ public class ImageAssets {
         PEACH_LEFT = new Image(ImageAssets.class.getResourceAsStream("peach_rotated.png"));
 
         DONKEY_KONG = new Image(ImageAssets.class.getResourceAsStream("donkey_kong_1.png"));
+
+        PLATFORM = new Image(ImageAssets.class.getResourceAsStream("platform_texture.png"));
     }
 }

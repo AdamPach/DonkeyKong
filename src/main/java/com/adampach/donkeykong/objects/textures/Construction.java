@@ -6,6 +6,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 
+import static com.adampach.donkeykong.assets.ImageAssets.PLATFORM;
+
 public class Construction extends TextureObject {
     public Construction(int positionX, int positionY, int width, int height) {
         super(positionX, positionY, width, height);
@@ -14,10 +16,11 @@ public class Construction extends TextureObject {
     @Override
     public void draw(GraphicsContext gc)
     {
-        Paint paint = gc.getFill();
-        gc.setFill(Color.RED);
-        gc.fillRect(getPositionX(), getPositionY(), getWidth(), getHeight());
-        gc.setFill(paint);
+        float width = getHeight() * 2;
+        for(int i = 0; i < Math.ceil(getWidth() / width); i++)
+        {
+            gc.drawImage(PLATFORM, getPositionX() + width * i, getPositionY(), width, getHeight());
+        }
     }
 
     @Override
