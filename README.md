@@ -39,10 +39,11 @@ The Score is decrementing during the time, so if you want the best score you hav
 
 ### Future
 
-1. I want to add better assets. The current status is only due to deadline of school project
+1. I want to add better assets. The current status is only due to deadline of school project.
 2. Add more enemies. In original game you there are more types of enemies and I want to add them.
 3. Add hammer or some kind of weapon. Mario have some kind of weapon in the game to destroying the enemies.
 4. More complex objects. In original game there are more complex objects in the game.
 
 ### Updates
 1. Added a platform texture. I know that is not an original texture, but this is not original game :).
+2. Added a barrel and ladder texture. Complete default textures.
