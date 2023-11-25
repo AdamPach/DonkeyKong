@@ -3,8 +3,8 @@ package com.adampach.donkeykong.objects.textures;
 import com.adampach.donkeykong.abstraction.game.TextureObject;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
+
+import static com.adampach.donkeykong.assets.ImageAssets.LADDER;
 
 public class Ladder extends TextureObject
 {
@@ -14,10 +14,7 @@ public class Ladder extends TextureObject
 
     @Override
     public void draw(GraphicsContext gc) {
-        Paint paint = gc.getFill();
-        gc.setFill(Color.BLUE);
-        gc.fillRect(getPositionX(), getPositionY(), getWidth(), getHeight());
-        gc.setFill(paint);
+        gc.drawImage(LADDER, getPositionX(), getPositionY(), getWidth(), getHeight());
     }
 
     @Override

@@ -14,7 +14,6 @@ import javafx.scene.canvas.GraphicsContext;
 
 import static com.adampach.donkeykong.assets.ImageAssets.*;
 
-
 public class Player extends MovingObject
 {
     private final LevelSettings levelSettings;
