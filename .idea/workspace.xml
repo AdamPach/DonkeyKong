@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d976d6c7-ad45-487f-984c-92d5a2627875" name="Changes" comment="Rework the second level" />
+    <list default="true" id="d976d6c7-ad45-487f-984c-92d5a2627875" name="Changes" comment="Add ladder image">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,6 +42,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\adamp\IdeaProjects\DonkeyKong\src\main\resources\com\adampach\donkeykong\assets" />
       <recent name="C:\Users\adamp\IdeaProjects\DonkeyKong\resources" />
     </key>
   </component>
@@ -87,7 +90,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1700915011118</updated>
-      <workItem from="1700915014308" duration="3604000" />
+      <workItem from="1700915014308" duration="5114000" />
     </task>
     <task id="LOCAL-00003" summary="Rework the first level">
       <option name="closed" value="true" />
@@ -105,11 +108,30 @@
       <option name="project" value="LOCAL" />
       <updated>1700918020514</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add ladder image">
+      <option name="closed" value="true" />
+      <created>1700919140682</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1700919140682</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add arrange method for best texture arrangement" />
@@ -117,6 +139,7 @@
     <MESSAGE value="Update README.md" />
     <MESSAGE value="Rework the first level" />
     <MESSAGE value="Rework the second level" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rework the second level" />
+    <MESSAGE value="Add ladder image" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add ladder image" />
   </component>
 </project>

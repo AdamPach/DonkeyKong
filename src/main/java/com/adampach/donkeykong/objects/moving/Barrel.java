@@ -10,8 +10,8 @@ import com.adampach.donkeykong.objects.zones.HorizontalMovementZone;
 import com.adampach.donkeykong.objects.zones.VerticalMovementZone;
 import com.adampach.donkeykong.data.LevelSettings;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
+
+import static com.adampach.donkeykong.assets.ImageAssets.BARREL;
 
 public class Barrel extends Enemy
 {
@@ -38,10 +38,7 @@ public class Barrel extends Enemy
     @Override
     public void draw(GraphicsContext gc)
     {
-        Paint paint = gc.getFill();
-        gc.setFill(Color.LIGHTSKYBLUE);
-        gc.fillRect(getPositionX(), getPositionY(), getWidth(), getHeight());
-        gc.setFill(paint);
+        gc.drawImage(BARREL, getPositionX(), getPositionY(), getWidth(), getHeight());
     }
 
     @Override

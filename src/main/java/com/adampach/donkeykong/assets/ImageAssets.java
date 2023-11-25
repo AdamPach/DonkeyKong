@@ -14,6 +14,7 @@ public class ImageAssets {
     public static final Image DONKEY_KONG;
     public static final Image PLATFORM;
     public static final Image LADDER;
+    public static final Image BARREL;
     static {
         MARIO_WALK = new Image(ImageAssets.class.getResourceAsStream("mario_walk.png"));
         MARIO_JUMP = new Image(ImageAssets.class.getResourceAsStream("mario_jump.png"));
@@ -28,5 +29,7 @@ public class ImageAssets {
         PLATFORM = new Image(ImageAssets.class.getResourceAsStream("platform_texture.png"));
 
         LADDER = new Image(ImageAssets.class.getResourceAsStream("ladder.png"));
+
+        BARREL = new Image(ImageAssets.class.getResourceAsStream("barrel.gif"));
     }
 }
