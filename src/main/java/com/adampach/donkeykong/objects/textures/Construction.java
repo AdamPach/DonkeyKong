@@ -16,11 +16,12 @@ public class Construction extends TextureObject {
     @Override
     public void draw(GraphicsContext gc)
     {
-        float width = getHeight() * 2;
-        for(int i = 0; i < Math.ceil(getWidth() / width); i++)
-        {
-            gc.drawImage(PLATFORM, getPositionX() + width * i, getPositionY(), width, getHeight());
-        }
+//        float width = getHeight() * 2;
+//        for(int i = 0; i < Math.ceil(getWidth() / width); i++)
+//        {
+//            gc.drawImage(PLATFORM, getPositionX() + width * i, getPositionY(), width, getHeight());
+//        }
+        gc.drawImage(PLATFORM, getPositionX(), getPositionY(), getWidth(), getHeight());
     }
 
     @Override
