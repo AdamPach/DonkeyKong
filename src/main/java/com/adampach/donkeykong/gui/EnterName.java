@@ -2,6 +2,7 @@ package com.adampach.donkeykong.gui;
 
 import com.adampach.donkeykong.abstraction.gui.InteractableGuiComponent;
 import com.adampach.donkeykong.data.GameInfo;
+import com.adampach.donkeykong.enums.GameEventEnums;
 import com.adampach.donkeykong.wrappers.ButtonEventsSubjectsWrapper;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
@@ -40,7 +41,9 @@ public class EnterName implements InteractableGuiComponent
         this.saveNameButton.setFont(Arcade26);
         this.saveNameButton.setOnAction( e -> {
             gameInfo.setUserName(nameFiled.getText());
-            subjectsWrapper.getHomePageHandler().handle(e);
+            subjectsWrapper
+                    .getGuiEventHandler()
+                    .handle(GameEventEnums.GameEvents.HomePage);
         });
 
         this.homeButton = new Button("Back home");
@@ -48,7 +51,12 @@ public class EnterName implements InteractableGuiComponent
         this.homeButton.setPrefWidth(200);
         this.homeButton.setLayoutY(300);
         this.homeButton.setFont(Arcade26);
-        this.homeButton.setOnAction(subjectsWrapper.getHomePageHandler());
+        this.homeButton.setOnAction(e ->
+        {
+            subjectsWrapper
+                    .getGuiEventHandler()
+                    .handle(GameEventEnums.GameEvents.HomePage);
+        });
 
         setNameText = new Label("Set your name");
         setNameText.setPrefWidth(500);

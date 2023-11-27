@@ -2,6 +2,7 @@ package com.adampach.donkeykong.gui;
 
 import com.adampach.donkeykong.abstraction.gui.InteractableGuiComponent;
 import com.adampach.donkeykong.data.GameInfo;
+import com.adampach.donkeykong.enums.GameEventEnums;
 import com.adampach.donkeykong.wrappers.ButtonEventsSubjectsWrapper;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
@@ -31,16 +32,24 @@ public class MainMenu implements InteractableGuiComponent {
         playGameButton.setLayoutY(250);
         playGameButton.setFont(Arcade26);
         playGameButton.setPrefWidth(200);
-
-        playGameButton.setOnAction(subjectsWrapper.getPlayGameHandler());
+        playGameButton.setOnAction(e ->
+        {
+            subjectsWrapper
+                    .getGuiEventHandler()
+                    .handle(GameEventEnums.GameEvents.PlayGame);
+        });
 
         setNameButton = new Button("Set your name");
-
         setNameButton.setLayoutX(250);
         setNameButton.setLayoutY(300);
         setNameButton.setFont(Arcade26);
         setNameButton.setPrefWidth(200);
-        setNameButton.setOnAction(subjectsWrapper.getSetNameHandler());
+        setNameButton.setOnAction(e ->
+        {
+            subjectsWrapper
+                    .getGuiEventHandler()
+                    .handle(GameEventEnums.GameEvents.SetName);
+        });
 
         hallOfFameButton = new Button("Hall of fame");
 
@@ -48,7 +57,12 @@ public class MainMenu implements InteractableGuiComponent {
         hallOfFameButton.setLayoutY(350);
         hallOfFameButton.setFont(Arcade26);
         hallOfFameButton.setPrefWidth(200);
-        hallOfFameButton.setOnAction(subjectsWrapper.getHallOfFameHandler());
+        hallOfFameButton.setOnAction( e ->
+        {
+            subjectsWrapper
+                    .getGuiEventHandler()
+                    .handle(GameEventEnums.GameEvents.HallOfFame);
+        });
 
         gameName = new Label("Donkey Kong");
         gameName.setLayoutX(150);

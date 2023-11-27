@@ -1,6 +1,7 @@
 package com.adampach.donkeykong.gui;
 
 import com.adampach.donkeykong.abstraction.gui.InteractableGuiComponent;
+import com.adampach.donkeykong.enums.GameEventEnums;
 import com.adampach.donkeykong.wrappers.ButtonEventsSubjectsWrapper;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
@@ -33,7 +34,12 @@ public class LevelPassed implements InteractableGuiComponent {
         menuButton.setLayoutY(200);
         menuButton.setPrefWidth(250);
         menuButton.setFont(Arcade26);
-        menuButton.setOnAction(subjectsWrapper.getHomePageHandler());
+        menuButton.setOnAction( e ->
+        {
+            subjectsWrapper
+                    .getGuiEventHandler()
+                    .handle(GameEventEnums.GameEvents.HomePage);
+        });
     }
 
     @Override

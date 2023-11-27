@@ -2,6 +2,7 @@ package com.adampach.donkeykong.gui;
 
 import com.adampach.donkeykong.abstraction.gui.InteractableGuiComponent;
 import com.adampach.donkeykong.data.GameInfo;
+import com.adampach.donkeykong.enums.GameEventEnums;
 import com.adampach.donkeykong.wrappers.ButtonEventsSubjectsWrapper;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
@@ -44,7 +45,9 @@ public class PickLevel implements InteractableGuiComponent {
             newBtn.setOnAction(e ->
             {
                 gameInfo.setCurrentLevel(finalI + 1);
-                subjectsWrapper.getStartLevelHandler().handle(e);
+                subjectsWrapper
+                        .getGuiEventHandler()
+                        .handle(GameEventEnums.GameEvents.StartLevel);
             });
             levelButtons.add(newBtn);
         }
@@ -60,7 +63,12 @@ public class PickLevel implements InteractableGuiComponent {
         backButton.setLayoutY(200 + 50 * levelButtons.size());
         backButton.setPrefWidth(200);
         backButton.setFont(Arcade26);
-        backButton.setOnAction(subjectsWrapper.getHomePageHandler());
+        backButton.setOnAction( e ->
+        {
+            subjectsWrapper
+                    .getGuiEventHandler()
+                    .handle(GameEventEnums.GameEvents.HomePage);
+        });
 
         scoreBoard = new Label();
         scoreBoard.setLayoutX(100);

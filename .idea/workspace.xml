@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d976d6c7-ad45-487f-984c-92d5a2627875" name="Changes" comment="Complete hall of fame">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/handlers/GuiEventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/HallOfFame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/HallOfFame.java" afterDir="false" />
+    <list default="true" id="d976d6c7-ad45-487f-984c-92d5a2627875" name="Changes" comment="Add gui event handler, it will replace all handlers and reduce the EventHandler implementation">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/handlers/HallOfFameHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/handlers/PlayGameHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/handlers/SetNameHandler.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/wrappers/ButtonEventsSubjectsWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/wrappers/ButtonEventsSubjectsWrapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +106,7 @@
       <workItem from="1701066598889" duration="4425000" />
       <workItem from="1701071750836" duration="2014000" />
       <workItem from="1701075550577" duration="814000" />
-      <workItem from="1701091795082" duration="344000" />
+      <workItem from="1701091795082" duration="678000" />
     </task>
     <task id="LOCAL-00003" summary="Rework the first level">
       <option name="closed" value="true" />
@@ -163,7 +164,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701073178359</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Add gui event handler, it will replace all handlers and reduce the EventHandler implementation">
+      <option name="closed" value="true" />
+      <created>1701092226215</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1701092226215</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,6 +199,7 @@
     <MESSAGE value="Update README.md" />
     <MESSAGE value="Start with HallOfFame" />
     <MESSAGE value="Complete hall of fame" />
-    <option name="LAST_COMMIT_MESSAGE" value="Complete hall of fame" />
+    <MESSAGE value="Add gui event handler, it will replace all handlers and reduce the EventHandler implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add gui event handler, it will replace all handlers and reduce the EventHandler implementation" />
   </component>
 </project>
