@@ -124,6 +124,10 @@ public class Game
             {
                 setNewCurrentComponent(levels.get(gameInfo.getCurrentLevel() - 1).build());
             }
+            else if( currentEvent == GameEventEnums.GameEvents.HallOfFame)
+            {
+                setNewCurrentComponent(guiComponent.get(HallOfFame.class.getName()));
+            }
         }
 
         if(currentComponent instanceof Level)
