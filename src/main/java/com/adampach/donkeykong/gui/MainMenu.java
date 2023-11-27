@@ -18,6 +18,7 @@ public class MainMenu implements InteractableGuiComponent {
 
     private final Button playGameButton;
     private final Button setNameButton;
+    private final Button hallOfFameButton;
     private final Label gameName;
     private final Label playerName;
     private final GameInfo gameInfo;
@@ -40,6 +41,14 @@ public class MainMenu implements InteractableGuiComponent {
         setNameButton.setFont(Arcade26);
         setNameButton.setPrefWidth(200);
         setNameButton.setOnAction(subjectsWrapper.getSetNameHandler());
+
+        hallOfFameButton = new Button("Hall of fame");
+
+        hallOfFameButton.setLayoutX(250);
+        hallOfFameButton.setLayoutY(350);
+        hallOfFameButton.setFont(Arcade26);
+        hallOfFameButton.setPrefWidth(200);
+        hallOfFameButton.setOnAction(subjectsWrapper.getHallOfFameHandler());
 
         gameName = new Label("Donkey Kong");
         gameName.setLayoutX(150);
@@ -89,11 +98,14 @@ public class MainMenu implements InteractableGuiComponent {
         playGameButton.setLayoutX(anchorPane.getWidth() / 2 - playGameButton.getPrefWidth() / 2);
         gameName.setLayoutX(anchorPane.getWidth() / 2 - gameName.getPrefWidth() / 2);
         playerName.setLayoutX(anchorPane.getWidth() / 2 - playerName.getPrefWidth() / 2);
+        hallOfFameButton.setLayoutX(anchorPane.getWidth() / 2 - hallOfFameButton.getPrefWidth() / 2);
 
         anchorPane.getChildren().add(playGameButton);
         anchorPane.getChildren().add(setNameButton);
         anchorPane.getChildren().add(gameName);
         anchorPane.getChildren().add(playerName);
+        anchorPane.getChildren().add(hallOfFameButton);
+
     }
 
     @Override
@@ -103,5 +115,7 @@ public class MainMenu implements InteractableGuiComponent {
         anchorPane.getChildren().remove(setNameButton);
         anchorPane.getChildren().remove(gameName);
         anchorPane.getChildren().remove(playerName);
+        anchorPane.getChildren().remove(hallOfFameButton);
+
     }
 }

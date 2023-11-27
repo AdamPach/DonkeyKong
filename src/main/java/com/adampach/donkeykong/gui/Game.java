@@ -78,6 +78,7 @@ public class Game
         guiComponent.put(EnterName.class.getName(), new EnterName(buttonEventsSubjectsWrapper, gameInfo));
         guiComponent.put(PickLevel.class.getName(), new PickLevel(buttonEventsSubjectsWrapper, gameInfo));
         guiComponent.put(LevelPassed.class.getName(), new LevelPassed(buttonEventsSubjectsWrapper));
+        guiComponent.put(HallOfFame.class.getName(), new HallOfFame(buttonEventsSubjectsWrapper, gameInfo));
 
         InteractableGuiComponent component = guiComponent.get(MainMenu.class.getName());
 

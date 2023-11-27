@@ -85,7 +85,7 @@ public class LevelDefinitions
                 .addBarrelGenerator(
                         new Rectangle2D(0,100, 100, 100),
                         DirectionEnums.HorizontalDirection.Right,
-                        new RandomIntervalGeneratorProvider(1, 15000))
+                        new RandomIntervalGeneratorProvider(1, 12000))
                 .addVerticalMovementZone(new Rectangle2D(539, 219, 1, 1), DirectionEnums.VerticalDirection.Down)
                 .addVerticalMovementZone(new Rectangle2D(540, 310, 1, 1), DirectionEnums.VerticalDirection.None)
                 .addHorizontalMovementZone(new Rectangle2D(540, 310, 1, 1), DirectionEnums.HorizontalDirection.Left)
@@ -177,7 +177,7 @@ public class LevelDefinitions
                 .addBarrelGenerator(
                         new Rectangle2D(250, 80, 100, 100),
                         DirectionEnums.HorizontalDirection.Both,
-                        new RandomIntervalGeneratorProvider(1, 12000))
+                        new RandomIntervalGeneratorProvider(1, 9000))
                 .addVerticalMovementZone(
                         new Rectangle2D(149, 179, 1, 1),
                         DirectionEnums.VerticalDirection.Down)

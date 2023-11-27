@@ -1,10 +1,9 @@
 package com.adampach.donkeykong.data;
 
 import com.adampach.donkeykong.files.ScoreFileManipulator;
+import javafx.util.Pair;
 
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class GameInfo
@@ -96,5 +95,26 @@ public class GameInfo
         {
             this.players.put(e.getUsername(), e);
         });
+    }
+
+    public List<Pair<String, Integer>> getTopPlayers(int numberOfTopPlayers)
+    {
+        ArrayList<Pair<String, Integer>> top = new ArrayList<>();
+
+        for(PlayerInfo info : players.values())
+        {
+            AtomicInteger tmp = new AtomicInteger();
+
+            info.getTopLevelScores().forEach(tmp::addAndGet);
+
+            top.add(new Pair<>(info.getUsername(), tmp.get()));
+        }
+
+        top.sort(Comparator.comparing(Pair::getValue));
+        Collections.reverse(top);
+
+        return top.stream()
+                .limit(numberOfTopPlayers)
+                .toList();
     }
 }
