@@ -2,6 +2,7 @@ package com.adampach.donkeykong.gui;
 
 import com.adampach.donkeykong.abstraction.gui.InteractableGuiComponent;
 import com.adampach.donkeykong.data.GameInfo;
+import com.adampach.donkeykong.enums.GameEventEnums;
 import com.adampach.donkeykong.wrappers.ButtonEventsSubjectsWrapper;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
@@ -13,8 +14,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.TextAlignment;
 import javafx.util.Pair;
-
-import java.util.List;
 
 import static com.adampach.donkeykong.assets.FontAssets.Arcade26;
 import static com.adampach.donkeykong.assets.FontAssets.Arcade72;
@@ -42,7 +41,12 @@ public class HallOfFame implements InteractableGuiComponent
         Home.setPrefWidth(200);
         Home.setLayoutY(500);
         Home.setFont(Arcade26);
-        Home.setOnAction(subjectsWrapper.getHomePageHandler());
+        Home.setOnAction(e ->
+        {
+            subjectsWrapper
+                    .getGuiEventHandler()
+                    .handle(GameEventEnums.GameEvents.HomePage);
+        });
 
         Text = new Label("");
         Text.setPrefWidth(500);

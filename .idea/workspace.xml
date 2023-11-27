@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d976d6c7-ad45-487f-984c-92d5a2627875" name="Changes" comment="Start with HallOfFame">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/handlers/HallOfFameHandler.java" afterDir="false" />
+    <list default="true" id="d976d6c7-ad45-487f-984c-92d5a2627875" name="Changes" comment="Complete hall of fame">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/handlers/GuiEventHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/data/GameInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/data/GameInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/HallOfFame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/HallOfFame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/gui/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/statics/LevelDefinitions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/statics/LevelDefinitions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/wrappers/ButtonEventsSubjectsWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/adampach/donkeykong/wrappers/ButtonEventsSubjectsWrapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -107,7 +103,9 @@
       <workItem from="1700915014308" duration="6805000" />
       <workItem from="1701027876493" duration="48000" />
       <workItem from="1701066598889" duration="4425000" />
-      <workItem from="1701071750836" duration="1308000" />
+      <workItem from="1701071750836" duration="2014000" />
+      <workItem from="1701075550577" duration="814000" />
+      <workItem from="1701091795082" duration="344000" />
     </task>
     <task id="LOCAL-00003" summary="Rework the first level">
       <option name="closed" value="true" />
@@ -157,7 +155,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701067678305</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Complete hall of fame">
+      <option name="closed" value="true" />
+      <created>1701073178359</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1701073178359</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,6 +189,7 @@
     <MESSAGE value="Add barrel gif" />
     <MESSAGE value="Update README.md" />
     <MESSAGE value="Start with HallOfFame" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start with HallOfFame" />
+    <MESSAGE value="Complete hall of fame" />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete hall of fame" />
   </component>
 </project>

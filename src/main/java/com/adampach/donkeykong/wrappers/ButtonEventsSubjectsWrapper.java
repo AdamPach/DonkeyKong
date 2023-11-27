@@ -17,6 +17,8 @@ public class ButtonEventsSubjectsWrapper
 
     private final HallOfFameHandler hallOfFameHandler;
 
+    private final GuiEventHandler guiEventHandler;
+
     public ButtonEventsSubjectsWrapper()
     {
         gameEventProvider = new GameEventProvider();
@@ -35,6 +37,9 @@ public class ButtonEventsSubjectsWrapper
 
         hallOfFameHandler = new HallOfFameHandler();
         hallOfFameHandler.registerObserver(gameEventProvider);
+
+        guiEventHandler = new GuiEventHandler();
+        guiEventHandler.registerObserver(gameEventProvider);
     }
 
     public PlayGameHandler getPlayGameHandler() {
@@ -59,5 +64,9 @@ public class ButtonEventsSubjectsWrapper
 
     public HallOfFameHandler getHallOfFameHandler() {
         return hallOfFameHandler;
+    }
+
+    public GuiEventHandler getGuiEventHandler(){
+        return guiEventHandler;
     }
 }
